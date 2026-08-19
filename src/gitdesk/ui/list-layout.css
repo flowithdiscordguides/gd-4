@@ -1,0 +1,27 @@
+/*
+  Shared density contract that prevents sparse record lists from stretching rows across unused panel height.
+*/
+
+/*
+  Every class token ending in "-list" represents a record collection in GitDesk. Max-content tracks keep each
+  record content-sized, while start alignment leaves remaining viewport space after the rows instead of inside them.
+*/
+:where([class$="-list"], [class*="-list "]) {
+  grid-auto-rows: max-content;
+  align-content: start;
+}
+
+/* These collection surfaces use domain names instead of the shared -list suffix but follow the same row contract. */
+:where(
+  .actions-detail-nav,
+  .local-category-menu,
+  .local-compare-files,
+  .local-tree-children,
+  .pages-workflow-files,
+  .project-hub-scan,
+  .project-hub-timeline,
+  .release-assets
+) {
+  grid-auto-rows: max-content;
+  align-content: start;
+}

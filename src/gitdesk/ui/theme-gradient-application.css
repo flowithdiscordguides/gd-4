@@ -1,0 +1,105 @@
+/* Semantic gradient paint layer; solid tokens remain valid for color-mix and fallbacks. */
+
+:root[data-theme-gradient-app-background] body {
+  background-image: var(--theme-gradient-app_background);
+}
+
+:root[data-theme-gradient-navigation-background] :is(
+  .topbar, .toolbar, .sidebar, .settings-tabs, .workspace-mode-switch
+) {
+  background-image: var(--theme-gradient-navigation_background);
+}
+
+:root[data-theme-gradient-panel-background] :is(
+  .overview-pane, .settings-block, [class$="-panel"], [class$="-pane"], [class$="-rail"]
+) {
+  background-image: var(--theme-gradient-panel_background);
+}
+
+:root[data-theme-gradient-section-background] :is(
+  [class$="-card"], [class$="-block"], [class$="-row"], [class$="-tile"], [class$="-entry"]
+) {
+  background-image: var(--theme-gradient-section_background);
+}
+
+:root[data-theme-gradient-secondary-background] :is(
+  [class*="empty"], [class*="summary"], [class*="preview"], [class*="inset"], [class*="status"]
+) {
+  background-image: var(--theme-gradient-secondary_background);
+}
+
+:root[data-theme-gradient-control-background] body :is(button, input, select, textarea) {
+  background-image: var(--theme-gradient-control_background);
+}
+
+:root[data-theme-gradient-modal-background] :is(
+  [role="dialog"], [class$="-dialog"], [class$="-menu"], [class$="-popover"]
+) {
+  background-image: var(--theme-gradient-modal_background);
+}
+
+:root[data-theme-gradient-primary-actions] :is(
+  button.primary, #commit-button, #commit-push-button, #publish-release, #save-account,
+  #clone-repository, #add-managed-repo, #save-pages, #create-local-project,
+  #create-local-feature, #create-local-version, #duplicate-local-version
+) {
+  background-image: var(--theme-gradient-primary_actions);
+}
+
+:root[data-theme-gradient-selected-controls] :is(
+  .workspace-mode-switch button.active, .toolbar .tab-button.active, .repo-dialog-modes button.active,
+  .local-project-picker-menu button.selected, .local-feature-picker-option.selected,
+  .document-picker-menu button.selected, .tab-button.active
+) {
+  background-image: var(--theme-gradient-selected_controls);
+}
+
+:root[data-theme-gradient-accent] :is(
+  .overview-left .file-row.active, .managed-repo-row.active, .local-project-row.active,
+  .local-version-row.active, .local-project-library-tile.selected
+) {
+  background-image: var(--theme-gradient-accent);
+}
+
+:root[data-theme-gradient-headings] body :is(h1, h2, h3, h4) {
+  color: transparent;
+  background-image: var(--theme-gradient-headings);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root[data-theme-gradient-labels] body :is(label, legend) {
+  color: transparent;
+  background-image: var(--theme-gradient-labels);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root[data-theme-gradient-body-text] body :is(
+  p, dd, code, .file-diff-button, .local-tree-name, .theme-live-preview > strong
+):not(.danger, .warning, .success) {
+  color: transparent;
+  background-image: var(--theme-gradient-body_text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root[data-theme-gradient-secondary-text] body :is(
+  small, .row-meta, [class$="-meta"], [class$="-hint"], [class$="-description"]
+):not(.danger, .warning, .success) {
+  color: transparent;
+  background-image: var(--theme-gradient-secondary_text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:root[data-theme-gradient-border-color] body :is(
+  button, input, select, textarea, .settings-block, .overview-pane,
+  [class$="-card"], [class$="-panel"], [class$="-row"], [class$="-dialog"], [class$="-menu"]
+) {
+  border-image: var(--theme-gradient-border_color) 1;
+}

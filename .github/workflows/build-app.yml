@@ -1,0 +1,216 @@
+# Builds GitDesk desktop artifacts for manual QA and tagged releases.
+name: Build GitDesk App
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+# Prevent repeated manual/tag runs on the same ref from leaving stale queued builds behind.
+concurrency:
+  group: build-gitdesk-app-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS arm64
+            os: macos-15
+            data_separator: ":"
+            macos_architecture: arm64
+            stage_macos_openssl: false
+            dmg_volume_name: GitDesk Apple Silicon
+            webui_runtime_folder: webui-macos-clang-arm64
+            webui_pyinstaller_args: >-
+              --add-binary
+              "build/webui-runtime/webui-macos-clang-arm64/libwebui-2.dylib:webui/webui-macos-clang-arm64"
+            openssl_pyinstaller_args: ""
+            clipboard_pyinstaller_args: --collect-all AppKit --collect-all Foundation --collect-all objc
+            pyinstaller_extra_args: >-
+              --icon build/app-icon.icns
+              --target-arch arm64
+              --osx-bundle-identifier com.xander.gitdesk
+            artifact_name: GitDesk-macOS-arm64
+            artifact_path: dist/GitDesk-macOS-arm64.dmg
+          - name: macOS Intel
+            os: macos-15-intel
+            data_separator: ":"
+            macos_architecture: x86_64
+            stage_macos_openssl: true
+            dmg_volume_name: GitDesk Intel
+            webui_runtime_folder: webui-macos-clang-x64
+            webui_pyinstaller_args: >-
+              --add-binary
+              "build/webui-runtime/webui-macos-clang-x64/libwebui-2.dylib:webui/webui-macos-clang-x64"
+            openssl_pyinstaller_args: >-
+              --add-binary "build/openssl-runtime/x86_64/libssl.3.dylib:."
+              --add-binary "build/openssl-runtime/x86_64/libcrypto.3.dylib:."
+            clipboard_pyinstaller_args: --collect-all AppKit --collect-all Foundation --collect-all objc
+            pyinstaller_extra_args: >-
+              --icon build/app-icon.icns
+              --target-arch x86_64
+              --osx-bundle-identifier com.xander.gitdesk
+            artifact_name: GitDesk-macOS-x86_64
+            artifact_path: dist/GitDesk-macOS-x86_64.dmg
+          - name: Windows x64
+            os: windows-latest
+            data_separator: ";"
+            stage_macos_openssl: false
+            webui_pyinstaller_args: --collect-all webui
+            openssl_pyinstaller_args: ""
+            clipboard_pyinstaller_args: ""
+            pyinstaller_extra_args: ""
+            artifact_name: GitDesk-Windows-x64
+            artifact_path: dist/GitDesk
+          - name: Linux x64
+            os: ubuntu-latest
+            data_separator: ":"
+            stage_macos_openssl: false
+            webui_pyinstaller_args: --collect-all webui
+            openssl_pyinstaller_args: ""
+            clipboard_pyinstaller_args: ""
+            pyinstaller_extra_args: ""
+            artifact_name: GitDesk-Linux-x64
+            artifact_path: dist/GitDesk
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - name: Install pinned frontend dependencies
+        run: npm ci
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Write packaged app version
+        run: python packaging/write-build-version.py
+      - name: Install build dependencies
+        run: python -m pip install pyinstaller==6.21.0 && python -m pip install .
+      - name: Run persistence and permission regression tests
+        run: python -m unittest discover -s tests -p "test*.py"
+        env:
+          # Test the checked-out source tree so its root Guide document and documentation screenshots resolve.
+          PYTHONPATH: src
+      - name: Stage architecture-specific macOS WebUI runtime
+        if: runner.os == 'macOS'
+        run: python packaging/stage-macos-webui-runtime.py "${{ matrix.webui_runtime_folder }}"
+      - name: Stage cryptography-compatible macOS OpenSSL runtime
+        if: matrix.stage_macos_openssl
+        run: python packaging/stage-macos-openssl-runtime.py stage "${{ matrix.macos_architecture }}"
+      - name: Generate macOS app icon
+        if: runner.os == 'macOS'
+        run: python packaging/make-app-icon.py
+      - name: Build desktop artifact
+        run: >
+          pyinstaller --noconfirm --clean --windowed --name GitDesk
+          ${{ matrix.webui_pyinstaller_args }}
+          ${{ matrix.openssl_pyinstaller_args }}
+          ${{ matrix.clipboard_pyinstaller_args }}
+          --collect-all keyring
+          --collect-all PIL
+          --collect-all imageio_ffmpeg
+          --hidden-import gitdesk.selfcheck
+          --add-data "src/gitdesk/ui${{ matrix.data_separator }}gitdesk/ui"
+          --add-data "gitdesk-readme.html${{ matrix.data_separator }}gitdesk/ui"
+          --add-data "media/readme-html-media/01-start-here/1)header.png${{ matrix.data_separator }}gitdesk/ui"
+          --add-data "media/readme-html-media/01-start-here/2) toolbar.png${{ matrix.data_separator }}gitdesk/ui"
+          --add-data "media/readme-html-media/01-start-here/3) settings.png${{ matrix.data_separator }}gitdesk/ui"
+          --add-data "media/readme-html-media/01-start-here/4) devtools.png${{ matrix.data_separator }}gitdesk/ui"
+          --add-data "Shared-Resources/categories${{ matrix.data_separator }}Shared-Resources/categories"
+          ${{ matrix.pyinstaller_extra_args }}
+          main.py
+      - name: Install cryptography-compatible macOS OpenSSL runtime
+        if: matrix.stage_macos_openssl
+        run: >-
+          python packaging/stage-macos-openssl-runtime.py
+          install dist/GitDesk.app "${{ matrix.macos_architecture }}"
+      - name: Patch macOS app permissions
+        if: runner.os == 'macOS'
+        run: python packaging/patch-macos-permissions.py dist/GitDesk.app
+      - name: Re-sign macOS app after permission patch
+        if: runner.os == 'macOS'
+        run: codesign --force --deep --sign - dist/GitDesk.app
+      - name: Verify macOS app signature
+        if: runner.os == 'macOS'
+        run: codesign --verify --deep --strict --verbose=2 dist/GitDesk.app
+      - name: Verify packaged macOS runtime and metadata
+        if: runner.os == 'macOS'
+        run: >-
+          python packaging/verify-macos-bundle.py
+          dist/GitDesk.app
+          "${{ matrix.macos_architecture }}"
+      - name: Package macOS DMG
+        if: runner.os == 'macOS'
+        run: |
+          # Put the app bundle and Applications shortcut at the DMG root for normal macOS installs.
+          mkdir -p dist/dmg-root
+          cp -R dist/GitDesk.app dist/dmg-root/GitDesk.app
+          ln -s /Applications dist/dmg-root/Applications
+
+          # Build a compressed read-only disk image from the prepared installer folder.
+          hdiutil create \
+            -volname "${{ matrix.dmg_volume_name }}" \
+            -srcfolder dist/dmg-root \
+            -ov \
+            -format UDZO \
+            "${{ matrix.artifact_path }}"
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.artifact_path }}
+
+  release:
+    name: Draft tagged release
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-artifacts
+      - name: Package release assets
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+
+          source = Path("release-artifacts")
+          output = Path("release-assets")
+          output.mkdir(exist_ok=True)
+          for artifact in source.iterdir():
+              if not artifact.is_dir():
+                  continue
+
+              # macOS artifacts already contain a distributable DMG, so release it directly.
+              dmg_files = sorted(artifact.glob("*.dmg"))
+              if dmg_files:
+                  for dmg_file in dmg_files:
+                      shutil.copy2(dmg_file, output / dmg_file.name)
+                  continue
+
+              # Non-macOS onedir builds are still archived so release downloads stay single-file.
+              shutil.make_archive(str(output / artifact.name), "zip", artifact)
+          PY
+      - name: Create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: release-assets/*

@@ -1,0 +1,193 @@
+/*
+  Continuous color-wheel popover opened from semantic Theme swatches.
+*/
+
+.theme-color-wheel-popover {
+  position: fixed;
+  z-index: 90;
+  display: grid;
+  width: min(276px, calc(100vw - 24px));
+  box-sizing: border-box;
+  gap: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent-solid) 44%, var(--line));
+  border-radius: 16px;
+  padding: 14px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--panel) 94%, transparent);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(22px) saturate(1.18);
+}
+
+.theme-color-wheel-popover[hidden] {
+  display: none;
+}
+
+.theme-color-wheel-header,
+.theme-color-wheel-footer,
+.theme-brightness-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-color-wheel-header > div {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.theme-color-wheel-header span,
+.theme-brightness-label {
+  color: var(--gitdesk-label);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-color-wheel-header strong {
+  overflow: hidden;
+  color: var(--theme-heading-color);
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#close-theme-color-wheel {
+  width: 30px;
+  min-height: 30px;
+  flex: 0 0 30px;
+  border-radius: 9px;
+  padding: 0;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.theme-hs-wheel {
+  position: relative;
+  width: min(218px, calc(100vw - 70px));
+  aspect-ratio: 1;
+  justify-self: center;
+  border: 1px solid color-mix(in srgb, #ffffff 30%, var(--line));
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+    conic-gradient(from 0deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 12px 32px rgba(0, 0, 0, 0.24);
+  cursor: crosshair;
+  touch-action: none;
+}
+
+.theme-hs-wheel:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.theme-wheel-thumb {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  translate: -50% -50%;
+  background: transparent;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.82),
+    0 2px 8px rgba(0, 0, 0, 0.48);
+  pointer-events: none;
+}
+
+.theme-brightness-label {
+  margin: 0;
+}
+
+.theme-brightness-label output {
+  color: var(--text);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  letter-spacing: 0;
+}
+
+.theme-brightness-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  min-height: 24px;
+  margin: -4px 0 0;
+  border: 0;
+  padding: 0;
+  accent-color: var(--accent-solid);
+  background: transparent;
+  box-shadow: none;
+}
+
+.theme-brightness-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: linear-gradient(to right, #000000, var(--theme-brightest-color));
+}
+
+.theme-brightness-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: var(--theme-brightest-color);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.72), 0 3px 8px rgba(0, 0, 0, 0.34);
+}
+
+.theme-brightness-slider::-moz-range-track {
+  height: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: linear-gradient(to right, #000000, var(--theme-brightest-color));
+}
+
+.theme-brightness-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background: var(--theme-brightest-color);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.72), 0 3px 8px rgba(0, 0, 0, 0.34);
+}
+
+.theme-color-wheel-footer {
+  justify-content: flex-start;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.theme-wheel-preview {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--panel) 70%, transparent);
+}
+
+#theme-wheel-hex {
+  min-width: 0;
+  flex: 1 1 auto;
+  color: var(--text);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+#done-theme-color-wheel {
+  min-height: 32px;
+  padding: 6px 12px;
+}
+
+@media (max-width: 520px) {
+  .theme-color-wheel-popover {
+    width: min(300px, calc(100vw - 24px));
+  }
+}

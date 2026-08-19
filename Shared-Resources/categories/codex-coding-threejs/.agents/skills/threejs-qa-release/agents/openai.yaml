@@ -1,0 +1,8 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js QA Release"
+  short_description: "Audit Three.js release readiness from source"
+  default_prompt: >-
+    Read ../SKILL.md and its applicable repository-local references. Never execute, install, build, test, start a
+    server, preview, open a browser, run Playwright, run a bot, call providers, or access a network. Build a source QA
+    matrix, accept runtime artifacts only from the user, and use SOURCE-READY / RUNTIME UNVERIFIED when appropriate.

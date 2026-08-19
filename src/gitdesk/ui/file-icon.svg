@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- UI copy of media/svgs/file-icon.svg used by packaged WebUI asset paths. -->
+  <g id="file-body">
+    <path d="M 296 80
+             H 152
+             A 28 28 0 0 0 124 108
+             V 404
+             A 28 28 0 0 0 152 432
+             H 360
+             A 28 28 0 0 0 388 404
+             V 172"
+          stroke="#FFFFFF"
+          stroke-width="32"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+  <g id="corner-flap">
+    <path d="M 296 80
+             V 144
+             A 28 28 0 0 0 324 172
+             H 388
+             L 296 80 Z"
+          stroke="#FFFFFF"
+          stroke-width="28"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+  <g id="label-detail">
+    <circle cx="196" cy="264" r="17" fill="#FFFFFF"/>
+    <line x1="248" y1="264" x2="332" y2="264"
+          stroke="#FFFFFF"
+          stroke-width="24"
+          stroke-linecap="round"/>
+    <line x1="196" y1="336" x2="290" y2="336"
+          stroke="#FFFFFF"
+          stroke-width="24"
+          stroke-linecap="round"/>
+  </g>
+</svg>

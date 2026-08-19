@@ -1,0 +1,12 @@
+{
+  "name": "gitdesk-ui-vendor",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm run vendor:notes",
+    "vendor:notes": "node scripts/vendor-note-dependencies.mjs"
+  },
+  "devDependencies": {
+    "dompurify": "3.4.13",
+    "marked": "18.0.9"
+  }
+}

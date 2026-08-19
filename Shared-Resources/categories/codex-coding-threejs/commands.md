@@ -1,0 +1,1 @@
+Activate `$threejs-game-director` as the primary skill, load all relevant Three.js production skills for this task, and use `$threejs-skill-router` to select any additional specialist skills while following the full `AGENTS.md` governance.

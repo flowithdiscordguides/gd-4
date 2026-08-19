@@ -1,0 +1,344 @@
+/*
+  Settings page layout for the tabbed GitHub, user, system, and theme workflow.
+*/
+
+#panel-settings.panel.active {
+  overflow: auto;
+}
+
+#panel-settings .settings-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+#panel-settings .settings-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 6px 6px 0 0;
+  padding: 8px 12px;
+  color: var(--muted);
+  background: transparent;
+  box-shadow: none;
+}
+
+#panel-settings .settings-tab:hover,
+#panel-settings .settings-tab:focus-visible {
+  color: var(--text);
+  background: var(--surface);
+}
+
+#panel-settings .settings-tab.active {
+  border-color: var(--line);
+  border-bottom-color: var(--blue);
+  color: var(--text);
+  background: var(--panel);
+}
+
+#panel-settings .settings-tab-content {
+  margin-top: 16px;
+}
+
+#panel-settings .settings-tab-panel[hidden] {
+  display: none;
+}
+
+#panel-settings .settings-grid {
+  display: grid;
+  gap: 14px 16px;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-top: 0;
+  padding-bottom: 18px;
+}
+
+#panel-settings .settings-github-grid {
+  grid-template-columns: repeat(3, minmax(240px, 320px));
+  justify-content: start;
+}
+
+#panel-settings .settings-user-grid,
+#panel-settings .settings-system-grid {
+  grid-template-columns: repeat(3, minmax(240px, 1fr));
+}
+
+/* Theme uses a wider single editor so role descriptions and native color controls align without nesting cards. */
+#panel-settings .settings-theme-grid {
+  grid-template-columns: minmax(0, 720px);
+}
+
+#panel-settings .settings-block {
+  align-self: start;
+  min-width: 0;
+  width: 100%;
+}
+
+#panel-settings #pat-help {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  align-self: auto;
+  box-sizing: border-box;
+  border: 0;
+  padding: clamp(16px, 5vw, 32px);
+  background: rgba(15, 18, 22, 0.55);
+  box-shadow: none;
+}
+
+#panel-settings #pat-help[hidden] {
+  display: none;
+}
+
+.pat-help-panel {
+  display: grid;
+  flex: 0 1 620px;
+  width: min(620px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
+  margin: auto;
+  gap: 10px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.pat-help-title-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pat-help-title-row label {
+  margin-bottom: 0;
+}
+
+.settings-repo-card {
+  grid-template-columns: 118px minmax(0, 240px);
+  align-items: center;
+}
+
+.settings-repo-card label {
+  margin-bottom: 0;
+}
+
+.settings-repo-card button {
+  grid-column: 2;
+  justify-self: start;
+  min-width: 160px;
+}
+
+.settings-updater-card button,
+.settings-active-account button {
+  justify-self: start;
+  max-width: 240px;
+}
+
+.settings-jingle-card {
+  gap: 10px;
+}
+
+.settings-jingle-card > .row-meta {
+  margin: 0;
+}
+
+.action-jingle-row {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.action-jingle-row > div {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.action-jingle-row strong,
+.action-jingle-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.action-jingle-row button {
+  width: auto;
+  white-space: nowrap;
+}
+
+#action-jingle-status {
+  min-height: 18px;
+}
+
+/* Presents update discovery and installation as one ordered workflow while allowing narrow cards to wrap cleanly. */
+.settings-updater-actions {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.settings-updater-actions button {
+  flex: 1 1 160px;
+  min-width: 0;
+}
+
+/* Keeps PAT lifetime visible beside its profile and communicates status with text as well as color. */
+.pat-expiration-status {
+  margin: 0;
+  border-left: 3px solid var(--green);
+  padding-left: 10px;
+  color: var(--text);
+}
+
+.pat-expiration-status.danger {
+  border-left-color: var(--red);
+  color: var(--red);
+}
+
+.updater-details {
+  display: grid;
+  gap: 4px;
+}
+
+.updater-details .row-meta {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.settings-help-card {
+  gap: 8px;
+}
+
+.settings-help-card ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.settings-help-card a {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Keeps organization targeting explicit without turning the help modal into another settings form. */
+.pat-owner-field {
+  display: grid;
+  gap: 6px;
+}
+
+.pat-owner-field label,
+.pat-owner-field .row-meta {
+  margin: 0;
+}
+
+.pat-owner-field input {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* A restrained rule groups the permission contract without nesting another card inside the modal. */
+.pat-permission-summary {
+  display: grid;
+  gap: 6px;
+  border-left: 3px solid var(--blue);
+  padding: 4px 0 4px 12px;
+}
+
+.pat-permission-summary ul,
+.pat-permission-summary p {
+  margin: 0;
+}
+
+#panel-settings .ai-skills-block {
+  gap: 8px;
+}
+
+#panel-settings .ai-skills-block .row-meta {
+  margin: 0;
+}
+
+#panel-settings .ai-skill-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#panel-settings #ai-skill-name {
+  flex: 0 1 180px;
+}
+
+#panel-settings #create-ai-skill-category {
+  flex: 0 0 auto;
+}
+
+#panel-settings .ai-skill-category-list {
+  min-height: 310px;
+  max-height: 310px;
+  overflow: auto;
+}
+
+#panel-settings .ai-skill-category-list .empty-state {
+  padding: 12px;
+}
+
+#panel-settings .ai-skill-category-row {
+  padding: 8px 10px;
+}
+
+#panel-settings #ai-skills-root {
+  display: inline-block;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+#panel-settings code {
+  display: inline;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1040px) {
+  #panel-settings .settings-user-grid,
+  #panel-settings .settings-system-grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+  }
+
+  #panel-settings .settings-github-grid,
+  #panel-settings .settings-theme-grid {
+    grid-template-columns: minmax(0, min(100%, 420px));
+  }
+
+  .settings-repo-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .settings-repo-card button {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  #panel-settings .settings-user-grid,
+  #panel-settings .settings-system-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

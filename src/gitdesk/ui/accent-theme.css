@@ -1,0 +1,320 @@
+/*
+  Semantic theme roles and cross-workspace component mappings for user-selected colors.
+*/
+
+:root {
+  --theme-heading-color: var(--text);
+  --theme-app-background: #080a0d;
+  --theme-navigation-background: #101316;
+  --theme-panel-background: #121619;
+  --theme-section-background: #0b0d10;
+  --theme-secondary-background: #181a1d;
+  --theme-control-background: #1a1c1f;
+  --theme-modal-background: #11161b;
+  --theme-border-color: #272a2b;
+  --theme-notification-glow: #ffffff;
+  --theme-primary-action: #b9c0c7;
+  --theme-primary-action-ink: #111418;
+  --theme-selected-control: #b9c0c7;
+  --theme-selected-control-ink: #111418;
+  --accent-solid: #b9c0c7;
+  --accent-strong: color-mix(in srgb, var(--accent-solid) 76%, #000000);
+  --accent-highlight: color-mix(in srgb, var(--accent-solid) 68%, #ffffff);
+}
+
+/* Matching appearance-selector specificity lets shared roles override the original palette aliases. */
+:root,
+:root[data-theme="dark"],
+:root[data-theme="light"] {
+  --bg: var(--theme-app-background);
+  --panel: var(--theme-panel-background);
+  --surface: var(--theme-section-background);
+  --surface-muted: var(--theme-secondary-background);
+  --chrome: var(--theme-navigation-background);
+  --nav: var(--theme-navigation-background);
+  --glass: color-mix(in srgb, var(--theme-panel-background) 86%, transparent);
+  --glass-strong: color-mix(in srgb, var(--theme-section-background) 92%, transparent);
+  --line: var(--theme-border-color);
+  --gitdesk-body-bg:
+    radial-gradient(
+      circle at 12% -8%,
+      color-mix(in srgb, var(--theme-panel-background) 28%, transparent),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      var(--theme-app-background),
+      color-mix(in srgb, var(--theme-app-background) 72%, var(--theme-section-background)),
+      var(--theme-app-background)
+    );
+  --gitdesk-control-bg: var(--theme-control-background);
+  --gitdesk-control-hover-border:
+    color-mix(in srgb, var(--theme-border-color) 68%, var(--accent-solid));
+  --gitdesk-control-hover-bg:
+    color-mix(in srgb, var(--theme-control-background) 88%, var(--text));
+  --gitdesk-disabled-text: color-mix(in srgb, var(--text) 38%, transparent);
+  --gitdesk-disabled-border: color-mix(in srgb, var(--theme-border-color) 68%, transparent);
+  --gitdesk-disabled-bg:
+    color-mix(in srgb, var(--theme-control-background) 72%, var(--theme-app-background));
+  --gitdesk-placeholder: color-mix(in srgb, var(--text) 38%, transparent);
+  --gitdesk-modal-backdrop: color-mix(in srgb, var(--theme-app-background) 82%, transparent);
+  --gitdesk-modal-panel: var(--theme-modal-background);
+  --gitdesk-topbar-border: var(--theme-border-color);
+  --gitdesk-icon-button-bg: var(--theme-control-background);
+  --gitdesk-theme-toggle-bg: var(--theme-control-background);
+  --gitdesk-icon-color: var(--text);
+  --gitdesk-toolbar-icon: var(--muted);
+  --gitdesk-repo-select-bg: var(--theme-control-background);
+  --gitdesk-repo-select-border: var(--theme-border-color);
+}
+
+/* Existing component aliases follow Accent & focus while semantic status colors remain independent. */
+:root,
+:root[data-theme="dark"],
+:root[data-theme="light"] {
+  --green: var(--accent-solid);
+  --green-strong: var(--accent-highlight);
+  --blue: var(--accent-solid);
+  --focus-ring: color-mix(in srgb, var(--accent-solid) 30%, transparent);
+}
+
+/* Headings and form labels expose distinct semantic roles instead of inheriting the body color accidentally. */
+body h1,
+body h2,
+body h3,
+body h4 {
+  color: var(--theme-heading-color);
+}
+
+body label,
+body legend {
+  color: var(--gitdesk-label);
+}
+
+/* Explicit workflow actions share the user-selected Primary actions fill and automatically derived readable ink. */
+button.primary,
+#commit-button,
+#commit-push-button,
+#publish-release,
+#save-account,
+#clone-repository,
+#add-managed-repo,
+#save-pages,
+#create-local-project,
+#create-local-feature,
+#create-local-version,
+#duplicate-local-version,
+#publish-media-album,
+#add-media-album,
+#create-media-album,
+#choose-media-images,
+#confirm-media-album {
+  color: var(--theme-primary-action-ink);
+  border-color: color-mix(in srgb, var(--theme-primary-action) 68%, var(--line));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--theme-primary-action) 68%, #ffffff),
+    var(--theme-primary-action)
+  );
+}
+
+/* Mode, navigation, and picker selections use their own role so active controls need not match primary actions. */
+.workspace-mode-switch button.active,
+.toolbar .tab-button.active,
+.repo-dialog-modes button.active,
+.local-project-picker-menu button.selected,
+.local-feature-picker-option.selected,
+.document-picker-menu button.selected {
+  color: var(--theme-selected-control-ink);
+  border-color: color-mix(in srgb, var(--theme-selected-control) 58%, var(--line));
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--theme-selected-control) 68%, #ffffff),
+    var(--theme-selected-control)
+  );
+}
+
+.tab-button.active {
+  color: var(--theme-selected-control-ink);
+  background: var(--theme-selected-control);
+}
+
+#panel-settings .settings-tab.active {
+  border-bottom-color: var(--accent-solid);
+}
+
+/* Selected rows use Accent & focus while error, warning, and success colors keep their own meaning. */
+.overview-left .file-row.active,
+.managed-repo-row.active,
+.local-project-row.active,
+.local-project-library-tile.selected {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent-highlight) 72%, var(--line));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-solid) 28%, transparent), transparent),
+    color-mix(in srgb, var(--accent-solid) 13%, var(--surface));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-highlight) 24%, transparent);
+}
+
+.local-version-row.active {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent-highlight) 56%, var(--line));
+  background: color-mix(in srgb, var(--accent-solid) 12%, var(--surface-muted));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--accent-solid) 76%, transparent);
+}
+
+.local-project-row.active small,
+.local-version-row.active small {
+  color: color-mix(in srgb, var(--text) 76%, var(--accent-highlight));
+}
+
+.local-check-row input,
+.local-project-library-scale input,
+.media-album-library-scale input {
+  accent-color: var(--accent-solid);
+}
+
+.local-project-library-scale input::-webkit-slider-thumb,
+.local-project-library-scale input::-moz-range-thumb {
+  background: var(--accent-solid);
+}
+
+/* Media keeps its darkroom composition while headings and highlighted details honor the semantic roles. */
+.media-section-heading,
+.media-publish-block > span,
+.media-album-actions > div:first-child > span,
+.media-inspector-empty > span,
+.media-album-dialog > header span,
+.media-album-picker-category-label,
+.media-album-library-category h3,
+.media-photo-move-heading,
+.media-photo-move-category > span {
+  color: var(--theme-heading-color);
+}
+
+.media-kicker,
+.media-intake-kicker {
+  color: var(--accent-highlight);
+}
+
+.media-contact-pane,
+.media-inspector {
+  border-color: color-mix(in srgb, var(--accent-solid) 24%, transparent);
+  background:
+    radial-gradient(circle at 90% 0%, color-mix(in srgb, var(--accent-solid) 10%, transparent), transparent 36%),
+    color-mix(in srgb, var(--theme-panel-background) 82%, transparent);
+}
+
+.media-tile:hover,
+.media-tile.selected,
+.media-album-library-tile.selected {
+  border-color: color-mix(in srgb, var(--accent-highlight) 72%, transparent);
+}
+
+.media-tile.selected {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent-highlight) 38%, transparent),
+    0 12px 26px rgba(0, 0, 0, 0.24);
+}
+
+.media-tile-preview,
+.media-inspector-preview,
+.media-tile-preview small {
+  color: color-mix(in srgb, var(--accent-highlight) 78%, var(--muted));
+}
+
+.media-album-actions,
+.media-album-library-header,
+.media-album-dialog > footer {
+  border-color: color-mix(in srgb, var(--accent-solid) 20%, transparent);
+}
+
+.media-publish-block {
+  border-color: color-mix(in srgb, var(--accent-solid) 22%, transparent);
+  background: color-mix(in srgb, var(--accent-solid) 7%, transparent);
+}
+
+.media-intake-tray {
+  border-color: color-mix(in srgb, var(--accent-highlight) 52%, transparent);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--accent-solid) 15%, transparent), transparent),
+    color-mix(in srgb, var(--theme-section-background) 86%, transparent);
+}
+
+.media-intake-tray::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--accent-highlight) 82%, transparent) 0 4px,
+    transparent 4px 9px
+  );
+}
+
+.media-intake-tray:hover,
+.media-intake-tray:focus-visible,
+.media-intake-tray.drag-active {
+  border-color: color-mix(in srgb, var(--accent-highlight) 92%, transparent);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--accent-solid) 27%, transparent), transparent),
+    color-mix(in srgb, var(--theme-section-background) 92%, transparent);
+}
+
+.media-intake-tray.drag-active {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--accent-solid) 13%, transparent),
+    0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.media-paste-menu,
+.media-album-picker-menu,
+.media-photo-move-menu,
+.media-album-dialog {
+  border-color: color-mix(in srgb, var(--accent-solid) 34%, transparent);
+}
+
+.media-album-dialog {
+  background:
+    radial-gradient(circle at 95% 0%, color-mix(in srgb, var(--accent-solid) 20%, transparent), transparent 35%),
+    var(--theme-modal-background);
+}
+
+#favorite-media-parent.saved {
+  color: var(--accent-highlight);
+  border-color: color-mix(in srgb, var(--accent-highlight) 58%, transparent);
+  background: color-mix(in srgb, var(--accent-solid) 14%, transparent);
+}
+
+#favorite-media-parent svg {
+  fill: color-mix(in srgb, var(--accent-solid) 14%, transparent);
+}
+
+.media-album-picker-category button:hover,
+.media-album-picker-category button:focus-visible,
+.media-album-library-tile:hover,
+.media-album-library-tile:focus-visible,
+.media-photo-move-category button:hover,
+.media-photo-move-category button:focus-visible {
+  border-color: color-mix(in srgb, var(--accent-solid) 34%, transparent);
+  background: color-mix(in srgb, var(--accent-solid) 10%, transparent);
+}
+
+.media-album-picker-category button.selected,
+.media-album-library-tile.selected {
+  color: var(--accent-highlight);
+  background: color-mix(in srgb, var(--accent-solid) 18%, transparent);
+}
+
+.media-tile-select:focus-visible {
+  outline-color: var(--accent-highlight);
+}
+
+.media-tile-open {
+  color: var(--accent-highlight);
+  border-color: color-mix(in srgb, var(--accent-highlight) 44%, transparent);
+  background: color-mix(in srgb, var(--accent-solid) 14%, transparent);
+}
+
+.media-tile-open:hover,
+.media-tile-open:focus-visible {
+  border-color: color-mix(in srgb, var(--accent-highlight) 84%, transparent);
+  background: color-mix(in srgb, var(--accent-solid) 26%, transparent);
+}

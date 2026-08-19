@@ -1,0 +1,127 @@
+/* Compact User settings card for external editor discovery and selection. */
+
+.editor-settings-card {
+  gap: 16px;
+}
+
+.editor-settings-card > header,
+.editor-settings-card > footer,
+.editor-path-control {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.editor-settings-card > header {
+  align-items: flex-start;
+}
+
+.editor-settings-card > header > div,
+.editor-path-control > div {
+  display: grid;
+  min-width: 0;
+  gap: 5px;
+}
+
+.editor-settings-card header p,
+.editor-settings-card footer p,
+.editor-discovery {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+#editor-settings-badge {
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--accent-solid) 36%, var(--line));
+  border-radius: 999px;
+  padding: 6px 9px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.editor-settings-card fieldset {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.editor-settings-card legend,
+.editor-path-control span {
+  color: var(--gitdesk-label);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.editor-choice-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  background: var(--surface-muted);
+}
+
+.editor-choice-switch button {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.editor-choice-switch button.active {
+  color: var(--theme-selected-control-ink);
+  border-color: color-mix(in srgb, var(--theme-selected-control) 58%, var(--line));
+  background: var(--theme-selected-control);
+}
+
+.editor-choice-switch button.unavailable:not(.active) {
+  opacity: 0.58;
+}
+
+.editor-discovery,
+.editor-path-control {
+  border-left: 3px solid var(--accent-solid);
+  padding: 5px 0 5px 12px;
+}
+
+.editor-path-control[hidden] {
+  display: none;
+}
+
+.editor-path-control output {
+  overflow: hidden;
+  color: var(--text);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.editor-settings-card > footer p {
+  min-height: 18px;
+}
+
+.editor-settings-card > footer p.danger {
+  color: var(--red);
+}
+
+@media (max-width: 520px) {
+  .editor-settings-card > header,
+  .editor-settings-card > footer,
+  .editor-path-control {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #editor-settings-badge {
+    align-self: flex-start;
+  }
+}

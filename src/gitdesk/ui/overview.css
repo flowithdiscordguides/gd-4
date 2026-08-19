@@ -1,0 +1,306 @@
+/*
+  Overview workspace, top toolbar, and GitHub-style diff layout.
+*/
+
+.app-shell {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 88px 54px minmax(0, 1fr);
+  height: 100vh;
+  min-height: 720px;
+}
+
+.topbar {
+  grid-column: 1;
+  grid-row: 1;
+  grid-template-columns: 260px minmax(0, 1fr);
+  padding: 14px 20px;
+}
+
+.brand-block p[hidden] {
+  display: none;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+}
+
+.toolbar {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-right: 0;
+  border-bottom: 1px solid var(--line);
+  padding: 8px 20px;
+  background: var(--chrome);
+}
+
+.toolbar .tab-button {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  margin: 0;
+  padding: 0;
+  place-items: center;
+}
+
+.toolbar .tab-button::before {
+  display: none;
+}
+
+.toolbar .tab-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.toolbar .tab-button img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.workspace {
+  grid-column: 1;
+  grid-row: 3;
+  min-height: 0;
+  padding: 18px 20px;
+  overflow: hidden;
+}
+
+.panel.active {
+  height: 100%;
+}
+
+.overview-layout {
+  display: grid;
+  grid-template-columns: minmax(340px, 0.42fr) minmax(500px, 1fr);
+  gap: 18px;
+  height: 100%;
+  min-height: 0;
+}
+
+.overview-pane {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+
+.overview-pane-header {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding: 14px;
+}
+
+.overview-pane-header h2 {
+  font-size: 18px;
+}
+
+.overview-pane-header p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.overview-left .file-list {
+  align-content: start;
+  flex: 1 1 auto;
+  grid-auto-rows: max-content;
+  min-height: 0;
+  margin-top: 0;
+  overflow: auto;
+  padding: 10px;
+}
+
+.overview-left .commit-bar {
+  flex: 0 0 auto;
+  max-width: none;
+  margin-top: 0;
+  border-top: 1px solid var(--line);
+  padding: 12px;
+}
+
+.overview-left .commit-bar textarea {
+  min-height: 78px;
+}
+
+.overview-left .button-row {
+  gap: 8px;
+}
+
+#toggle-git-ignore.active {
+  border-color: var(--green);
+}
+
+.overview-left .file-row {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  box-shadow: none;
+}
+
+.overview-left .file-row.ignore-mode {
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+}
+
+.overview-left .file-row.active {
+  border-color: var(--green);
+  background: var(--surface-muted);
+}
+
+.file-diff-button {
+  min-height: 0;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+}
+
+.file-diff-button:hover {
+  transform: none;
+}
+
+.diff-viewer {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  background: var(--surface);
+}
+
+.diff-code {
+  margin: 0;
+  padding: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.diff-line {
+  display: block;
+  min-height: 19px;
+  padding: 0 14px;
+  white-space: pre-wrap;
+}
+
+.diff-add {
+  background: rgba(63, 143, 126, 0.16);
+}
+
+.diff-remove {
+  background: rgba(180, 35, 24, 0.14);
+}
+
+.diff-hunk {
+  color: var(--blue);
+  background: rgba(49, 95, 143, 0.14);
+}
+
+.diff-meta {
+  color: var(--muted);
+  background: var(--surface-muted);
+}
+
+.repo-action-panel {
+  display: grid;
+  max-width: 360px;
+  gap: 10px;
+  margin: 32px auto;
+}
+
+.repo-action-button {
+  width: 100%;
+}
+
+#open-ai-skills-dialog {
+  margin-top: 6px;
+  width: 100%;
+}
+
+.ai-skills-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(15, 18, 22, 0.48);
+}
+
+.ai-skills-dialog[hidden] {
+  display: none;
+}
+
+.ai-skills-dialog-panel {
+  display: grid;
+  width: min(760px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
+  gap: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  background: var(--panel);
+}
+
+.ai-skill-dialog-list {
+  display: grid;
+  gap: 8px;
+  min-height: 180px;
+  overflow: auto;
+}
+
+.ai-skill-check-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  color: var(--text);
+  text-transform: none;
+}
+
+.ai-skill-check-row input {
+  width: auto;
+}
+
+.ai-skills-block {
+  grid-column: 1 / -1;
+}
+
+.ai-skill-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+
+.ai-skill-category-list {
+  display: grid;
+  gap: 8px;
+}
+
+.ai-skill-category-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--surface-muted);
+}
+
+.ai-skill-category-actions {
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,353 @@
+/*
+  Navigable Project Activity Atlas and range-control styling.
+*/
+
+.project-hub-activity-card {
+  grid-area: activity;
+  min-height: 500px;
+  border-color: rgba(111, 255, 210, 0.24);
+  background:
+    radial-gradient(circle at 14% 16%, rgba(255, 255, 255, 0.12), transparent 31%),
+    radial-gradient(circle at 84% 22%, rgba(135, 143, 153, 0.13), transparent 34%),
+    linear-gradient(145deg, rgba(20, 27, 39, 0.94), rgba(8, 12, 20, 0.82));
+}
+
+.activity-range-controls {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.45fr) minmax(170px, 0.55fr) auto;
+  gap: 10px;
+}
+
+.activity-atlas {
+  position: relative;
+  display: grid;
+  height: clamp(440px, 58vh, 660px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 22px;
+  background:
+    linear-gradient(125deg, rgba(255, 255, 255, 0.035), transparent 38%),
+    linear-gradient(315deg, rgba(111, 255, 210, 0.045), transparent 46%),
+    rgba(4, 8, 15, 0.82);
+  box-shadow: inset 0 0 52px rgba(4, 8, 15, 0.68);
+}
+
+.activity-atlas > .empty-state {
+  place-self: center;
+}
+
+.activity-atlas-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.activity-atlas-svg.panning {
+  cursor: grabbing;
+}
+
+.activity-atlas-hud {
+  position: absolute;
+  z-index: 4;
+  top: 12px;
+  left: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-width: calc(100% - 82px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 8px 10px;
+  background: rgba(8, 13, 21, 0.88);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  pointer-events: none;
+}
+
+.activity-atlas-hud strong {
+  color: var(--text);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.activity-atlas-hud span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-atlas-hud button {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  pointer-events: auto;
+}
+
+.activity-atlas-zoom-controls {
+  position: absolute;
+  z-index: 5;
+  top: 12px;
+  right: 14px;
+  display: grid;
+  grid-template-rows: repeat(2, 34px);
+  gap: 4px;
+}
+
+.activity-atlas-zoom-controls button {
+  display: grid;
+  width: 34px;
+  min-height: 34px;
+  border-color: rgba(255, 255, 255, 0.16);
+  padding: 0;
+  place-items: center;
+  background: rgba(8, 13, 21, 0.94);
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.activity-project-space {
+  box-sizing: border-box;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--project-color) 34%, rgba(255, 255, 255, 0.13));
+  border-radius: 22px 8px 22px 8px;
+  padding: 16px;
+  color: var(--text);
+  background:
+    linear-gradient(100deg, color-mix(in srgb, var(--project-color) 9%, transparent), transparent 44%),
+    rgba(12, 18, 28, 0.96);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32);
+  font-family: inherit;
+}
+
+.activity-project-space > header {
+  display: grid;
+  grid-template-columns: 5px minmax(0, 1fr) auto;
+  gap: 11px;
+  align-items: center;
+}
+
+.activity-project-marker {
+  width: 5px;
+  height: 38px;
+  border-radius: 3px;
+  background: var(--project-color);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--project-color) 72%, transparent);
+}
+
+.activity-project-space header > div {
+  display: grid;
+  min-width: 0;
+}
+
+.activity-project-space header small {
+  color: var(--project-color);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.activity-project-space header strong {
+  overflow: hidden;
+  font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-project-space header > span:last-child {
+  color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.activity-artifact-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.activity-work-artifact {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  min-height: 74px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--project-color);
+  border-radius: 5px 14px 14px 5px;
+  padding: 9px 11px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: none;
+  text-align: left;
+  transform: none;
+  transition: none;
+}
+
+.activity-atlas button.activity-work-artifact:hover:not(:disabled),
+.activity-atlas button.activity-work-artifact:focus-visible {
+  border-color: color-mix(in srgb, var(--project-color) 64%, white);
+  background: rgba(255, 255, 255, 0.045);
+  transform: none;
+}
+
+.activity-atlas button.activity-work-artifact.selected {
+  border-color: color-mix(in srgb, var(--project-color) 64%, white);
+  background: color-mix(in srgb, var(--project-color) 12%, rgba(255, 255, 255, 0.055));
+  transform: none;
+}
+
+/* Overrides global button lift rules so atlas controls and artifacts never move under the pointer. */
+.activity-atlas button,
+.activity-atlas button:hover:not(:disabled),
+.activity-atlas button:focus-visible,
+.activity-atlas button.selected {
+  animation: none;
+  transform: none;
+  transition: none;
+}
+
+.activity-artifact-kind {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  border: 1px solid color-mix(in srgb, var(--project-color) 45%, transparent);
+  border-radius: 8px;
+  color: var(--project-color);
+  background: color-mix(in srgb, var(--project-color) 8%, transparent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.activity-artifact-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.activity-artifact-copy strong,
+.activity-artifact-copy > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.activity-artifact-copy strong {
+  font-size: 12px;
+}
+
+.activity-artifact-copy > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.activity-artifact-copy > span:last-child {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.activity-artifact-copy code {
+  color: var(--project-color);
+}
+
+.activity-artifact-popover {
+  position: absolute;
+  z-index: 6;
+  top: 96px;
+  right: 16px;
+  display: grid;
+  gap: 8px;
+  width: min(420px, calc(100% - 32px));
+  max-height: calc(100% - 112px);
+  overflow: auto;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px 22px 6px 22px;
+  padding: 16px;
+  color: var(--text);
+  background: rgba(9, 14, 23, 0.97);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.52);
+}
+
+.activity-artifact-popover > button {
+  justify-self: end;
+  padding: 5px 8px;
+}
+
+.activity-artifact-popover > small,
+.activity-artifact-popover > time {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.activity-artifact-popover > strong {
+  font-size: 16px;
+}
+
+.activity-artifact-popover dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 4px 0 0;
+}
+
+.activity-artifact-popover dl > div {
+  min-width: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 7px;
+}
+
+.activity-artifact-popover dt {
+  color: var(--muted);
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.activity-artifact-popover dd {
+  overflow-wrap: anywhere;
+  margin: 3px 0 0;
+  font-size: 11px;
+}
+
+.activity-warnings {
+  min-height: 0;
+  color: #ff9b91;
+  font-size: 12px;
+}
+
+.activity-warnings:empty {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .activity-range-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-atlas-hud span {
+    display: none;
+  }
+
+  .activity-artifact-popover dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Honors system accessibility settings and prevents future motion from entering the atlas accidentally. */
+@media (prefers-reduced-motion: reduce) {
+  .activity-atlas,
+  .activity-atlas * {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

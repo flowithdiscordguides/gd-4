@@ -1,0 +1,215 @@
+/*
+  Project Hub home screen for project activity, build health, history, and safety workflows.
+*/
+
+#panel-project-hub.panel.active {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  align-content: start;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 4px;
+  padding-bottom: 34px;
+  scrollbar-gutter: stable;
+}
+
+#panel-project-hub > .panel-header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  padding: 18px 20px;
+  background:
+    linear-gradient(115deg, rgba(241, 243, 245, 0.1), rgba(71, 116, 105, 0.05) 42%, rgba(8, 10, 13, 0.74)),
+    var(--glass);
+  -webkit-backdrop-filter: blur(22px) saturate(145%);
+  backdrop-filter: blur(22px) saturate(145%);
+}
+
+.project-hub-layout {
+  display: grid;
+  grid-template-areas:
+    "activity activity builds"
+    "activity activity git"
+    "history backup git";
+  grid-template-columns: minmax(320px, 1fr) minmax(320px, 1fr) minmax(340px, 0.9fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.project-hub-card,
+.project-hub-form,
+.project-hub-stack {
+  display: grid;
+  gap: 12px;
+}
+
+.project-hub-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  align-content: start;
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: none;
+}
+
+.project-hub-card::before {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  content: "";
+}
+
+.project-hub-git-card {
+  grid-area: git;
+  min-height: 100%;
+}
+
+.project-hub-builds-card {
+  grid-area: builds;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.project-hub-history-card {
+  grid-area: history;
+}
+
+.project-hub-backup-card {
+  grid-area: backup;
+  border-color: rgba(160, 170, 164, 0.22);
+}
+
+.project-hub-card-header {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.project-hub-card-header label {
+  margin-bottom: 0;
+}
+
+.project-hub-select-label strong,
+.project-hub-timeline-title {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-hub-select-label small,
+.project-hub-timeline-meta {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.project-hub-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.project-hub-scan,
+.project-hub-timeline,
+.project-hub-build-list,
+.project-hub-branch-list,
+.project-hub-stash-list,
+.project-hub-tag-list {
+  display: grid;
+  gap: 8px;
+  min-height: 0;
+}
+
+.project-hub-timeline {
+  max-height: 360px;
+  overflow: auto;
+}
+
+.project-hub-row,
+.project-hub-timeline-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.project-hub-timeline-row {
+  position: relative;
+  padding-left: 18px;
+}
+
+.project-hub-timeline-row::before {
+  position: absolute;
+  top: 17px;
+  left: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--green-strong);
+  content: "";
+}
+
+.project-hub-inline-check input {
+  width: auto;
+}
+
+.project-hub-inline-check {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  color: var(--text);
+  text-transform: none;
+}
+
+.project-hub-git-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.project-hub-backup-text {
+  min-height: 132px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
+.project-hub-muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.project-hub-danger {
+  border-color: rgba(255, 117, 107, 0.48);
+}
+
+@media (max-width: 1180px) {
+  .project-hub-layout {
+    grid-template-areas:
+      "activity"
+      "builds"
+      "git"
+      "history"
+      "backup";
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-hub-git-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

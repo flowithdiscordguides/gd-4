@@ -1,0 +1,166 @@
+/*
+  Purpose-built Pages source selection and deployment-result presentation for Repo Mode.
+*/
+
+.pages-deployment-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 440px) minmax(280px, 1fr);
+  gap: 18px;
+  min-height: 0;
+}
+
+.pages-form,
+.pages-status {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.pages-form-heading,
+.pages-status > div:first-child {
+  display: grid;
+  gap: 4px;
+}
+
+.pages-form-heading h3,
+.pages-form-heading p,
+.pages-status h3,
+.pages-status p {
+  margin: 0;
+}
+
+.pages-form-heading p,
+.pages-status p,
+.pages-actions-fields p {
+  color: var(--muted);
+}
+
+.pages-source-fields,
+.pages-actions-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.pages-source-fields[hidden],
+.pages-actions-fields[hidden] {
+  display: none;
+}
+
+.pages-actions-fields {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.pages-actions-fields p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.pages-workflow-files {
+  display: grid;
+  gap: 7px;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.pages-workflow-files code,
+.pages-workflow-empty {
+  overflow: hidden;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.055);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pages-workflow-empty {
+  color: var(--muted);
+  white-space: normal;
+}
+
+.pages-status {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px;
+  background: var(--panel);
+}
+
+.pages-publication {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+}
+
+.pages-publication-failure,
+.pages-publication-building,
+.pages-publication-unavailable {
+  display: inline-flex;
+  min-height: 42px;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.pages-publication-failure {
+  color: #f7f8fa;
+  border-color: rgba(255, 95, 86, 0.58);
+  background: rgba(116, 23, 20, 0.72);
+  font-weight: 750;
+}
+
+.pages-publication-mark {
+  color: #bbf7d0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.pages-publication-failure .pages-publication-mark {
+  color: #ff5f56;
+}
+
+.pages-publication-building,
+.pages-publication-unavailable {
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.pages-status-details {
+  display: grid;
+  gap: 0;
+  margin: 4px 0 0;
+}
+
+.pages-status-details > div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+}
+
+.pages-status-details dt {
+  color: var(--muted);
+}
+
+.pages-status-details dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 860px) {
+  .pages-deployment-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .pages-status-details > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,57 @@
+.sync-chain-delete-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 58;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--gitdesk-modal-backdrop, rgba(7, 10, 18, 0.76));
+}
+
+.sync-chain-delete-modal[hidden] {
+  display: none;
+}
+
+.sync-chain-delete-dialog {
+  display: grid;
+  width: min(460px, 100%);
+  gap: 16px;
+  border: 1px solid color-mix(in srgb, var(--red) 46%, var(--line));
+  border-radius: 18px;
+  padding: 22px;
+  background: var(--gitdesk-modal-panel, var(--panel));
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.46);
+}
+
+.sync-chain-delete-dialog header,
+.sync-chain-delete-dialog p {
+  margin: 0;
+}
+
+.sync-chain-delete-dialog header span,
+#sync-chain-delete-status {
+  color: var(--red);
+}
+
+.sync-chain-delete-dialog h2 {
+  margin: 6px 0 0;
+}
+
+.sync-chain-delete-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+#confirm-sync-chain-delete {
+  color: #fff;
+  border-color: color-mix(in srgb, var(--red) 72%, #fff);
+  background: color-mix(in srgb, var(--red) 82%, #17191d);
+}
+
+@media (max-width: 520px) {
+  .sync-chain-delete-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+}

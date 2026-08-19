@@ -1,0 +1,66 @@
+/*
+  Dark theme palette and color overrides for GitDesk's glass interface.
+*/
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #080a0d;
+  --panel: rgba(19, 23, 27, 0.72);
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f4f1ea;
+  --muted: #a0aaa4;
+  --green: #c7cdd4;
+  --green-strong: #eef1f4;
+  --amber: #b7a892;
+  --red: #ff756b;
+  --blue: #aeb6bf;
+  --chrome: rgba(18, 21, 24, 0.74);
+  --surface: rgba(12, 15, 18, 0.66);
+  --surface-muted: rgba(255, 255, 255, 0.065);
+  --nav: rgba(15, 18, 21, 0.68);
+  --glass: rgba(23, 27, 31, 0.66);
+  --glass-strong: rgba(34, 39, 44, 0.78);
+  --focus-ring: rgba(225, 230, 235, 0.22);
+  --shadow: 0 22px 64px rgba(0, 0, 0, 0.32);
+  --gitdesk-body-bg:
+    radial-gradient(circle at 12% -8%, rgba(255, 255, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 92% 4%, rgba(180, 186, 193, 0.07), transparent 28%),
+    linear-gradient(135deg, #07090c 0%, #111417 48%, #090b0e 100%);
+  --gitdesk-control-bg: rgba(255, 255, 255, 0.075);
+  --gitdesk-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --gitdesk-control-hover-border: rgba(225, 230, 235, 0.44);
+  --gitdesk-control-hover-bg: rgba(255, 255, 255, 0.11);
+  --gitdesk-disabled-text: rgba(244, 241, 234, 0.34);
+  --gitdesk-disabled-border: rgba(255, 255, 255, 0.08);
+  --gitdesk-disabled-bg: rgba(255, 255, 255, 0.055);
+  --gitdesk-placeholder: rgba(244, 241, 234, 0.38);
+  --gitdesk-label: rgba(244, 241, 234, 0.56);
+  --gitdesk-modal-backdrop: #080a0d;
+  --gitdesk-modal-panel: #11161b;
+  --gitdesk-topbar-border: rgba(255, 255, 255, 0.1);
+  --gitdesk-icon-button-bg: rgba(255, 255, 255, 0.085);
+  --gitdesk-theme-toggle-bg: rgba(15, 18, 22, 0.72);
+  --gitdesk-theme-toggle-icon-filter: none;
+  --gitdesk-icon-color: #f4f1ea;
+  --gitdesk-toolbar-icon: rgba(244, 241, 234, 0.7);
+  --gitdesk-repo-select-bg: rgba(5, 8, 11, 0.48);
+  --gitdesk-repo-select-border: rgba(255, 255, 255, 0.15);
+}
+
+:root[data-theme="dark"] .theme-icon-dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-icon-light {
+  display: block;
+}
+
+:root[data-theme="dark"] .tab-button.active .guide-toolbar-icon {
+  filter: brightness(0) saturate(100%);
+}
+
+/* Active toolbar controls use a light surface, so the external Sync Chain artwork must turn black. */
+:root[data-theme="dark"] .tab-button.active .sync-chain-toolbar-icon {
+  filter: brightness(0) saturate(100%);
+}

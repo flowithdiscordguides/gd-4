@@ -1,0 +1,314 @@
+/*
+  Backup Mode destination, inventory, change log, and version-history presentation.
+*/
+
+#panel-backup.panel.active {
+  display: grid;
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  align-content: start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 4px;
+  /* Keep both ends reachable when the clipped desktop workspace constrains the panel. */
+  padding-top: 34px;
+  padding-bottom: 34px;
+  scrollbar-gutter: stable;
+}
+
+.backup-header {
+  align-items: flex-end;
+}
+
+.backup-kicker {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.backup-layout {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.backup-destination-card,
+.backup-inventory,
+.backup-change-card,
+.backup-history-card {
+  display: grid;
+  align-content: start;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 16px;
+  background: color-mix(in srgb, var(--panel) 90%, transparent);
+}
+
+.backup-destination-card,
+.backup-change-card,
+.backup-history-card {
+  grid-column: 1 / -1;
+}
+
+.backup-destination-card p,
+.backup-inventory p,
+.backup-history-card p,
+.backup-section-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.backup-destination-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 9px;
+  align-items: center;
+}
+
+#backup-destination {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 10px;
+  color: var(--muted);
+  background: var(--surface-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.backup-inventory-counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.backup-inventory-counts > div {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.backup-inventory-counts strong {
+  font-size: 22px;
+}
+
+.backup-inventory-counts span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.backup-section-heading,
+.backup-change-totals {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.backup-section-heading h3,
+.backup-inventory h3,
+.backup-history-card h3 {
+  margin: 0;
+}
+
+.backup-source-errors {
+  display: grid;
+  gap: 9px;
+  border: 1px solid color-mix(in srgb, var(--gitdesk-failure-bg) 55%, var(--line));
+  border-radius: 10px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--gitdesk-failure-bg) 9%, transparent);
+}
+
+.backup-source-errors[hidden] {
+  display: none;
+}
+
+.backup-source-errors > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 10px;
+}
+
+.backup-source-errors code,
+.backup-source-errors small {
+  overflow: hidden;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.backup-source-errors small {
+  grid-column: 2;
+}
+
+.backup-change-list {
+  display: grid;
+  max-height: 280px;
+  gap: 5px;
+  overflow: auto;
+}
+
+.backup-change-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 7px 2px;
+}
+
+.backup-change-row code {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.backup-version-list {
+  display: grid;
+  gap: 8px;
+}
+
+.backup-version-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px;
+}
+
+.backup-version-row.selected-parent {
+  border-color: color-mix(in srgb, var(--accent-highlight) 72%, var(--line));
+  background: color-mix(in srgb, var(--accent-solid) 9%, var(--panel));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-highlight) 22%, transparent);
+}
+
+.backup-version-choice {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  gap: 11px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.backup-version-choice input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: var(--accent-solid);
+}
+
+.backup-version-choice > span {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+}
+
+.backup-version-row small {
+  color: var(--muted);
+}
+
+.backup-destination-dialog {
+  height: auto;
+  max-height: calc(100dvh - 32px);
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.backup-destination-form {
+  display: grid;
+  min-height: 0;
+  gap: 10px;
+  align-content: start;
+  overflow-y: auto;
+  padding-right: 4px;
+  scrollbar-gutter: stable;
+}
+
+.backup-destination-form input,
+.backup-destination-form select {
+  min-height: 38px;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+.backup-parent-path-row {
+  grid-template-columns: minmax(0, 1fr) 38px 38px;
+}
+
+#save-backup-parent-favorite.saved {
+  color: #d4a017;
+  border-color: rgba(212, 160, 23, 0.72);
+  background: rgba(212, 160, 23, 0.18);
+}
+
+#save-backup-parent-favorite svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+#save-backup-parent-favorite.saved svg {
+  fill: currentColor;
+}
+
+.backup-destination-note {
+  display: grid;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 13px;
+  color: var(--muted);
+  background: var(--surface-muted);
+}
+
+.backup-destination-note strong {
+  color: var(--text);
+}
+
+.backup-destination-note code {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 800px) {
+  .backup-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .backup-inventory,
+  .backup-destination-card,
+  .backup-change-card,
+  .backup-history-card {
+    grid-column: 1;
+  }
+
+  .backup-inventory-counts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .backup-destination-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #backup-destination {
+    grid-column: 1 / -1;
+  }
+
+  .backup-header {
+    align-items: flex-start;
+  }
+}

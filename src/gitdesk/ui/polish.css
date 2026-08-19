@@ -1,0 +1,226 @@
+/*
+  App layout polish layered over the base controls without expanding the core stylesheet.
+*/
+
+body {
+  background: var(--bg);
+  letter-spacing: 0;
+}
+
+button {
+  min-height: 36px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: border-color 120ms ease, background 120ms ease;
+}
+
+button:active:not(:disabled) {
+  filter: brightness(0.9);
+  transform: translateY(1px);
+  transition-duration: 0ms;
+}
+
+input,
+select,
+textarea {
+  min-height: 38px;
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.app-shell {
+  grid-template-columns: 220px minmax(680px, 1fr);
+  grid-template-rows: 92px minmax(0, 1fr);
+  background: var(--bg);
+}
+
+.topbar {
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px 22px;
+  background: var(--chrome);
+}
+
+.brand-block {
+  gap: 14px;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 54px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.brand-block h1 {
+  font-size: 21px;
+}
+
+.brand-block p {
+  max-width: 300px;
+  overflow: hidden;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.theme-toggle {
+  border-color: transparent;
+  background: var(--surface-muted);
+}
+
+.repo-controls {
+  grid-template-columns: minmax(360px, 1fr) auto auto auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.repo-controls label {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.repo-controls select {
+  height: 42px;
+  padding-right: 34px;
+  font-weight: 700;
+}
+
+#add-managed-repo,
+#refresh-github-repos,
+#refresh-status {
+  height: 42px;
+  padding-inline: 18px;
+}
+
+.sidebar {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  padding: 18px 14px;
+  background: var(--nav);
+}
+
+.tab-button {
+  position: relative;
+  height: 42px;
+  margin-bottom: 0;
+  border-color: transparent;
+  border-radius: 10px;
+  padding-inline: 20px 14px;
+  background: transparent;
+  color: var(--muted);
+}
+
+.tab-button:hover:not(.active) {
+  border-color: transparent;
+  background: var(--surface-muted);
+  color: var(--text);
+}
+
+.tab-button.active {
+  color: #07100e;
+  border-color: transparent;
+  background: var(--green);
+}
+
+.workspace {
+  padding: 28px;
+  background: var(--surface);
+}
+
+.panel-header {
+  min-height: 48px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel-header h2 {
+  font-size: 19px;
+}
+
+.file-list,
+.stack-list,
+.table-list {
+  margin-top: 18px;
+}
+
+.empty-state {
+  border-style: solid;
+  padding: 22px;
+  background: var(--surface-muted);
+}
+
+.commit-bar {
+  max-width: 940px;
+  margin-top: 20px;
+}
+
+.commit-bar textarea {
+  min-height: 92px;
+}
+
+.activity-log {
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.activity-entry {
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--green);
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: var(--surface-muted);
+}
+
+.message-area {
+  min-height: 28px;
+}
+
+.gitdesk-tooltip {
+  position: fixed;
+  z-index: 90;
+  max-width: min(260px, calc(100vw - 16px));
+  border: 1px solid color-mix(in srgb, var(--green) 34%, var(--line));
+  border-radius: 8px;
+  padding: 6px 9px;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--chrome) 94%, #000);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.34);
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 80ms ease, transform 80ms ease;
+}
+
+.gitdesk-tooltip[hidden] {
+  display: none;
+}
+
+.gitdesk-tooltip[data-visible] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect the operating-system preference everywhere, including future components. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

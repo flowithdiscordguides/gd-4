@@ -1,0 +1,60 @@
+/*
+  Media Mode preview lifecycle and direct native-open tile controls.
+*/
+
+.media-tile {
+  min-height: 232px;
+  grid-template-rows: 142px auto auto;
+}
+
+.media-tile-select {
+  display: block;
+  min-width: 0;
+  width: 100%;
+  height: 142px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.media-tile-select:focus-visible {
+  outline: 2px solid #e2b87e;
+  outline-offset: -3px;
+}
+
+.media-tile-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.media-tile-open {
+  min-height: 34px;
+  margin: 0 10px;
+  border-color: rgba(226, 184, 126, 0.42);
+  color: #f2d6af;
+  background: rgba(194, 132, 75, 0.13);
+}
+
+.media-tile-open:hover,
+.media-tile-open:focus-visible {
+  border-color: rgba(238, 202, 151, 0.82);
+  background: rgba(194, 132, 75, 0.24);
+}
+
+.media-preview-note {
+  max-width: 110px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.media-tile.preview-unavailable {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.media-tile.preview-unavailable .media-placeholder-glyph {
+  opacity: 0.5;
+}

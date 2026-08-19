@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    {/* Mask to cleanly cut out the folder stroke behind the badge (larger gap for clarity) */}
+    <mask id="badge-mask">
+      <rect width="512" height="512" fill="white"/>
+      <circle cx="432" cy="432" r="88" fill="black"/>
+    </mask>
+  </defs>
+
+  {/* ========================================== */}
+  {/* 1. BASE FOLDER LAYER (Masked)              */}
+  {/* ========================================== */}
+  <g id="folder-base" mask="url(#badge-mask)">
+    {/* Main Outer Folder Silhouette */}
+    <path d="M 112 96 
+             H 192 
+             L 240 160 
+             H 400 
+             A 32 32 0 0 1 432 192 
+             V 416 
+             A 32 32 0 0 1 400 448 
+             H 112 
+             A 32 32 0 0 1 80 416 
+             V 128 
+             A 32 32 0 0 1 112 96 Z" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+          
+    {/* Front Flap Horizontal Line */}
+    <path d="M 80 192 H 432" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 2. VERSION CONTROL BRANCH (V-Shaped)       */}
+  {/* ========================================== */}
+  <g id="version-branch">
+    {/* Left arm of the V: bottom node up to top-left node */}
+    <path d="M 252 376 C 236 340, 212 300, 204 262" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Right arm of the V: bottom node up to top-right node */}
+    <path d="M 252 376 C 268 340, 292 300, 300 262" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Branch Nodes (Solid white dots, drawn on top) */}
+    <circle cx="252" cy="376" r="24" fill="#FFFFFF"/>
+    <circle cx="204" cy="262" r="24" fill="#FFFFFF"/>
+    <circle cx="300" cy="262" r="24" fill="#FFFFFF"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 3. "CREATE NEW" BADGE (+) LAYER            */}
+  {/* ========================================== */}
+  <g id="create-new-badge">
+    {/* Outer Badge Ring: thinner stroke + larger radius = clear open ring */}
+    <circle cx="432" cy="432" r="56" 
+            stroke="#FFFFFF" 
+            stroke-width="22" 
+            fill="none"/>
+            
+    {/* Inner Plus Sign: clear breathing room from the ring */}
+    <path d="M 432 408 V 456 M 408 432 H 456" 
+          stroke="#FFFFFF" 
+          stroke-width="20" 
+          fill="none" 
+          stroke-linecap="round"/>
+  </g>
+</svg>

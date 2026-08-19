@@ -1,0 +1,262 @@
+/*
+  Header alignment and account identity styling.
+*/
+
+.app-shell {
+  grid-template-rows: 88px 58px minmax(0, 1fr);
+}
+
+.topbar {
+  grid-template-columns: max-content max-content max-content;
+  gap: 12px;
+  align-items: end;
+  justify-content: start;
+  overflow: hidden;
+  padding: 8px 14px 10px;
+}
+
+.brand-block {
+  display: grid;
+  grid-template-columns: 42px max-content 42px;
+  gap: 10px;
+  align-items: center;
+  min-width: 0;
+  justify-self: start;
+}
+
+.brand-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.brand-title-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.brand-block h1 {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.brand-mark {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  border-radius: 999px;
+}
+
+.brand-icon {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 7px;
+}
+
+.account-avatar {
+  display: none;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.header-account-switcher {
+  display: none;
+  gap: 1px;
+  align-items: center;
+}
+
+:root[data-workspace-mode="repo"] .header-account-switcher.visible {
+  display: inline-flex;
+}
+
+:root[data-workspace-mode="repo"] .header-account-switcher.visible .account-avatar.visible {
+  display: block;
+}
+
+.header-account-select-shell {
+  position: relative;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--gitdesk-icon-color);
+  transition: background 140ms ease, color 140ms ease, opacity 140ms ease;
+}
+
+.header-account-select-shell:hover {
+  background: var(--gitdesk-control-hover-bg);
+}
+
+.header-account-select-shell:focus-within {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.header-account-select {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-width: 24px;
+  max-width: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.header-account-select:disabled {
+  cursor: default;
+}
+
+.header-account-switcher.single-profile .header-account-select-shell {
+  opacity: 0.42;
+}
+
+.header-account-switcher.single-profile .header-account-select-shell:hover {
+  background: transparent;
+}
+
+.theme-toggle {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  margin-left: 0;
+  padding: 0;
+  place-items: center;
+  border-radius: 14px;
+}
+
+.theme-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.workspace-mode-switch {
+  height: 42px;
+  align-self: end;
+  grid-template-columns: repeat(4, max-content);
+  gap: 5px;
+  justify-self: start;
+  padding: 4px;
+}
+
+.workspace-mode-switch button {
+  min-height: 32px;
+  padding: 0 11px;
+  font-size: 13px;
+}
+
+.repo-controls {
+  display: grid;
+  width: max-content;
+  max-width: 100%;
+  grid-template-columns: minmax(160px, 240px) repeat(5, max-content);
+  grid-template-rows: auto 40px;
+  gap: 3px 6px;
+  align-items: end;
+  justify-self: start;
+  min-width: 0;
+}
+
+.repo-controls label {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  align-self: start;
+}
+
+.repo-controls select,
+.repo-controls button {
+  grid-row: 2;
+  height: 40px;
+  min-height: 40px;
+  align-self: stretch;
+}
+
+.repo-controls select {
+  min-width: 0;
+}
+
+.repo-controls button {
+  min-width: 0;
+  padding: 0 10px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.repo-controls :is(#pull-button, #fetch-button, #add-managed-repo, #refresh-github-repos, #refresh-status) {
+  height: 40px;
+  min-width: 0;
+  min-height: 40px;
+  padding-inline: 10px;
+}
+
+@media (max-width: 1180px) {
+  .topbar {
+    gap: 10px;
+  }
+
+  .brand-block {
+    grid-template-columns: 40px max-content 40px;
+    gap: 8px;
+  }
+
+  .brand-block h1 {
+    font-size: 21px;
+  }
+
+  .brand-mark,
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .workspace-mode-switch {
+    grid-template-columns: repeat(4, max-content);
+    height: 40px;
+  }
+
+  .workspace-mode-switch button {
+    min-height: 30px;
+    padding: 0 9px;
+  }
+
+  .repo-controls {
+    grid-template-columns: minmax(140px, 180px) repeat(5, max-content);
+    grid-template-rows: auto 38px;
+    gap: 3px 5px;
+  }
+
+  .repo-controls button {
+    padding: 0 8px;
+  }
+
+  .repo-controls select,
+  .repo-controls button,
+  .repo-controls :is(#pull-button, #fetch-button, #add-managed-repo, #refresh-github-repos, #refresh-status) {
+    height: 38px;
+    min-height: 38px;
+  }
+
+  .repo-controls :is(#pull-button, #fetch-button, #add-managed-repo, #refresh-github-repos, #refresh-status) {
+    padding-inline: 8px;
+  }
+}

@@ -1,0 +1,61 @@
+/*
+  Light theme palette and color overrides for GitDesk's glass interface.
+*/
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #eef1ee;
+  --panel: rgba(255, 255, 255, 0.72);
+  --line: rgba(25, 35, 32, 0.13);
+  --text: #17201d;
+  --muted: #64706b;
+  --green: #6f7881;
+  --green-strong: #2f353b;
+  --amber: #81705d;
+  --red: #bc3b34;
+  --blue: #5f6972;
+  --chrome: rgba(247, 249, 247, 0.78);
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-muted: rgba(30, 45, 40, 0.055);
+  --nav: rgba(247, 249, 247, 0.72);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.84);
+  --focus-ring: rgba(55, 62, 68, 0.2);
+  --shadow: 0 22px 54px rgba(30, 38, 35, 0.16);
+  --gitdesk-body-bg:
+    radial-gradient(circle at 12% -8%, rgba(255, 255, 255, 0.45), transparent 34%),
+    radial-gradient(circle at 92% 4%, rgba(110, 118, 126, 0.1), transparent 28%),
+    linear-gradient(135deg, #eef1ee 0%, #f8faf8 46%, #e6ebe7 100%);
+  --gitdesk-control-bg: rgba(255, 255, 255, 0.64);
+  --gitdesk-control-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.46);
+  --gitdesk-control-hover-border: rgba(25, 35, 32, 0.28);
+  --gitdesk-control-hover-bg: rgba(30, 45, 40, 0.08);
+  --gitdesk-disabled-text: rgba(23, 32, 29, 0.38);
+  --gitdesk-disabled-border: rgba(25, 35, 32, 0.1);
+  --gitdesk-disabled-bg: rgba(25, 35, 32, 0.055);
+  --gitdesk-placeholder: rgba(23, 32, 29, 0.38);
+  --gitdesk-label: rgba(23, 32, 29, 0.58);
+  --gitdesk-modal-backdrop: #e9eeeb;
+  --gitdesk-modal-panel: #ffffff;
+  --gitdesk-topbar-border: rgba(25, 35, 32, 0.1);
+  --gitdesk-icon-button-bg: rgba(255, 255, 255, 0.72);
+  --gitdesk-theme-toggle-bg: rgba(255, 255, 255, 0.72);
+  --gitdesk-theme-toggle-icon-filter: brightness(0) saturate(100%);
+  --gitdesk-external-icon-filter: brightness(0) saturate(100%);
+  --gitdesk-icon-color: #17201d;
+  --gitdesk-toolbar-icon: rgba(23, 32, 29, 0.68);
+  --gitdesk-repo-select-bg: rgba(255, 255, 255, 0.7);
+  --gitdesk-repo-select-border: rgba(25, 35, 32, 0.16);
+}
+
+:root[data-theme="light"] .new-project-button img {
+  filter: var(--gitdesk-external-icon-filter);
+}
+
+/* External toolbar artwork stays black against both inactive and active light-theme button surfaces. */
+:root[data-theme="light"] .guide-toolbar-icon,
+:root[data-theme="light"] .sync-chain-toolbar-icon,
+:root[data-theme="light"] .tab-button.active .guide-toolbar-icon,
+:root[data-theme="light"] .tab-button.active .sync-chain-toolbar-icon {
+  filter: var(--gitdesk-external-icon-filter);
+}

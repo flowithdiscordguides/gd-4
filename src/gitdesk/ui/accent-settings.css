@@ -1,0 +1,336 @@
+/*
+  Responsive Color Studio controls for the dedicated Settings Theme tab.
+*/
+
+.theme-settings-card {
+  gap: 18px;
+  max-width: 720px;
+  padding: 20px;
+}
+
+.theme-settings-header,
+.theme-settings-footer,
+.theme-settings-actions,
+.theme-color-row,
+.theme-color-control {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.theme-settings-header,
+.theme-settings-footer,
+.theme-color-row {
+  justify-content: space-between;
+}
+
+.theme-settings-header {
+  align-items: flex-start;
+}
+
+.theme-settings-header > div,
+.theme-color-copy {
+  min-width: 0;
+}
+
+.theme-settings-header strong {
+  color: var(--theme-heading-color);
+  font-size: 17px;
+}
+
+.theme-settings-header p,
+.theme-color-copy p,
+.theme-live-preview p,
+.theme-settings-footer > p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.theme-current-badge {
+  flex: 0 0 auto;
+  border: 1px solid color-mix(in srgb, var(--accent-solid) 42%, var(--line));
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent-solid) 12%, var(--surface));
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+/* The preview is a compact workbench sample rather than a decorative nested card. */
+.theme-live-preview {
+  position: relative;
+  display: grid;
+  gap: 7px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent-solid) 36%, var(--line));
+  border-radius: 16px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent-solid) 12%, transparent), transparent 55%),
+    var(--surface);
+}
+
+.theme-live-preview::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--accent-solid);
+  content: "";
+}
+
+.theme-live-preview > span {
+  color: var(--gitdesk-label);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.theme-live-preview > strong {
+  color: var(--theme-heading-color);
+  font-size: 20px;
+}
+
+.theme-live-preview > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.theme-preview-primary,
+.theme-preview-selected {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  border-radius: 9px;
+  padding: 0 11px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.theme-preview-primary {
+  color: var(--theme-primary-action-ink);
+  background: var(--theme-primary-action);
+}
+
+.theme-preview-selected {
+  color: var(--theme-selected-control-ink);
+  background: var(--theme-selected-control);
+}
+
+.theme-appearance-field {
+  display: grid;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.theme-appearance-field legend {
+  margin-bottom: 7px;
+  color: var(--gitdesk-label);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-appearance-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 4px;
+  background: var(--surface-muted);
+}
+
+.theme-appearance-switch button {
+  min-height: 34px;
+  border-color: transparent;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.theme-appearance-switch button.active {
+  color: var(--theme-selected-control-ink);
+  border-color: color-mix(in srgb, var(--theme-selected-control) 58%, var(--line));
+  background: var(--theme-selected-control);
+}
+
+.theme-color-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.theme-color-group {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.theme-color-group-surfaces {
+  grid-column: 1 / -1;
+}
+
+.theme-color-group-fields {
+  display: grid;
+}
+
+.theme-color-group-surfaces .theme-color-group-fields {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+.theme-color-group h3 {
+  margin: 0 0 4px;
+  color: var(--theme-heading-color);
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+.theme-color-row {
+  min-height: 62px;
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 72%, transparent);
+  padding: 9px 0;
+}
+
+.theme-color-copy label {
+  margin: 0;
+  color: var(--gitdesk-label);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.theme-color-copy p {
+  max-width: 175px;
+  font-size: 10px;
+}
+
+.theme-color-control {
+  flex: 0 0 auto;
+  gap: 7px;
+}
+
+.theme-gradient-trigger {
+  display: grid;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border-radius: 9px;
+  padding: 4px;
+  place-items: stretch;
+  background: var(--surface-muted);
+  box-shadow: none;
+}
+
+.theme-gradient-icon {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--text) 34%, transparent);
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--text), transparent 48%, var(--accent-solid));
+}
+
+.theme-gradient-icon::after {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid color-mix(in srgb, var(--text) 58%, transparent);
+  border-radius: 50%;
+  content: "";
+}
+
+.theme-gradient-trigger.active .theme-gradient-icon {
+  background: var(--trigger-gradient);
+}
+
+.theme-gradient-trigger.active {
+  border-color: var(--accent-solid);
+  box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.theme-color-swatch {
+  display: grid;
+  width: 42px;
+  height: 36px;
+  min-height: 36px;
+  align-items: stretch;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 3px;
+  background: var(--surface);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.theme-color-swatch > span {
+  border-radius: 6px;
+  background: var(--theme-swatch-color);
+}
+
+.theme-color-swatch[aria-expanded="true"] {
+  border-color: var(--accent-solid);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.theme-color-control output {
+  width: 58px;
+  color: var(--text);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.theme-settings-footer {
+  min-height: 40px;
+  align-items: flex-end;
+}
+
+.theme-settings-footer > p {
+  min-height: 18px;
+}
+
+.theme-settings-footer > p.danger {
+  color: var(--red);
+}
+
+.theme-settings-actions {
+  flex: 0 0 auto;
+  justify-content: flex-end;
+}
+
+@media (max-width: 680px) {
+  .theme-color-group-surfaces .theme-color-group-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .theme-settings-header,
+  .theme-settings-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .theme-current-badge {
+    align-self: flex-start;
+  }
+
+  .theme-settings-actions {
+    flex-wrap: wrap;
+  }
+
+  .theme-settings-actions button {
+    flex: 1 1 180px;
+  }
+}

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Mask cutout re-centered on the keyboard line so a clean gap separates line and badge. -->
+    <mask id="badge-mask-laptop">
+      <rect width="512" height="512" fill="white"/>
+      <circle cx="432" cy="376" r="88" fill="black"/>
+    </mask>
+  </defs>
+
+  <!-- ========================================== -->
+  <!-- 1. BASE LAPTOP LAYER (Masked)              -->
+  <!-- ========================================== -->
+  <g id="laptop-base" mask="url(#badge-mask-laptop)">
+    <!-- Screen / Display Frame. -->
+    <rect x="128" y="88" width="256" height="224" rx="28"
+          stroke="#FFFFFF"
+          stroke-width="32"
+          fill="none"
+          stroke-linejoin="round"/>
+
+    <!-- Keyboard deck line; the mask trims its right end so it does not touch the badge. -->
+    <line x1="80" y1="376" x2="432" y2="376"
+          stroke="#FFFFFF"
+          stroke-width="32"
+          stroke-linecap="round"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 2. ON-SCREEN CODE DETAIL (Inner Detail)    -->
+  <!-- ========================================== -->
+  <g id="screen-code">
+    <!-- Left angle bracket. -->
+    <path d="M 216 152 L 180 196 L 216 240"
+          stroke="#FFFFFF"
+          stroke-width="24"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Center slash. -->
+    <line x1="244" y1="248" x2="268" y2="144"
+          stroke="#FFFFFF"
+          stroke-width="24"
+          stroke-linecap="round"/>
+
+    <!-- Right angle bracket. -->
+    <path d="M 296 152 L 332 196 L 296 240"
+          stroke="#FFFFFF"
+          stroke-width="24"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- 3. "CREATE NEW" BADGE (+) LAYER            -->
+  <!-- ========================================== -->
+  <g id="create-new-badge">
+    <!-- Outer badge ring, centered on the same y-axis as the keyboard line. -->
+    <circle cx="432" cy="376" r="56"
+            stroke="#FFFFFF"
+            stroke-width="22"
+            fill="none"/>
+
+    <!-- Inner plus sign, centered at 432,376. -->
+    <path d="M 432 352 V 400 M 408 376 H 456"
+          stroke="#FFFFFF"
+          stroke-width="20"
+          fill="none"
+          stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    {/* Mask: clean gap around the sync badge, consistent with the set */}
+    <mask id="badge-mask-backup">
+      <rect width="512" height="512" fill="white"/>
+      <circle cx="432" cy="432" r="88" fill="black"/>
+    </mask>
+  </defs>
+
+  {/* ========================================== */}
+  {/* BACK-UP — USB flash drive with data-up     */}
+  {/* arrow, plus a circular sync-arrow badge    */}
+  {/* (instead of "+") in the bottom-right       */}
+  {/* ========================================== */}
+
+  {/* ========================================== */}
+  {/* 1. USB DRIVE (Masked by the badge)         */}
+  {/* ========================================== */}
+  <g id="usb-drive" mask="url(#badge-mask-backup)">
+    {/* Drive body */}
+    <rect x="160" y="192" width="192" height="232" rx="32" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linejoin="round"/>
+          
+    {/* Metal connector on top */}
+    <rect x="204" y="96" width="104" height="96" rx="16" 
+          stroke="#FFFFFF" 
+          stroke-width="28" 
+          fill="none" 
+          stroke-linejoin="round"/>
+          
+    {/* Connector contact pins */}
+    <line x1="234" y1="126" x2="234" y2="152" 
+          stroke="#FFFFFF" 
+          stroke-width="14" 
+          stroke-linecap="round"/>
+    <line x1="278" y1="126" x2="278" y2="152" 
+          stroke="#FFFFFF" 
+          stroke-width="14" 
+          stroke-linecap="round"/>
+          
+    {/* Data-up arrow inside the body (data flowing to backup) */}
+    <path d="M 220 332 L 256 296 L 292 332" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+    <line x1="256" y1="308" x2="256" y2="376" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 2. SYNC BADGE (circular backup arrow)      */}
+  {/* Same size/position as the "+" badges       */}
+  {/* ========================================== */}
+  <g id="sync-badge">
+    {/* 270° circular arrow */}
+    <path d="M 476 432 A 44 44 0 1 1 432 388" 
+          stroke="#FFFFFF" 
+          stroke-width="22" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Arrowhead at the arc's end */}
+    <path d="M 412 370 L 436 388 L 412 406" 
+          stroke="#FFFFFF" 
+          stroke-width="20" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+</svg>

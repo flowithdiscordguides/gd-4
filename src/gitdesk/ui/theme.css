@@ -1,0 +1,20 @@
+/*
+  Shared theme-toggle mechanics for GitDesk. Dark and light palettes live in the dedicated theme files.
+*/
+
+.theme-toggle {
+  flex: 0 0 34px;
+  margin-left: auto;
+  background: var(--gitdesk-theme-toggle-bg);
+}
+
+.theme-icon {
+  width: 20px;
+  height: 20px;
+  filter: var(--gitdesk-theme-toggle-icon-filter);
+  object-fit: contain;
+}
+
+.theme-icon-light {
+  display: none;
+}

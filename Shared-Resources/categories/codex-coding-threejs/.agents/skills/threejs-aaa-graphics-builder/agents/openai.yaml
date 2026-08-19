@@ -1,0 +1,9 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js AAA Graphics Builder"
+  short_description: "Build authored, performance-aware Three.js visuals"
+  default_prompt: >-
+    Read ../SKILL.md and its applicable repository-local references. Develop three distinct art directions, select a
+    product-specific thesis and signature moment, and treat external generators as optional and authorization-bound.
+    Never execute, install, build, test, launch, browse, call providers, or access a network. Report source-level
+    evidence honestly and use runtime or visual evidence only when the user supplies it.

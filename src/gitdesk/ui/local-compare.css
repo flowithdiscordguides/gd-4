@@ -1,0 +1,149 @@
+/*
+  Local Mode project-scoped version comparison modal.
+*/
+
+.local-compare-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 39;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(15, 18, 22, 0.48);
+}
+
+.local-compare-modal[hidden] {
+  display: none;
+}
+
+.local-compare-dialog {
+  display: grid;
+  width: min(920px, calc(100vw - 48px));
+  height: min(760px, calc(100dvh - 32px));
+  max-height: calc(100dvh - 32px);
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  gap: 14px;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--glass);
+  box-shadow: var(--shadow);
+}
+
+.local-compare-dialog-header {
+  align-items: start;
+}
+
+.local-compare-dialog-actions,
+.local-compare-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.local-compare-dialog-actions button {
+  width: auto;
+  min-width: 112px;
+  min-height: 38px;
+  padding: 0 14px;
+}
+
+.local-compare-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.local-compare-controls label {
+  margin: 0;
+}
+
+.local-compare-controls label > span {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.local-compare-actions {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.local-compare-muted {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+#local-compare-summary {
+  margin-left: auto;
+}
+
+.local-compare-files {
+  display: grid;
+  min-height: 0;
+  gap: 8px;
+  align-content: start;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.local-compare-file-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 11px 12px;
+  color: var(--text);
+  text-transform: none;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.local-compare-file-row input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+.local-compare-file-row strong,
+.local-compare-file-row small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-compare-file-row small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media (max-width: 820px) {
+  .local-compare-modal {
+    padding: 10px;
+  }
+
+  .local-compare-dialog {
+    width: calc(100vw - 20px);
+    height: calc(100dvh - 20px);
+    max-height: calc(100dvh - 20px);
+    padding: 12px;
+  }
+
+  .local-compare-controls {
+    grid-template-columns: 1fr;
+  }
+
+  #local-compare-summary {
+    width: 100%;
+    margin-left: 0;
+  }
+}

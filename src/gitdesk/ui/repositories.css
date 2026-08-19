@@ -1,0 +1,297 @@
+/*
+  Managed repository picker and GitHub catalog dialog styles.
+*/
+
+.repo-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(15, 18, 22, 0.45);
+}
+
+.repo-dialog[hidden] {
+  display: none;
+}
+
+.repo-dialog-panel {
+  display: grid;
+  width: min(920px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
+  gap: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--panel);
+  box-shadow: 0 18px 42px rgba(23, 32, 42, 0.22);
+}
+
+.repo-dialog-body {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  gap: 16px;
+  min-height: 0;
+}
+
+.repo-dialog-sidebar,
+.repo-dialog-workspace,
+.repo-dialog-controls {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-height: 0;
+}
+
+.repo-dialog-modes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px;
+  background: var(--surface-muted);
+}
+
+.repo-dialog-modes button {
+  min-height: 34px;
+  border-color: transparent;
+  border-radius: 6px;
+  padding-inline: 8px;
+  background: transparent;
+}
+
+.repo-dialog-modes button.active {
+  color: #111418;
+  background: linear-gradient(180deg, #f2f3f4, #aeb6bd);
+}
+
+.repo-saved-panel,
+.repo-setup-form,
+.repo-setup-panel {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.repo-setup-panel[hidden] {
+  display: none;
+}
+
+.repo-setup-panel[data-repo-setup-panel="clone"] {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.managed-repo-list {
+  display: grid;
+  gap: 10px;
+  max-height: min(520px, calc(100vh - 250px));
+  overflow: auto;
+}
+
+.managed-repo-category-group {
+  display: grid;
+  gap: 8px;
+}
+
+.managed-repo-category-title {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.managed-repo-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(96px, 128px) auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.managed-repo-row.active {
+  border-color: rgba(245, 248, 252, 0.72);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.managed-repo-open {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+}
+
+.managed-repo-open strong,
+.managed-repo-open small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.managed-repo-open small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.managed-repo-category {
+  min-width: 0;
+}
+
+.remove-managed-repo svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.repo-remote-fields {
+  display: grid;
+  gap: 10px;
+}
+
+.repo-remote-fields.disabled {
+  opacity: 0.58;
+}
+
+.repo-ai-category-list {
+  display: grid;
+  gap: 8px;
+  max-height: 150px;
+  overflow: auto;
+}
+
+.repo-ai-check-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  color: var(--text);
+  background: var(--surface-muted);
+  text-transform: none;
+}
+
+.repo-ai-check-row input {
+  width: auto;
+}
+
+.repo-ai-check-row small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.repo-catalog-panel {
+  display: grid;
+  min-height: 0;
+  gap: 10px;
+}
+
+.repo-catalog-toolbar {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.55fr) minmax(180px, 1fr) auto;
+  gap: 8px;
+}
+
+.repo-access-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+  text-transform: none;
+}
+
+.existing-repo-remote {
+  display: grid;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  color: var(--muted);
+  background: var(--surface-muted);
+}
+
+.existing-repo-remote strong {
+  overflow: hidden;
+  color: var(--text);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.existing-repo-remote small {
+  color: var(--muted);
+}
+
+.repo-catalog-list {
+  display: grid;
+  gap: 8px;
+  min-height: 260px;
+  max-height: min(520px, calc(100vh - 260px));
+  overflow: auto;
+}
+
+.catalog-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.catalog-row .row-title {
+  max-width: 100%;
+}
+
+.catalog-owner-group {
+  display: grid;
+  gap: 8px;
+}
+
+.catalog-owner-title {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 1px solid var(--line);
+  padding: 6px 4px;
+  color: var(--muted);
+  background: var(--panel);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+@media (max-width: 920px) {
+  .repo-dialog-body {
+    grid-template-columns: 1fr;
+  }
+
+  .managed-repo-list,
+  .repo-catalog-list {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 620px) {
+  .repo-catalog-toolbar {
+    grid-template-columns: 1fr;
+  }
+}

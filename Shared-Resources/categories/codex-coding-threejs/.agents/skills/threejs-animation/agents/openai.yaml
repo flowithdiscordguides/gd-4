@@ -1,0 +1,9 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js Animation"
+  short_description: "Build clip, mixer, skeletal, morph, and GLTF animation"
+  default_prompt: >-
+    Read ../SKILL.md and ../references/animation-api-and-patterns.md. Use this skill for clip, mixer, skeletal, morph,
+    GLTF, blending, and root-motion work; route code-driven oscillation or spring motion to
+    threejs-procedural-animation. Never execute, install, build, test, launch, browse, call providers, or access a
+    network. Source-verify ownership and lifecycle, and treat runtime motion as user-supplied evidence.

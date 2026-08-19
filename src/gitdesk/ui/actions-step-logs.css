@@ -1,0 +1,206 @@
+/*
+  GitHub Actions step disclosures and their line-numbered console output.
+*/
+
+.action-step-list {
+  gap: 6px;
+}
+
+/* Step headers behave as full-width disclosure controls while preserving compact job-detail density. */
+.action-step-item {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.action-step-item.danger {
+  border-color: var(--red);
+}
+
+.action-step-toggle {
+  display: grid;
+  grid-template-columns: 16px 22px minmax(0, 1fr) auto;
+  gap: 9px;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  border: 0;
+  border-radius: 7px;
+  padding: 8px 10px;
+  color: var(--text);
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+  transform: none;
+}
+
+.action-step-toggle:hover {
+  border: 0;
+  background: var(--surface-muted);
+  transform: none;
+}
+
+.action-step-toggle:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: -2px;
+}
+
+.action-step-toggle[aria-expanded="true"] {
+  border-radius: 7px 7px 0 0;
+  background: var(--surface-muted);
+}
+
+.action-step-chevron {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
+  transition: transform 120ms ease;
+}
+
+.action-step-toggle[aria-expanded="true"] .action-step-chevron {
+  transform: rotate(90deg);
+}
+
+.action-step-status {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--amber);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.action-step-status.success {
+  color: var(--gitdesk-success-bg, var(--green));
+}
+
+.action-step-status.danger {
+  color: var(--gitdesk-failure-bg, var(--red));
+}
+
+.action-step-status.building {
+  color: var(--gitdesk-building-bg, var(--amber));
+}
+
+.action-step-copy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.action-step-copy strong,
+.action-step-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.action-step-copy small,
+.action-step-duration {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.action-step-duration {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Expanded output follows GitHub's page flow vertically while retaining horizontal scrolling for long console lines. */
+.action-step-log {
+  min-width: 0;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.action-step-log-lines {
+  overflow: auto;
+  padding: 6px 0;
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.action-log-line {
+  display: grid;
+  grid-template-columns: 50px max-content;
+  min-width: max-content;
+  width: 100%;
+}
+
+.action-log-line:hover {
+  background: var(--surface-muted);
+}
+
+.action-log-line.error {
+  color: var(--red);
+  background: var(--surface-muted);
+}
+
+.action-log-line.warning {
+  color: var(--amber);
+}
+
+.action-log-line-number {
+  position: sticky;
+  left: 0;
+  padding: 0 10px 0 6px;
+  color: var(--muted);
+  background: var(--bg);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  user-select: none;
+}
+
+.action-log-line code {
+  padding-right: 14px;
+  color: inherit;
+  font: inherit;
+  white-space: pre;
+}
+
+.action-step-log-state,
+.action-step-log-empty {
+  display: flex;
+  min-height: 54px;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  color: var(--muted);
+}
+
+.action-step-log-state.error {
+  justify-content: space-between;
+  color: var(--red);
+}
+
+.action-step-log-state button {
+  flex: 0 0 auto;
+}
+
+/* Narrow desktop windows move duration metadata below the step name without hiding later failure output. */
+@media (max-width: 760px) {
+  .action-step-toggle {
+    grid-template-columns: 16px 22px minmax(0, 1fr);
+  }
+
+  .action-step-duration {
+    grid-column: 3;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-step-chevron {
+    transition: none;
+  }
+}

@@ -1,0 +1,295 @@
+/*
+  Read-only Local Mode project metadata, compact action dock, and focused identity editor.
+*/
+
+.local-project-metadata-list {
+  min-width: 0;
+  margin: 0;
+}
+
+.local-project-metadata-list > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  align-content: center;
+}
+
+.local-project-metadata-list dt {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 780;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.local-project-metadata-list dd {
+  margin: 0;
+  overflow: hidden;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 720;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-project-action-dock {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 1px;
+}
+
+.local-project-category-block {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(140px, 220px) auto;
+  gap: 12px;
+  align-items: end;
+  justify-self: end;
+}
+
+.local-project-category-list {
+  width: min(220px, 100%);
+}
+
+.local-project-action-dock .local-icon-button,
+.local-project-action-dock .local-rename-icon {
+  width: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 10px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface-muted) 88%, transparent);
+}
+
+.local-project-action-dock .local-icon-button:is(:hover, :focus-visible):not(:disabled),
+.local-project-action-dock .local-rename-icon:is(:hover, :focus-visible):not(:disabled) {
+  border-color: color-mix(in srgb, var(--green) 70%, var(--line));
+  background: color-mix(in srgb, var(--green) 14%, var(--surface-muted));
+}
+
+.local-project-action-dock .local-icon-destructive {
+  margin-left: 4px;
+  color: var(--red);
+  border-color: color-mix(in srgb, var(--red) 38%, var(--line));
+  background: color-mix(in srgb, var(--red) 9%, var(--surface-muted));
+}
+
+.local-project-action-dock .local-icon-destructive:is(:hover, :focus-visible):not(:disabled) {
+  color: #fff;
+  border-color: var(--red);
+  background: color-mix(in srgb, var(--red) 78%, #17191d);
+}
+
+.local-project-metadata-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 62;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--gitdesk-modal-backdrop, rgba(7, 10, 18, 0.8));
+}
+
+.local-project-metadata-modal[hidden] {
+  display: none;
+}
+
+.local-project-metadata-dialog {
+  display: grid;
+  width: min(680px, 100%);
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  gap: 18px;
+  overflow-y: auto;
+  border: 1px solid color-mix(in srgb, var(--green) 36%, var(--line));
+  border-radius: 20px;
+  padding: 22px;
+  background: var(--gitdesk-modal-panel, var(--panel));
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.5);
+}
+
+.local-project-metadata-dialog > header {
+  display: grid;
+  gap: 5px;
+}
+
+.local-project-metadata-dialog > header span,
+.local-project-metadata-artwork > span {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.local-project-metadata-dialog h2,
+.local-project-metadata-dialog p {
+  margin: 0;
+}
+
+.local-project-metadata-dialog h2 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+#local-project-metadata-context {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.local-project-metadata-body {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.78fr) minmax(260px, 1.22fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.local-project-metadata-artwork {
+  display: grid;
+  grid-template-rows: auto minmax(150px, 1fr) auto auto auto;
+  gap: 8px;
+  min-width: 0;
+}
+
+.local-project-metadata-icon-frame {
+  position: relative;
+  min-height: 150px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-muted) 88%, transparent);
+}
+
+#local-project-metadata-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  object-fit: contain;
+  object-position: center;
+  transform: translate(-50%, -50%);
+}
+
+:root[data-theme="light"] #local-project-metadata-icon.uses-folder-icon {
+  filter: brightness(0) saturate(100%);
+}
+
+.local-project-metadata-icon-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.local-project-metadata-icon-actions button {
+  width: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border-radius: 12px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface-muted) 88%, transparent);
+}
+
+.local-project-metadata-icon-actions svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+#local-project-metadata-icon-status,
+.local-project-metadata-artwork small {
+  margin: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-project-metadata-form {
+  display: grid;
+  grid-template-rows: auto auto auto auto minmax(20px, 1fr) auto;
+  gap: 8px;
+  min-width: 0;
+}
+
+.local-project-metadata-form label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.local-project-metadata-form input {
+  width: 100%;
+  min-width: 0;
+}
+
+#local-project-metadata-status {
+  align-self: end;
+  min-height: 20px;
+  color: var(--red);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.local-project-metadata-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.local-project-metadata-actions button {
+  width: auto;
+  min-width: 116px;
+}
+
+#save-local-project-metadata {
+  color: #07100e;
+  border-color: color-mix(in srgb, var(--green) 72%, #fff);
+  background: var(--green);
+}
+
+@media (max-width: 680px) {
+  .local-project-category-block {
+    width: 100%;
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1fr) auto;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 620px) {
+  .local-project-metadata-modal {
+    padding: 12px;
+  }
+
+  .local-project-metadata-dialog {
+    border-radius: 16px;
+    padding: 18px;
+  }
+
+  .local-project-metadata-body {
+    grid-template-columns: 1fr;
+  }
+
+  .local-project-metadata-artwork {
+    grid-template-rows: auto 170px auto auto auto;
+  }
+
+  .local-project-metadata-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .local-project-metadata-actions button {
+    width: 100%;
+  }
+}

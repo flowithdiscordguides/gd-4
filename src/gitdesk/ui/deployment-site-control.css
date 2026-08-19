@@ -1,0 +1,54 @@
+/*
+  Canonical successful deployment-site control shared by GitHub Pages and Actions.
+*/
+
+.deployment-site-link {
+  display: grid;
+  width: min(100%, 620px);
+  min-height: 42px;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid #4ade80;
+  border-radius: 12px;
+  color: #f0fff4;
+  background: linear-gradient(135deg, rgba(21, 128, 61, 0.98), rgba(22, 163, 74, 0.82));
+  box-shadow: 0 10px 28px rgba(22, 163, 74, 0.24);
+  font: inherit;
+  font-weight: 750;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Prevents an Actions detail grid row from stretching the shared button beyond its canonical Pages height. */
+.actions-detail-pane > .deployment-site-link {
+  align-self: start;
+  justify-self: start;
+}
+
+.deployment-site-link:hover,
+.deployment-site-link:focus-visible {
+  border-color: #86efac;
+  background: linear-gradient(135deg, rgba(22, 163, 74, 1), rgba(34, 197, 94, 0.9));
+  outline: 3px solid rgba(134, 239, 172, 0.28);
+  outline-offset: 2px;
+}
+
+.deployment-site-mark {
+  color: #bbf7d0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.deployment-site-copy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.deployment-site-copy small {
+  color: rgba(240, 255, 244, 0.86);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}

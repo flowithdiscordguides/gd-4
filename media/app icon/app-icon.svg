@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Roles icon: three-person team, front member filled as the active role. -->
+
+  <!-- Back-left team member (hollow). -->
+  <g id="member-left">
+    <circle cx="6.2" cy="6.8" r="2.1" stroke="#FFFFFF" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.6 14.2 a4 4 0 0 1 3.6 -2.4 h0.8" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Back-right team member (hollow). -->
+  <g id="member-right">
+    <circle cx="17.8" cy="6.8" r="2.1" stroke="#FFFFFF" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21.4 14.2 a4 4 0 0 0 -3.6 -2.4 h-0.8" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Front team member (filled head = assigned/active role). -->
+  <g id="member-front">
+    <circle cx="12" cy="10.2" r="2.9" fill="#FFFFFF"/>
+    <path d="M5.9 20.8 v-0.5 a6.1 6.1 0 0 1 12.2 0 v0.5"
+          stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

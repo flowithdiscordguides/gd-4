@@ -1,0 +1,314 @@
+/*
+  Local Mode layout and cleanup-tree styling.
+*/
+
+#panel-local.panel.active {
+  display: grid;
+  min-height: 0;
+}
+
+.local-layout {
+  display: grid;
+  min-height: 0;
+}
+
+.local-projects-card,
+.local-versions-card {
+  align-content: start;
+  min-height: 0;
+}
+
+.local-create-form {
+  display: grid;
+  gap: 10px;
+}
+
+.local-check-list,
+.local-list {
+  display: grid;
+  gap: 8px;
+  min-height: 0;
+  overflow: auto;
+}
+
+.local-accordion-card.local-collapsed .local-list {
+  overflow: hidden;
+}
+
+.local-accordion-card.local-collapsed .local-project-row:not(.active),
+.local-accordion-card.local-collapsed .local-version-listing:not(.active) {
+  display: none;
+}
+
+.local-accordion-card.local-collapsed .local-project-managed-row:not(.active) { display: none; }
+.local-accordion-card.local-collapsed .local-project-category-group:not(.active) { display: none; }
+
+.local-projects-card .local-list,
+.local-versions-card .local-list {
+  max-height: calc(100vh - 330px);
+}
+
+.local-check-row {
+  display: flex;
+  min-width: 0;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  color: var(--text);
+  text-transform: none;
+}
+
+.local-check-row input {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--green);
+}
+
+.local-project-row,
+.local-version-row {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 10px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.local-version-row {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.local-project-row.active,
+.local-version-row.active {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--green) 55%, var(--line));
+  background: color-mix(in srgb, var(--green) 12%, var(--surface-muted));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, var(--green) 78%, transparent);
+}
+
+.local-project-row span,
+.local-version-row {
+  min-width: 0;
+}
+
+.local-project-row strong,
+.local-version-row strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-project-row small,
+.local-version-row small {
+  display: block;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-project-category-group {
+  display: grid;
+  gap: 8px;
+}
+
+.local-project-category-title {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.local-project-category-filter { max-width: 180px; min-width: 0; margin-left: auto; }
+
+.local-project-managed-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+.local-project-row-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42px 42px;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.local-project-managed-row .local-project-row {
+  min-width: 0;
+}
+
+.local-project-category-editor { display: none; min-width: 0; }
+
+.local-project-managed-row.editing .local-project-category-editor {
+  display: grid;
+}
+
+.local-project-category { min-width: 0; }
+
+.local-project-category-toggle svg,
+.remove-local-project svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.local-project-row.active small,
+.local-version-row.active small {
+  color: var(--muted);
+}
+
+.local-version-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.local-version-header label {
+  margin-bottom: 0;
+}
+
+.local-rename-row {
+  gap: 8px;
+}
+
+.local-header-actions {
+  margin: 0;
+}
+
+.local-accordion-toggle {
+  position: relative;
+  display: grid;
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+  min-height: 34px;
+  border-radius: 50%;
+  padding: 0;
+  place-items: center;
+  color: var(--text);
+  font-size: 0;
+}
+
+.local-accordion-toggle::before {
+  width: 9px;
+  height: 9px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  content: "";
+  transform: translateY(2px) rotate(45deg);
+}
+
+.local-collapsed .local-accordion-toggle::before {
+  transform: translateY(-2px) rotate(225deg);
+}
+
+.local-icon-button, .local-rename-icon {
+  display: grid;
+  width: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  border-radius: 50%;
+  padding: 0;
+  place-items: center;
+  font-size: 0;
+}
+
+.local-icon-button svg, .local-rename-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.local-actions {
+  margin-top: 12px;
+}
+
+.local-duplicate-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 35;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(15, 18, 22, 0.48);
+}
+
+.local-duplicate-dialog[hidden] {
+  display: none;
+}
+
+.local-duplicate-panel {
+  display: grid;
+  width: min(920px, calc(100vw - 56px));
+  max-height: calc(100vh - 56px);
+  gap: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--glass);
+  box-shadow: var(--shadow);
+}
+
+.local-duplicate-form {
+  display: grid;
+  min-height: 0;
+  gap: 10px;
+}
+
+.local-cleanup-tree {
+  display: grid;
+  gap: 6px;
+  min-height: 260px;
+  max-height: min(520px, calc(100vh - 260px));
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px;
+  background: var(--surface);
+}
+
+.local-tree-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 10px;
+  padding-left: calc(10px + var(--local-tree-indent, 0px));
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.local-tree-row small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+#create-local-project,
+#create-local-feature,
+#create-local-version {
+  color: #111418;
+  border-color: rgba(255, 255, 255, 0.42);
+  background: linear-gradient(180deg, #f2f3f4, #aeb6bd);
+}
+
+@media (max-width: 1100px) {
+  .topbar {
+    grid-template-columns: 1fr;
+  }
+}

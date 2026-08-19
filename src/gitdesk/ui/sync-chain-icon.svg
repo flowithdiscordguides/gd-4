@@ -1,0 +1,181 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="512"
+  height="512"
+  viewBox="0 0 512 512"
+  fill="none"
+  color="#D7D8D5"
+  role="img"
+  aria-labelledby="sync-icon-title sync-icon-description">
+  <title id="sync-icon-title">Local and GitHub repository sync</title>
+  <desc id="sync-icon-description">
+    A local repository folder and a remote Git repository cloud connected by two directional sync arrows.
+  </desc>
+
+  <!-- Remote Git repository and cloud container. -->
+  <g
+    id="remote-repository"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <path
+      d="
+        M299 246
+        C275 246 256 227 256 203
+        C256 186 265 171 278 162
+        C277 158 277 153 277 149
+        C277 120 300 97 329 97
+        C340 73 364 58 392 58
+        C432 58 464 88 469 127
+        C488 136 500 156 500 182
+        C500 217 474 246 442 246
+        H299
+        Z
+      "
+      stroke-width="18"/>
+
+    <!-- Subtle upper-left cloud highlight. -->
+    <path
+      d="
+        M294 145
+        C296 128 310 114 328 113
+        C339 112 349 116 357 123
+      "
+      stroke-width="8"
+      opacity="0.28"/>
+
+    <!-- Remote Git branch and nodes. -->
+    <path d="M363 116 V204" stroke-width="14"/>
+    <path
+      d="
+        M363 146
+        H403
+        C418 146 429 135 429 120
+        V111
+      "
+      stroke-width="14"/>
+    <path
+      d="
+        M363 98
+        C369.6 98 375 103.4 375 110
+        C375 116.6 369.6 122 363 122
+        C356.4 122 351 116.6 351 110
+        C351 103.4 356.4 98 363 98
+        Z
+      "
+      fill="currentColor"
+      stroke="none"/>
+    <path
+      d="
+        M429 98
+        C435.6 98 441 103.4 441 110
+        C441 116.6 435.6 122 429 122
+        C422.4 122 417 116.6 417 110
+        C417 103.4 422.4 98 429 98
+        Z
+      "
+      fill="currentColor"
+      stroke="none"/>
+    <path
+      d="
+        M363 198
+        C369.6 198 375 203.4 375 210
+        C375 216.6 369.6 222 363 222
+        C356.4 222 351 216.6 351 210
+        C351 203.4 356.4 198 363 198
+        Z
+      "
+      fill="currentColor"
+      stroke="none"/>
+  </g>
+
+  <!-- Local repository folder. -->
+  <g
+    id="local-repository"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <path
+      d="
+        M50 321
+        C50 303 64 289 82 289
+        H130
+        L154 314
+        H211
+        C229 314 243 328 243 346
+        V426
+        C243 444 229 458 211 458
+        H82
+        C64 458 50 444 50 426
+        V321
+        Z
+      "
+      stroke-width="18"/>
+    <path d="M52 347 H241" stroke-width="14" opacity="0.72"/>
+    <path
+      d="
+        M70 319
+        C73 310 80 305 90 305
+        H126
+      "
+      stroke-width="8"
+      opacity="0.28"/>
+
+    <!-- Local Git branch and nodes. -->
+    <path d="M115 369 V427" stroke-width="14"/>
+    <path
+      d="
+        M115 391
+        H160
+        C176 391 188 379 188 363
+        V353
+      "
+      stroke-width="14"/>
+    <path
+      d="
+        M115 351
+        C121.6 351 127 356.4 127 363
+        C127 369.6 121.6 375 115 375
+        C108.4 375 103 369.6 103 363
+        C103 356.4 108.4 351 115 351
+        Z
+      "
+      fill="currentColor"
+      stroke="none"/>
+    <path
+      d="
+        M188 333
+        C194.6 333 200 338.4 200 345
+        C200 351.6 194.6 357 188 357
+        C181.4 357 176 351.6 176 345
+        C176 338.4 181.4 333 188 333
+        Z
+      "
+      fill="currentColor"
+      stroke="none"/>
+    <path
+      d="
+        M115 421
+        C121.6 421 127 426.4 127 433
+        C127 439.6 121.6 445 115 445
+        C108.4 445 103 439.6 103 433
+        C103 426.4 108.4 421 115 421
+        Z
+      "
+      fill="currentColor"
+      stroke="none"/>
+  </g>
+
+  <!-- Repository synchronization arrows. -->
+  <g
+    id="sync-arrows"
+    stroke="currentColor"
+    stroke-width="18"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <path d="M 127 245 A 130 130 0 0 1 245 127"/>
+    <path d="M 213 108 L 245 127 L 217 152"/>
+    <path d="M 384 279 A 130 130 0 0 1 279 384"/>
+    <path d="M 305 357 L 279 384 L 312 401"/>
+  </g>
+</svg>

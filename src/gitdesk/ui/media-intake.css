@@ -1,0 +1,270 @@
+/*
+  Media Mode's darkroom intake tray and album-creation dialog.
+*/
+
+.media-contact-pane {
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+}
+
+.media-intake-tray {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 116px;
+  gap: 14px;
+  align-items: center;
+  overflow: hidden;
+  border: 1px dashed rgba(231, 193, 141, 0.46);
+  border-radius: 14px;
+  padding: 20px 20px 20px 28px;
+  outline: none;
+  caret-color: transparent;
+  cursor: copy;
+  background:
+    linear-gradient(100deg, rgba(217, 174, 119, 0.13), rgba(255, 255, 255, 0.025)),
+    rgba(8, 11, 13, 0.72);
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.media-intake-tray::before {
+  position: absolute;
+  inset: 7px auto 7px 7px;
+  width: 5px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(231, 193, 141, 0.8) 0 4px,
+    transparent 4px 9px
+  );
+  content: "";
+}
+
+.media-intake-tray[hidden] {
+  display: none;
+}
+
+.media-intake-tray:hover,
+.media-intake-tray:focus-visible,
+.media-intake-tray.drag-active {
+  border-color: rgba(242, 207, 158, 0.9);
+  background:
+    linear-gradient(100deg, rgba(217, 174, 119, 0.24), rgba(255, 255, 255, 0.05)),
+    rgba(8, 11, 13, 0.8);
+}
+
+.media-intake-tray.drag-active {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 3px rgba(217, 174, 119, 0.11), 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.media-intake-tray.importing {
+  border-style: solid;
+}
+
+.media-intake-copy {
+  display: grid;
+  min-width: 0;
+  gap: 6px;
+}
+
+.media-intake-kicker {
+  color: #d9ae77;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.media-intake-copy strong,
+.media-intake-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.media-intake-copy strong {
+  font-size: 15px;
+}
+
+.media-intake-copy small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.media-intake-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+#create-media-album,
+#choose-media-images,
+#confirm-media-album {
+  color: #18130e;
+  border-color: rgba(255, 234, 203, 0.42);
+  background: linear-gradient(180deg, #edc996, #b57a49);
+}
+
+#choose-media-images {
+  cursor: pointer;
+}
+
+.media-paste-menu {
+  position: fixed;
+  z-index: 1500;
+  width: 140px;
+  border: 1px solid rgba(231, 193, 141, 0.34);
+  border-radius: 10px;
+  padding: 6px;
+  background: #171a1d;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.46);
+}
+
+.media-paste-menu button {
+  width: 100%;
+  text-align: left;
+}
+
+.media-album-modal {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: grid;
+  padding: 24px;
+  place-items: center;
+  background: rgba(4, 6, 8, 0.76);
+  backdrop-filter: blur(12px);
+}
+
+.media-album-modal[hidden] {
+  display: none;
+}
+
+.media-album-dialog {
+  display: grid;
+  width: min(560px, 100%);
+  gap: 12px;
+  border: 1px solid rgba(231, 193, 141, 0.32);
+  border-radius: 22px;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 95% 0%, rgba(194, 132, 75, 0.18), transparent 35%),
+    #111519;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.media-album-dialog > header {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.media-album-dialog > header span {
+  color: #d9ae77;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.media-album-dialog h2,
+.media-album-dialog p {
+  margin: 0;
+}
+
+.media-album-dialog p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.media-album-dialog label {
+  color: #e7c18d;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.media-album-dialog input,
+.media-album-dialog select {
+  width: 100%;
+  min-width: 0;
+}
+
+.media-parent-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 42px 42px;
+  gap: 8px;
+}
+
+.media-parent-icon,
+.media-album-modal-close {
+  display: grid;
+  padding: 8px;
+  place-items: center;
+}
+
+.media-parent-icon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#favorite-media-parent svg {
+  fill: rgba(217, 174, 119, 0.12);
+}
+
+#favorite-media-parent.saved {
+  color: #f0c98f;
+  border-color: rgba(240, 201, 143, 0.55);
+  background: rgba(217, 174, 119, 0.12);
+}
+
+#favorite-media-parent.saved svg {
+  fill: currentColor;
+}
+
+.media-album-modal-close {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 999px;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.media-album-dialog > footer {
+  display: flex;
+  gap: 9px;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(217, 174, 119, 0.16);
+  margin-top: 4px;
+  padding-top: 15px;
+}
+
+@media (max-width: 760px) {
+  .media-intake-tray {
+    grid-template-columns: 1fr;
+  }
+
+  .media-intake-copy strong,
+  .media-intake-copy small {
+    white-space: normal;
+  }
+
+  .media-album-modal {
+    align-items: end;
+    padding: 12px;
+  }
+
+  .media-album-dialog {
+    border-radius: 20px 20px 14px 14px;
+  }
+}

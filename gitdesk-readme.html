@@ -1,0 +1,260 @@
+<!--
+  GitDesk UI/UX guide.
+  The icon samples are sourced from the app's own UI markup, SVG assets, and toolbar-icons.js.
+-->
+<!doctype html>
+<html
+  lang="en"
+  data-guide-asset-base="src/gitdesk/ui/"
+  data-guide-media-base="media/readme-html-media/01-start-here/"
+>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitDesk Field Manual</title>
+    <link rel="stylesheet" href="src/gitdesk/ui/gitdesk-guide-layout.css">
+    <link rel="stylesheet" href="src/gitdesk/ui/gitdesk-guide-responsive.css">
+    <link rel="stylesheet" href="src/gitdesk/ui/gitdesk-guide-learning.css">
+    <link rel="stylesheet" href="src/gitdesk/ui/gitdesk-guide-learning-responsive.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#guide-main">Skip to the current guide chapter</a>
+    <div id="icon-source" class="icon-source" aria-hidden="true">
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="overview"
+        data-icon-source="overview"
+        aria-label="Overview"
+        title="Overview"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="local"
+        data-icon-source="local"
+        aria-label="Local Mode"
+        title="Local Mode"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M3 6h6l2 2h10v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <path d="M8 13h8M8 16h5"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="clone"
+        data-icon-source="clone"
+        aria-label="Clone"
+        title="Clone"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M8 8h10a3 3 0 0 1 0 6h-2M16 16H6a3 3 0 0 1 0-6h2M12 6v12"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="branches"
+        data-icon-source="branches"
+        aria-label="Branches"
+        title="Branches"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M6 7v10M8 5h4a6 6 0 0 1 6 6v1"></path>
+          <path d="M6 5h.1M18 6h.1M6 19h.1"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="actions"
+        data-icon-source="actions"
+        aria-label="Actions"
+        title="Actions"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="releases"
+        data-icon-source="releases"
+        aria-label="Releases"
+        title="Releases"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7M12 3v12m-5-7 5-5 5 5"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="pages"
+        data-icon-source="pages"
+        aria-label="GitHub Pages"
+        title="GitHub Pages"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M4 5h16v14H4z"></path>
+          <path d="M4 9h16M8 13h4M8 16h8"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="settings"
+        data-icon-source="settings"
+        aria-label="Settings"
+        title="Settings"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+          <path d="M4 12h3m10 0h3M12 4v3m0 10v3m-5.7-3.7 2.1-2.1"></path>
+          <path d="m15.6 8.4 2.1-2.1m0 11.4-2.1-2.1M8.4 8.4 6.3 6.3"></path>
+        </svg>
+      </button>
+      <button
+        class="tab-button"
+        type="button"
+        data-tab="debug"
+        data-icon-source="debug"
+        aria-label="DevTools"
+        title="DevTools"
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="m8 9-4 3 4 3m8-6 4 3-4 3m-2-11-4 16"></path>
+        </svg>
+      </button>
+      <span data-icon-source="folder">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H3z"></path>
+          <path d="M3 9h18l-2 9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path>
+        </svg>
+      </span>
+      <span data-icon-source="copy">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <rect x="8" y="8" width="11" height="11" rx="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path>
+        </svg>
+      </span>
+      <span data-icon-source="trash">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M4 7h16"></path>
+          <path d="M10 11v6"></path>
+          <path d="M14 11v6"></path>
+          <path d="M6 7l1 14h10l1-14"></path>
+          <path d="M9 7V4h6v3"></path>
+        </svg>
+      </span>
+      <span data-icon-source="category">
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path
+              d="M4.2 3.5 H9.3 A1.4 1.4 0 0 1 10.7 4.9 V10 A1.4 1.4 0 0 1 9.3 11.4
+                H4.2 A1.4 1.4 0 0 1 2.8 10 V4.9 A1.4 1.4 0 0 1 4.2 3.5 Z"
+            ></path>
+            <circle cx="17.25" cy="7.45" r="3.95"></circle>
+            <path d="M6.75 13.4 L10.95 20.5 H2.55 Z"></path>
+            <path
+              d="M14.7 13.4 H19.8 A1.4 1.4 0 0 1 21.2 14.8 V19.9 A1.4 1.4 0 0 1 19.8 21.3
+                H14.7 A1.4 1.4 0 0 1 13.3 19.9 V14.8 A1.4 1.4 0 0 1 14.7 13.4 Z"
+            ></path>
+          </g>
+        </svg>
+      </span>
+      <span data-icon-source="favorite">
+        <svg aria-hidden="true" viewBox="0 0 24 24">
+          <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 16.9l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"></path>
+        </svg>
+      </span>
+    </div>
+
+    <div class="shell">
+      <nav class="rail" aria-label="Guide topics">
+        <div class="brand">
+          <div class="brand-row">
+            <span id="guide-brand-icon" class="brand-icon asset" aria-hidden="true"></span>
+            <div class="brand-copy">
+              <h1>GitDesk Field Manual</h1>
+              <small>Learn the workflow. Verify the result.</small>
+            </div>
+          </div>
+          <p>For first-time and returning users who want a safe path through Repo, Local, and release work.</p>
+        </div>
+        <div class="rail-tools">
+          <div class="rail-actions">
+            <button
+              id="guide-nav-toggle"
+              class="rail-action guide-nav-toggle"
+              type="button"
+              aria-controls="guide-tabs"
+              aria-expanded="false"
+            >
+              Chapters
+            </button>
+            <button id="guide-theme-toggle" class="rail-action" type="button">Dark theme</button>
+          </div>
+          <div class="guide-progress">
+            <div class="guide-progress-label">
+              <span>Learning progress</span>
+              <span id="guide-progress-text">0 of 0 complete</span>
+            </div>
+            <progress id="guide-progress" value="0" max="1">0 of 0 complete</progress>
+          </div>
+        </div>
+        <div id="guide-tabs" class="guide-tabs"></div>
+      </nav>
+      <main id="guide-main" tabindex="-1">
+        <header class="hero">
+          <p id="kicker" class="kicker"></p>
+          <h2 id="title" tabindex="-1"></h2>
+          <p id="lead" class="lead"></p>
+        </header>
+        <section id="content" class="content"></section>
+        <p id="guide-status" class="visually-hidden" aria-live="polite"></p>
+      </main>
+    </div>
+
+    <div
+      id="image-viewer"
+      class="image-viewer"
+      tabindex="-1"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Screenshot inspector"
+      aria-hidden="true"
+    >
+      <button id="image-viewer-close" class="image-viewer-close" type="button" aria-label="Close enlarged image">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M6 6 18 18M18 6 6 18"></path>
+        </svg>
+      </button>
+      <div id="image-viewer-stage" class="image-viewer-stage">
+        <img id="image-viewer-image" alt="">
+      </div>
+      <div class="image-viewer-toolbar" aria-label="Screenshot zoom controls">
+        <button type="button" data-viewer-action="zoom-out" aria-label="Zoom out">−</button>
+        <output id="image-viewer-zoom" class="image-viewer-zoom" aria-live="polite">100%</output>
+        <button type="button" data-viewer-action="reset">Reset</button>
+        <button type="button" data-viewer-action="zoom-in" aria-label="Zoom in">+</button>
+      </div>
+    </div>
+
+    <script src="src/gitdesk/ui/toolbar-icons.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-media.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-topics-primary.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-topics-local.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-topics-secondary.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-topic-contracts.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-core.js"></script>
+    <script src="src/gitdesk/ui/gitdesk-guide-interactions.js"></script>
+  </body>
+</html>

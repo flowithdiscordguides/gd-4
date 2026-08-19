@@ -1,0 +1,185 @@
+/* Focused continuation dialog shown after a configured Public Beta release is published. */
+
+.sync-stage-three-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 48;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--gitdesk-modal-backdrop, rgba(7, 10, 18, 0.78));
+}
+
+.sync-stage-three-modal[hidden] {
+  display: none;
+}
+
+.sync-stage-three-dialog {
+  display: grid;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 40px);
+  gap: 16px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  background: var(--gitdesk-modal-panel, var(--panel));
+  box-shadow: var(--shadow);
+}
+
+.sync-stage-three-header {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.sync-stage-three-symbol {
+  width: 14px;
+  height: 14px;
+  margin: 8px;
+  border: 3px solid color-mix(in srgb, var(--gitdesk-success-bg) 30%, transparent);
+  border-radius: 50%;
+  background: var(--gitdesk-success-bg);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--gitdesk-success-bg) 40%, transparent);
+}
+
+.sync-stage-three-header small {
+  color: var(--gitdesk-success-bg);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sync-stage-three-header h2,
+.sync-stage-three-header p {
+  margin: 4px 0 0;
+}
+
+.sync-stage-three-header p,
+.sync-stage-three-release span,
+.sync-stage-three-release small,
+.sync-stage-three-mode small {
+  color: var(--muted);
+}
+
+.sync-stage-three-release {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--surface-muted);
+}
+
+.sync-stage-three-release strong {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+  color: var(--gitdesk-success-bg);
+}
+
+.sync-stage-three-mode {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--gitdesk-success-bg) 38%, var(--line));
+  border-radius: 12px;
+  padding: 13px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--gitdesk-success-bg) 6%, var(--surface-muted));
+  background-image: none;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.35;
+  text-transform: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  cursor: pointer;
+}
+
+.sync-stage-three-mode > span:nth-child(2) {
+  display: grid;
+  gap: 4px;
+}
+
+.sync-stage-three-mode input[type="checkbox"] {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  min-height: 18px;
+  margin: 1px 0 0;
+  padding: 0;
+  border: 0;
+  border-image: none;
+  -webkit-appearance: checkbox;
+  appearance: auto;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  accent-color: var(--gitdesk-success-bg);
+}
+
+#sync-stage-three-mode-state {
+  min-width: 68px;
+  color: var(--muted);
+  background: var(--surface);
+}
+
+#sync-stage-three-mode-state.success {
+  color: var(--gitdesk-success-fg);
+  background: var(--gitdesk-success-bg);
+}
+
+.sync-stage-three-status {
+  min-height: 20px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.sync-stage-three-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.sync-stage-three-actions button {
+  min-width: 112px;
+}
+
+#confirm-sync-stage-three:not(:disabled) {
+  color: var(--gitdesk-success-fg);
+  border-color: var(--gitdesk-success-bg);
+  background: var(--gitdesk-success-bg);
+}
+
+@media (max-width: 520px) {
+  .sync-stage-three-header {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+  #close-sync-stage-three {
+    grid-column: 1 / -1;
+  }
+
+  .sync-stage-three-mode {
+    grid-template-columns: 20px minmax(0, 1fr);
+  }
+
+  #sync-stage-three-mode-state {
+    grid-column: 2;
+  }
+
+  .sync-stage-three-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

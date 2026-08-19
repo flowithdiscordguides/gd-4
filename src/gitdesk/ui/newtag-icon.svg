@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <mask id="badge-mask-tag">
+      <rect width="512" height="512" fill="white"/>
+      <circle cx="432" cy="432" r="88" fill="black"/>
+    </mask>
+  </defs>
+  <g id="tag-base" mask="url(#badge-mask-tag)">
+    <g transform="rotate(135 256 256)">
+      <path d="M 124 172 H 312 L 416 256 L 312 340 H 124 A 28 28 0 0 1 96 312 V 200 A 28 28 0 0 1 124 172 Z"
+        stroke="#FFFFFF"
+        stroke-width="32"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+      <circle cx="160" cy="256" r="20" fill="#FFFFFF"/>
+    </g>
+  </g>
+  <g id="create-new-badge">
+    <circle cx="432" cy="432" r="56" stroke="#FFFFFF" stroke-width="22" fill="none"/>
+    <path d="M 432 408 V 456 M 408 432 H 456"
+      stroke="#FFFFFF"
+      stroke-width="20"
+      fill="none"
+      stroke-linecap="round"/>
+  </g>
+</svg>

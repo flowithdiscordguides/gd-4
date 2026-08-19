@@ -1,0 +1,9 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js 3D Generator"
+  short_description: "Plan user-run 3D assets and integrate supplied models"
+  default_prompt: >-
+    Read ../SKILL.md and its applicable repository-local references. Never probe credentials, call providers, upload,
+    download, use credits, execute scripts, install, build, test, launch, browse, or access a network. Require explicit
+    provider and artifact authorization, prepare only user-run guidance, and distinguish source verification from
+    user-supplied provider and runtime evidence.

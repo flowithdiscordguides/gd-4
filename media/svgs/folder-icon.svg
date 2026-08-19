@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  {/* ========================================== */}
+  {/* FOLDER — "open in perspective" style:      */}
+  {/* back panel + tilted front flap, so it      */}
+  {/* reads as an open folder holding things,    */}
+  {/* not the flat generic folder glyph          */}
+  {/* ========================================== */}
+
+  {/* ========================================== */}
+  {/* 1. BACK PANEL (with tab, drawn first)      */}
+  {/* ========================================== */}
+  <g id="folder-back">
+    <path d="M 96 400 
+             V 128 
+             A 24 24 0 0 1 120 104 
+             H 196 
+             L 236 152 
+             H 380 
+             A 24 24 0 0 1 404 176 
+             V 216" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 2. FRONT FLAP (tilted, open perspective)   */}
+  {/* ========================================== */}
+  <g id="folder-front">
+    <path d="M 96 400 
+             L 148 244 
+             A 28 28 0 0 1 174 224 
+             H 428 
+             A 20 20 0 0 1 447 250 
+             L 400 382 
+             A 28 28 0 0 1 374 400 
+             H 96 Z" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 3. PEEKING DOCUMENT DOTS (inside detail)   */}
+  {/* ========================================== */}
+  <g id="content-dots">
+    <circle cx="262" cy="312" r="15" fill="#FFFFFF"/>
+    <circle cx="316" cy="312" r="15" fill="#FFFFFF"/>
+  </g>
+</svg>

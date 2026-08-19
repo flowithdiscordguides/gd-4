@@ -1,0 +1,38 @@
+/*
+  Compact published-site state for GitHub Actions run details.
+*/
+
+.actions-pages-result {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 38px;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-weight: 750;
+}
+
+.actions-pages-result.danger {
+  color: #f7f8fa;
+  border-color: rgba(255, 95, 86, 0.58);
+  background: rgba(116, 23, 20, 0.72);
+}
+
+.actions-pages-result.building,
+.actions-pages-result.unavailable {
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.actions-pages-mark {
+  color: #bbf7d0;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.actions-pages-result.danger .actions-pages-mark {
+  color: #ff5f56;
+}

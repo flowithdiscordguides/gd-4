@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    {/* Mask to cleanly cut out the notepad stroke behind the badge */}
+    <mask id="badge-mask-notes">
+      <rect width="512" height="512" fill="white"/>
+      <circle cx="432" cy="432" r="88" fill="black"/>
+    </mask>
+  </defs>
+
+  {/* ========================================== */}
+  {/* 1. BASE NOTEPAD LAYER (Masked)             */}
+  {/* ========================================== */}
+  <g id="notepad-base" mask="url(#badge-mask-notes)">
+    {/* Notepad Body */}
+    <rect x="112" y="96" width="288" height="336" rx="32" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linejoin="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 2. SPIRAL BINDING (Top Rings)              */}
+  {/* ========================================== */}
+  <g id="spiral-binding">
+    {/* Three binding rings crossing the top edge — instantly reads "notepad" */}
+    <line x1="184" y1="64" x2="184" y2="132" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+          
+    <line x1="256" y1="64" x2="256" y2="132" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+          
+    <line x1="328" y1="64" x2="328" y2="132" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 3. NOTE CONTENT LINES (Inner Detail)       */}
+  {/* ========================================== */}
+  <g id="note-lines">
+    {/* Line 1 (full width) */}
+    <line x1="176" y1="216" x2="336" y2="216" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+          
+    {/* Line 2 (full width) */}
+    <line x1="176" y1="288" x2="336" y2="288" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+          
+    {/* Line 3 (short — trailing edge) */}
+    <line x1="176" y1="360" x2="256" y2="360" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          stroke-linecap="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 4. "CREATE NEW" BADGE (+) LAYER            */}
+  {/* ========================================== */}
+  <g id="create-new-badge">
+    {/* Outer Badge Ring */}
+    <circle cx="432" cy="432" r="56" 
+            stroke="#FFFFFF" 
+            stroke-width="22" 
+            fill="none"/>
+            
+    {/* Inner Plus Sign */}
+    <path d="M 432 408 V 456 M 408 432 H 456" 
+          stroke="#FFFFFF" 
+          stroke-width="20" 
+          fill="none" 
+          stroke-linecap="round"/>
+  </g>
+</svg>

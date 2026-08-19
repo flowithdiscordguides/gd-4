@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <mask id="moon-mask">
+      <rect width="512" height="512" fill="white"/>
+      <path d="M 260 112
+               A 92 92 0 1 0 310 258
+               A 72 72 0 0 1 260 112 Z"
+            fill="black"
+            stroke="black"
+            stroke-width="76"
+            stroke-linejoin="round"/>
+    </mask>
+  </defs>
+  <g id="cloud" mask="url(#moon-mask)">
+    <path d="M 200 368
+             H 356
+             C 392 368, 420 342, 420 310
+             C 420 280, 396 256, 366 254
+             C 356 220, 324 196, 288 196
+             C 250 196, 218 222, 210 258
+             C 178 260, 152 286, 152 316
+             C 152 346, 174 368, 200 368 Z"
+          stroke="#FFFFFF"
+          stroke-width="30"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+  <g id="crescent-moon">
+    <path d="M 260 112
+             A 92 92 0 1 0 310 258
+             A 72 72 0 0 1 260 112 Z"
+          stroke="#FFFFFF"
+          stroke-width="30"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+  </g>
+  <g id="stars">
+    <path d="M 388 96
+             C 391 114, 400 123, 418 126
+             C 400 129, 391 138, 388 156
+             C 385 138, 376 129, 358 126
+             C 376 123, 385 114, 388 96 Z"
+          fill="#FFFFFF"/>
+    <path d="M 104 118
+             C 106 131, 113 138, 126 140
+             C 113 142, 106 149, 104 162
+             C 102 149, 95 142, 82 140
+             C 95 138, 102 131, 104 118 Z"
+          fill="#FFFFFF"/>
+    <path d="M 116 316
+             C 117.5 326, 123 331.5, 133 333
+             C 123 334.5, 117.5 340, 116 350
+             C 114.5 340, 109 334.5, 99 333
+             C 109 331.5, 114.5 326, 116 316 Z"
+          fill="#FFFFFF"/>
+  </g>
+</svg>

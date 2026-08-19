@@ -1,0 +1,42 @@
+# Python bytecode and cache directories are generated locally and should not be versioned.
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments and dependency directories belong to each developer's machine.
+venv/
+.venv/
+env/
+node_modules/
+
+# Environment files can contain tokens and must never be committed.
+.env
+.env.local
+.env.*.local
+
+# Local token vault files contain encrypted credentials or local vault keys.
+tokens.vault.json
+tokens.key
+*.vault.json
+
+# Build output is reproducible from source and should stay out of version control.
+dist/
+build/
+*.egg-info/
+src/gitdesk/_build_version.py
+
+# Logs and local operating system metadata are machine-specific.
+*.log
+.DS_Store
+
+# Editor metadata should remain local unless project-specific settings are intentionally added.
+.vscode/
+.idea/
+/.claude/
+/CLAUDE.md
+/terminal-send.commands.json
+/[vibeguard_logs]/
+
+# Retired repository-local runtime folders must never re-enter source control.
+/AI-Skills/
+/local files/

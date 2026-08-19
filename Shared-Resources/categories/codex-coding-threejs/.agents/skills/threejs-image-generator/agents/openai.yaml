@@ -1,0 +1,9 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js Image Generator"
+  short_description: "Plan user-run images and integrate supplied game art"
+  default_prompt: >-
+    Read ../SKILL.md and use repository-local routing only. Never probe credentials, call providers, upload, download,
+    use credits, execute scripts, install, build, test, launch, browse, or access a network. Require explicit provider
+    and artifact authorization, prepare only user-run guidance, and distinguish source verification from user-supplied
+    image and runtime evidence.

@@ -1,0 +1,35 @@
+# This package metadata defines the Python desktop app and its pinned runtime dependencies.
+[project]
+name = "gitdesk"
+version = "0.0.6"
+description = "A lightweight Python webui2 desktop client for Git and GitHub release workflows."
+requires-python = ">=3.10"
+dependencies = [
+    "webui2==2.5.8",
+    "GitPython==3.1.58",
+    "requests==2.34.2",
+    "keyring==25.7.0",
+    "cryptography==49.0.0",
+    "platformdirs==4.11.1",
+    "PyYAML==6.0.3",
+    "Pillow==12.3.0",
+    "imageio-ffmpeg==0.6.0",
+    "pyobjc-framework-Cocoa==12.2.1; platform_system == 'Darwin'",
+]
+
+# Installing the package exposes a small command that launches the WebUI desktop window.
+[project.scripts]
+gitdesk = "gitdesk.app:run_app"
+
+# Setuptools reads the source package from src/ so app code stays separate from project metadata.
+[build-system]
+requires = ["setuptools>=80.9.0", "wheel>=0.45.1"]
+build-backend = "setuptools.build_meta"
+
+# The package finder keeps importable Python modules under the src directory.
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# The WebUI frontend is package data so installed builds can still open the desktop UI.
+[tool.setuptools.package-data]
+gitdesk = ["ui/*.html", "ui/*.css", "ui/*.js", "ui/*.svg"]

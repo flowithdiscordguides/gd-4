@@ -1,0 +1,148 @@
+/*
+  Compact trigger and downward-opening multi-action menu for the Local Mode project picker.
+*/
+
+.local-project-picker-trigger {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding-inline: 12px;
+  text-align: left;
+}
+
+.local-project-picker-trigger-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-project-picker-caret {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 120ms ease;
+}
+
+.local-project-picker-trigger[aria-expanded="true"] .local-project-picker-caret {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.local-project-picker-menu {
+  position: fixed;
+  z-index: 48;
+  display: grid;
+  max-height: calc(100vh - 24px);
+  max-height: min(510px, calc(100dvh - 24px));
+  grid-auto-rows: max-content;
+  align-content: start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 6px;
+  color: var(--text);
+  background: var(--gitdesk-modal-panel);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.34);
+  scrollbar-gutter: stable;
+}
+
+.local-project-picker-menu[hidden] {
+  display: none;
+}
+
+.local-project-picker-category {
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+}
+
+.local-project-picker-category + .local-project-picker-category {
+  margin-top: 5px;
+  border-top: 1px solid var(--line);
+  padding-top: 5px;
+}
+
+.local-project-picker-category-label {
+  overflow: hidden;
+  padding: 7px 10px 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.local-project-picker-option-row {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.local-project-picker-menu button {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border-color: transparent;
+  padding-inline: 10px;
+  text-align: left;
+  background: transparent;
+  box-shadow: none;
+}
+
+.local-project-picker-menu .local-project-picker-vscode {
+  width: auto;
+  min-width: 68px;
+  grid-template-columns: auto;
+  padding-inline: 9px;
+  font-size: 11px;
+  font-weight: 750;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.local-project-picker-menu .local-project-picker-vscode:disabled {
+  border-color: transparent;
+  background: transparent;
+  opacity: 0.5;
+}
+
+.local-project-picker-menu button > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.local-project-picker-menu button:is(:hover, :focus-visible) {
+  border-color: var(--gitdesk-control-hover-border);
+  background: var(--gitdesk-control-hover-bg);
+}
+
+.local-project-picker-menu button.selected {
+  color: #111418;
+  border-color: rgba(255, 255, 255, 0.42);
+  background: linear-gradient(180deg, #f2f3f4, #aeb6bd);
+}
+
+.local-project-picker-missing {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.local-project-picker-menu button.selected .local-project-picker-missing {
+  color: #7d211d;
+}

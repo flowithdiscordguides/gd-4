@@ -1,0 +1,157 @@
+/*
+  Diagnostics panel styles kept separate so the main application stylesheet stays under the file-size ceiling.
+*/
+
+.debug-log {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-height: 0;
+  overflow: auto;
+}
+
+#panel-debug.panel.active {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-height: 0;
+  overflow: hidden;
+}
+
+.debug-actions,
+.debug-section-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.debug-actions {
+  justify-content: flex-end;
+}
+
+.debug-busy-state,
+.debug-section-header span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.debug-status {
+  min-height: 36px;
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 12px;
+  background: var(--surface-muted);
+}
+
+.debug-status:empty::before {
+  color: var(--muted);
+  content: "System ready";
+}
+
+.debug-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.72fr) minmax(420px, 1.28fr);
+  gap: 16px;
+  min-height: 0;
+}
+
+.debug-section {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  gap: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: var(--glass);
+}
+
+.debug-section-header {
+  justify-content: space-between;
+}
+
+.debug-section-header h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.debug-section .activity-log {
+  align-content: start;
+  min-height: 0;
+  margin-top: 0;
+  overflow: auto;
+}
+
+.icon-button {
+  display: inline-grid;
+  width: 34px;
+  padding: 0;
+  place-items: center;
+}
+
+.icon-button svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.debug-entry {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.debug-entry.warn {
+  border-left-color: var(--amber);
+}
+
+.debug-entry.error {
+  border-left-color: var(--red);
+}
+
+.debug-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.debug-entry pre {
+  max-height: 260px;
+  margin: 0;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Status feedback stays visually stable so repeated actions cannot create a flashing sequence. */
+.tab-button[data-tab="debug"].debug-feedback-success svg {
+  color: #42f58d;
+}
+
+.tab-button[data-tab="debug"].debug-feedback-error svg {
+  color: #ff4f5f;
+}
+
+@media (max-width: 900px) {
+  .debug-layout {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+
+  .debug-section {
+    min-height: 300px;
+  }
+}

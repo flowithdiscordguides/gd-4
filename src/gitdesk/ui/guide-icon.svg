@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- UI copy of media/svgs/guide-icon.svg used by packaged WebUI asset paths. -->
+  <g id="page-left">
+    <path d="M12 6.2 C10 4.8 6.5 4.2 2.8 5 V17.8 C6.5 17 10 17.6 12 19"
+          stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="page-right">
+    <path d="M12 6.2 C14 4.8 17.5 4.2 21.2 5 V17.8 C17.5 17 14 17.6 12 19"
+          stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="ribbon">
+    <path d="M15.7 4.7 V9.3 L17.1 8 L18.5 9.4 V4.6"
+          stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="question-mark">
+    <path d="M10.5 9.9 a1.6 1.6 0 0 1 3.1 0.5 c0 1.1 -1.6 1.3 -1.6 2.4 v0.4"
+          stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="15.6" r="0.9" fill="#FFFFFF"/>
+  </g>
+</svg>

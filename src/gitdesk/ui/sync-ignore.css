@@ -1,0 +1,278 @@
+/*
+  Focused Sync Ignore tree and System Settings JSON viewer presentation.
+*/
+
+.sync-ignore-dialog,
+.metadata-viewer-dialog {
+  position: fixed;
+  z-index: 80;
+  display: grid;
+  inset: 0;
+  padding: 28px;
+  background: rgba(4, 7, 11, 0.72);
+  place-items: center;
+}
+
+.sync-ignore-dialog[hidden],
+.metadata-viewer-dialog[hidden] {
+  display: none;
+}
+
+.sync-ignore-panel,
+.metadata-viewer-panel {
+  display: grid;
+  width: min(860px, 100%);
+  max-height: min(760px, calc(100vh - 56px));
+  gap: 14px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.sync-ignore-panel {
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  height: min(760px, calc(100vh - 56px));
+  min-height: 0;
+}
+
+.sync-ignore-header,
+.metadata-viewer-panel > header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.sync-ignore-header > div:first-child {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.sync-ignore-header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.sync-ignore-header span {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sync-ignore-header h2,
+.metadata-viewer-panel h2 {
+  margin: 4px 0;
+}
+
+.sync-ignore-header p,
+.metadata-settings-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.sync-ignore-notice {
+  border-left: 3px solid var(--gitdesk-building-bg);
+  padding: 9px 12px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--gitdesk-building-bg) 10%, transparent);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.sync-ignore-tree {
+  display: grid;
+  align-content: start;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  background: color-mix(in srgb, var(--surface-muted) 78%, transparent);
+}
+
+.sync-ignore-branch > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.sync-ignore-branch > summary::-webkit-details-marker {
+  display: none;
+}
+
+.sync-ignore-row {
+  display: grid;
+  grid-template-columns: 16px 22px 24px minmax(0, 1fr) auto auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 42px;
+  border-radius: 8px;
+  padding: 7px 10px;
+  padding-left: calc(10px + var(--sync-ignore-indent, 0px));
+}
+
+.sync-ignore-branch > summary:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: -2px;
+}
+
+.sync-ignore-disclosure {
+  display: grid;
+  width: 16px;
+  height: 16px;
+  transition: transform 140ms ease;
+  place-items: center;
+}
+
+.sync-ignore-disclosure::before {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.sync-ignore-branch[open] > summary .sync-ignore-disclosure {
+  transform: rotate(90deg);
+}
+
+.sync-ignore-disclosure-empty::before {
+  display: none;
+}
+
+.sync-ignore-row:hover {
+  background: color-mix(in srgb, var(--green) 8%, transparent);
+}
+
+.sync-ignore-row input {
+  width: 19px;
+  height: 19px;
+  margin: 0;
+  accent-color: var(--green);
+}
+
+.sync-ignore-node-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--gitdesk-icon-color, var(--text));
+  background: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.sync-ignore-folder .sync-ignore-node-icon {
+  mask-image: url("./folder-icon.svg");
+}
+
+.sync-ignore-file .sync-ignore-node-icon {
+  mask-image: url("./file-icon.svg");
+}
+
+.sync-ignore-node-name {
+  min-width: 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.sync-ignore-row small {
+  color: var(--muted);
+}
+
+.sync-ignore-footer {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sync-ignore-footer p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.metadata-settings-card {
+  display: grid;
+  gap: 14px;
+}
+
+.metadata-file-list {
+  display: grid;
+  gap: 7px;
+}
+
+.metadata-file-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.metadata-file-row > span {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.metadata-file-row code,
+#metadata-viewer-path {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.metadata-viewer-panel {
+  grid-template-rows: auto minmax(0, 1fr);
+  height: min(720px, calc(100vh - 56px));
+}
+
+#metadata-viewer-content {
+  min-height: 0;
+  margin: 0;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  color: var(--text);
+  background: #0b0e12;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sync-ignore-disclosure {
+    transition: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .sync-ignore-dialog,
+  .metadata-viewer-dialog {
+    padding: 12px;
+  }
+
+  .sync-ignore-row {
+    grid-template-columns: 14px 20px 20px minmax(0, 1fr);
+  }
+
+  .sync-ignore-row small,
+  .sync-ignore-row .status-pill {
+    display: none;
+  }
+}

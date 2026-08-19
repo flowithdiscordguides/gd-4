@@ -1,0 +1,21 @@
+/*
+  In-app Guide panel layout for the GitDesk toolbar Guide tab.
+*/
+
+.guide-panel {
+  min-height: 0;
+}
+
+.guide-panel.active {
+  display: flex;
+}
+
+.guide-frame {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+  border: 0;
+  border-radius: 8px;
+  background: var(--panel);
+}

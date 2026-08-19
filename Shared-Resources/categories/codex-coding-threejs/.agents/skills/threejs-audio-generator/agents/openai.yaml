@@ -1,0 +1,9 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js Audio Generator"
+  short_description: "Plan user-run audio and integrate supplied game sound"
+  default_prompt: >-
+    Read ../SKILL.md and its applicable repository-local references. Never probe credentials, call providers, upload,
+    download, use credits, execute scripts, install, build, test, launch, browse, or access a network. Require explicit
+    provider, artifact, voice-consent, and credit authorization; prepare only user-run guidance and source-verify the
+    runtime audio contract without claiming playback evidence.

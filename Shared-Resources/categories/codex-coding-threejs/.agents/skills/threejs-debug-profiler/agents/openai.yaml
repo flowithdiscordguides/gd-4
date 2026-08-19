@@ -1,0 +1,8 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js Debug Profiler"
+  short_description: "Trace Three.js defects and performance risks"
+  default_prompt: >-
+    Read ../SKILL.md and its applicable repository-local references. Diagnose from complete source and current
+    user-supplied errors or metrics. Never execute, install, build, test, launch, browse, run Playwright, or access a
+    network. Do not invent reproduction or performance evidence; state exact source findings and runtime limits.

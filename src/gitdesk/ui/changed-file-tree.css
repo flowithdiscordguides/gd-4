@@ -1,0 +1,117 @@
+/*
+  Foldable changed-file tree styles used by the Overview file list.
+*/
+
+.overview-left .file-tree-folder-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  padding-left: calc(12px + var(--tree-indent, 0px));
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035));
+}
+
+.overview-left .file-tree-folder-row.ignore-mode {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.overview-left .file-row {
+  padding-left: calc(12px + var(--tree-indent, 0px));
+}
+
+.overview-left .file-row.status-modified {
+  --file-status-color: 111, 176, 255;
+  --file-status-text: 218, 236, 255;
+}
+
+.overview-left .file-row.status-untracked {
+  --file-status-color: 245, 174, 79;
+  --file-status-text: 255, 231, 199;
+}
+
+.overview-left .file-row.status-added,
+.overview-left .file-row.status-copied {
+  --file-status-color: 83, 206, 140;
+  --file-status-text: 209, 255, 226;
+}
+
+.overview-left .file-row.status-deleted,
+.overview-left .file-row.status-conflict,
+.overview-left .file-row.status-unmerged {
+  --file-status-color: 255, 117, 107;
+  --file-status-text: 255, 218, 216;
+}
+
+.overview-left .file-row.status-renamed,
+.overview-left .file-row.status-changed {
+  --file-status-color: 186, 178, 255;
+  --file-status-text: 232, 229, 255;
+}
+
+.overview-left .file-row[class*="status-"] {
+  border-right: 5px solid rgb(var(--file-status-color));
+  background:
+    linear-gradient(270deg, rgba(var(--file-status-color), 0.2), rgba(255, 255, 255, 0.045) 58%);
+}
+
+.overview-left .file-row[class*="status-"]:hover,
+.overview-left .file-row[class*="status-"].active {
+  border-color: rgba(var(--file-status-color), 0.86);
+  border-right-color: rgb(var(--file-status-color));
+  background:
+    linear-gradient(270deg, rgba(var(--file-status-color), 0.3), rgba(255, 255, 255, 0.075) 62%);
+}
+
+.overview-left .file-row[class*="status-"] .file-path {
+  color: rgb(var(--file-status-text));
+}
+
+.overview-left .status-pill[class*="file-status-"] {
+  color: #101317;
+  background: rgb(var(--file-status-color));
+  box-shadow: 0 0 18px rgba(var(--file-status-color), 0.18);
+}
+
+.overview-left .file-checkbox,
+.overview-left .ignore-checkbox {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--green);
+  cursor: pointer;
+}
+
+.folder-toggle {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  gap: 8px;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+}
+
+.folder-toggle:hover {
+  transform: none;
+}
+
+.folder-caret {
+  flex: 0 0 14px;
+  color: var(--muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.folder-name {
+  overflow: hidden;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

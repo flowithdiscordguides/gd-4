@@ -1,0 +1,206 @@
+/*
+  Shared Resources dialogs and publishing controls extend GitDesk's existing compact desktop component system.
+*/
+
+/* The fixed backdrop keeps resource decisions above either Local Mode or Document Builder without shifting panels. */
+.shared-resources-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 44;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(7, 10, 18, 0.68);
+}
+
+.shared-resources-dialog[hidden] {
+  display: none;
+}
+
+/* A bounded single-surface dialog gives naturally long catalogs one clear scroll owner. */
+.shared-resources-panel {
+  width: min(720px, 100%);
+  max-height: min(760px, calc(100dvh - 48px));
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 14px;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.shared-resources-header {
+  align-items: flex-start;
+  gap: 16px;
+  margin: 0;
+}
+
+.shared-resources-header h2,
+.shared-resources-header p {
+  margin: 0;
+}
+
+/* A removal-bearing apply command uses the established danger color while retaining an explicit text count. */
+.shared-resources-destructive {
+  color: #fff;
+  border-color: var(--red);
+  background: var(--red);
+}
+
+.shared-resources-header p {
+  margin-top: 5px;
+  color: var(--muted);
+}
+
+/* The merge note explains the safety boundary next to the controls that can remove managed files. */
+.shared-resources-merge-note {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--green) 32%, var(--line));
+  border-radius: 10px;
+  color: var(--muted);
+  background: color-mix(in srgb, var(--green) 8%, transparent);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.shared-resources-list {
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: 8px;
+  min-height: 120px;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+/* Each resource row keeps selection, revision facts, status, and update action in one scan line. */
+.shared-resource-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 58px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface, var(--panel)) 72%, transparent);
+}
+
+.shared-resource-choice {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.shared-resource-choice input {
+  width: 17px;
+  height: 17px;
+  margin: 0;
+}
+
+.shared-resource-choice span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.shared-resource-choice strong,
+.shared-resource-choice small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shared-resource-choice small {
+  color: var(--muted);
+}
+
+.shared-resource-choice .shared-resource-tracking-note {
+  color: var(--amber);
+  line-height: 1.35;
+  text-overflow: clip;
+  white-space: normal;
+}
+
+.shared-resource-row-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Missing and outdated rows gain a semantic edge while their text status remains the primary signal. */
+.shared-resource-row[data-resource-status="outdated"],
+.shared-resource-row[data-resource-status="missing"],
+.shared-resource-row[data-resource-status="legacy"] {
+  border-color: color-mix(in srgb, var(--amber) 52%, var(--line));
+}
+
+.document-shared-resource-panel {
+  width: min(560px, 100%);
+  grid-template-rows: auto auto;
+}
+
+.document-shared-resource-form {
+  display: grid;
+  gap: 9px;
+}
+
+.document-shared-resource-form select,
+.document-shared-resource-form input {
+  width: 100%;
+}
+
+.document-shared-resource-form .row-meta {
+  margin: 0 0 4px;
+}
+
+.document-shared-resource-form button[type="submit"] {
+  justify-self: start;
+}
+
+/* Selected-file actions wrap as a stable group instead of allowing long labels to overlap the inspector. */
+.document-shared-resource-actions {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+#document-shared-resource-link {
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+}
+
+/* Narrow windows stack row actions and keep modal controls reachable without horizontal scrolling. */
+@media (max-width: 620px) {
+  .shared-resources-dialog {
+    place-items: end center;
+    padding: 12px;
+  }
+
+  .shared-resources-panel {
+    max-height: calc(100dvh - 24px);
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .shared-resources-header,
+  .shared-resource-row {
+    grid-template-columns: 1fr;
+  }
+
+  .shared-resources-header {
+    display: grid;
+  }
+
+  .shared-resources-header .button-row,
+  .shared-resource-row-actions {
+    justify-content: flex-start;
+  }
+}

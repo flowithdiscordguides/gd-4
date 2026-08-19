@@ -1,0 +1,15 @@
+<svg width="512" height="512" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Toggle switches icon — white stroke, transparent background, matched to toolbar line-icon style -->
+
+  <!-- Top toggle: switched ON (handle right) -->
+  <g id="toggle-top">
+    <rect x="3.1" y="3.6" width="17.8" height="6.8" rx="3.4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="17.5" cy="7" r="1.7" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Bottom toggle: switched OFF (handle left) -->
+  <g id="toggle-bottom">
+    <rect x="3.1" y="13.6" width="17.8" height="6.8" rx="3.4" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="6.5" cy="17" r="1.7" fill="#FFFFFF"/>
+  </g>
+</svg>

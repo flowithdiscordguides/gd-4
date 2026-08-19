@@ -1,0 +1,309 @@
+/*
+  macOS-inspired glass theme layer for GitDesk.
+*/
+
+body {
+  min-width: 0;
+  min-height: 100vh;
+  background: var(--gitdesk-body-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+  border-color: var(--line);
+  color: var(--text);
+  background: var(--gitdesk-control-bg);
+  box-shadow: var(--gitdesk-control-shadow);
+}
+
+button {
+  min-height: 38px;
+  border-radius: 12px;
+  font-weight: 750;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--gitdesk-control-hover-border);
+  background: var(--gitdesk-control-hover-bg);
+}
+
+button.primary, #commit-button, #commit-push-button, #publish-release,
+#save-account, #clone-repository, #add-managed-repo, #save-pages {
+  color: #111418;
+  border-color: rgba(255, 255, 255, 0.42);
+  background: linear-gradient(180deg, #f2f3f4, #aeb6bd);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+button:disabled, #commit-button:disabled, #commit-push-button:disabled, #push-button:disabled {
+  color: var(--gitdesk-disabled-text);
+  border-color: var(--gitdesk-disabled-border);
+  background: var(--gitdesk-disabled-bg);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+input, select, textarea {
+  min-height: 40px;
+  border-radius: 12px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--gitdesk-placeholder);
+}
+
+label {
+  color: var(--gitdesk-label);
+  letter-spacing: 0.11em;
+}
+
+.app-shell {
+  min-height: 100vh;
+  background: transparent;
+}
+
+.topbar, .toolbar, .overview-pane,
+.settings-block, .repo-dialog-panel, .ai-skills-dialog-panel,
+.pat-help-panel, .pages-status, .pages-form {
+  border-color: var(--line);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(24px) saturate(145%);
+  backdrop-filter: blur(24px) saturate(145%);
+  box-shadow: var(--shadow);
+}
+
+body :is(.repo-dialog, .ai-skills-dialog, .local-duplicate-dialog, .new-project-modal, .local-compare-modal),
+body #panel-settings #pat-help { background: var(--gitdesk-modal-backdrop); }
+
+body :is(.repo-dialog-panel, .ai-skills-dialog-panel, .pat-help-panel, .local-duplicate-panel,
+.history-dialog, .tag-dialog, .new-project-dialog, .local-compare-dialog) {
+  background: var(--gitdesk-modal-panel);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.topbar {
+  grid-template-columns: minmax(210px, 280px) minmax(0, 1fr);
+  border-bottom-color: var(--gitdesk-topbar-border);
+  padding: 16px 24px;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  color: #ffffff;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(255, 255, 255, 0.22), transparent 24%),
+    linear-gradient(145deg, #3d474f, #13191f);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.brand-block h1 {
+  font-size: 23px;
+  letter-spacing: -0.01em;
+}
+
+.toolbar .tab-button,
+.icon-button {
+  background: var(--gitdesk-icon-button-bg);
+}
+
+.theme-toggle { background: var(--gitdesk-theme-toggle-bg); }
+
+.repo-controls {
+  grid-template-columns: minmax(220px, 520px) auto auto auto auto auto;
+  align-items: center;
+}
+
+.repo-controls label {
+  margin-bottom: 0;
+}
+
+.repo-controls select {
+  height: 46px;
+  border-color: var(--gitdesk-repo-select-border);
+  background: var(--gitdesk-repo-select-bg);
+}
+
+#add-managed-repo,
+#refresh-github-repos,
+#refresh-status,
+#pull-button,
+#fetch-button {
+  height: 46px;
+  min-width: 94px;
+}
+
+#pull-button,
+#fetch-button {
+  position: relative;
+}
+
+#pull-button.has-remote-update::after,
+#fetch-button.has-remote-update::after {
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid rgba(15, 18, 21, 0.86);
+  border-radius: 999px;
+  background: #49dc7d;
+  box-shadow: 0 0 12px rgba(73, 220, 125, 0.55);
+  content: "";
+}
+
+.toolbar {
+  gap: 10px;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  padding: 9px 24px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+.toolbar .tab-button {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  color: var(--gitdesk-toolbar-icon);
+}
+
+.toolbar .tab-button.active {
+  color: #111418;
+  background: linear-gradient(145deg, #f1f3f5, #aab2ba);
+}
+
+.workspace {
+  padding: 22px 24px;
+  background: transparent;
+}
+
+.overview-layout {
+  grid-template-columns: minmax(330px, 0.38fr) minmax(480px, 1fr);
+  gap: 22px;
+}
+
+.overview-pane {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.overview-pane-header {
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.overview-pane-header h2 {
+  font-size: 20px;
+}
+
+.overview-left .file-list,
+.overview-left .commit-bar {
+  padding: 16px 18px;
+}
+
+.file-row,
+.branch-row,
+.run-row,
+.release-row,
+.catalog-row,
+.overview-left .file-tree-folder-row,
+.ai-skill-category-row {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: none;
+}
+
+.overview-left .file-row.active,
+.overview-left .file-row:hover,
+.overview-left .file-tree-folder-row:hover {
+  border-color: rgba(225, 230, 235, 0.32);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.file-diff-button {
+  color: var(--text);
+}
+
+.status-pill {
+  color: #111418;
+  background: #b9c0c7;
+}
+
+.status-pill.warning {
+  color: #17130e;
+  background: #b7a892;
+}
+
+.status-pill.danger {
+  color: #220807;
+  background: #ff756b;
+}
+
+.status-pill.success {
+  color: #111418;
+  background: #cfd4da;
+}
+
+.diff-viewer {
+  background: rgba(5, 7, 10, 0.36);
+}
+
+.diff-hunk {
+  color: #d6dde3;
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.repo-action-panel {
+  max-width: 420px;
+  margin: 42px auto;
+}
+
+.repo-action-button,
+#open-ai-skills-dialog {
+  min-height: 46px;
+  text-align: center;
+}
+
+.activity-entry {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-left-color: var(--green);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.empty-state {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+@media (max-width: 1080px) {
+  .topbar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .app-shell {
+    grid-template-rows: auto 58px minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .repo-controls {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .overview-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(320px, 0.95fr) minmax(360px, 1fr);
+    overflow: auto;
+  }
+
+  .workspace {
+    overflow: auto;
+  }
+}

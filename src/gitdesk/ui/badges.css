@@ -1,0 +1,97 @@
+/*
+  Shared badge and success indicator polish.
+*/
+
+:root {
+  --gitdesk-success-bg: #1f883d;
+  --gitdesk-success-fg: #ffffff;
+  --gitdesk-building-bg: #9a650d;
+  --gitdesk-failure-bg: #b42318;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 22px;
+  padding: 3px 9px;
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.status-pill.success,
+.status-pill.added,
+.status-pill.cloned,
+.status-pill.created,
+.status-pill.published,
+.status-pill.uploaded,
+.status-pill.complete {
+  color: var(--gitdesk-success-fg);
+  background: var(--gitdesk-success-bg);
+}
+
+.status-pill.building {
+  color: var(--gitdesk-success-fg);
+  background: var(--gitdesk-building-bg);
+}
+
+.managed-repo-open .status-pill,
+.release-row .status-pill,
+.run-status-line .status-pill,
+.actions-pane-header .status-pill {
+  align-self: center;
+}
+
+.actions-status-dot.success {
+  background: var(--gitdesk-success-bg);
+}
+
+.actions-status-dot.building {
+  background: var(--gitdesk-building-bg);
+}
+
+.actions-status-dot.danger {
+  background: var(--gitdesk-failure-bg);
+}
+
+.tab-button,
+.history-button {
+  position: relative;
+}
+
+.tab-alert-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--panel);
+  border-radius: 999px;
+  background: var(--gitdesk-success-bg);
+}
+
+.tab-alert-dot[hidden] {
+  display: none;
+}
+
+.tab-alert-dot.building,
+.tab-alert-dot.release-ready {
+  background: var(--gitdesk-building-bg);
+}
+
+.tab-alert-dot.success {
+  background: var(--gitdesk-success-bg);
+}
+
+.history-button.has-success-notification {
+  box-shadow:
+    0 0 14px 3px color-mix(in srgb, var(--theme-notification-glow, #ffffff) 45%, transparent),
+    0 0 30px 6px color-mix(in srgb, var(--theme-notification-glow, #ffffff) 18%, transparent);
+}
+
+.tab-alert-dot.danger {
+  background: var(--gitdesk-failure-bg);
+}

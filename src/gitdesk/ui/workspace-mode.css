@@ -1,0 +1,85 @@
+/*
+  Shared Repo, Local, Media, and Backup workspace-mode presentation.
+*/
+
+.workspace-mode-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(4, minmax(86px, auto));
+  gap: 6px;
+  align-items: center;
+  justify-self: start;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 4px;
+  background: var(--surface-muted);
+}
+
+.workspace-mode-switch button {
+  min-height: 34px;
+  border-color: transparent;
+  border-radius: 10px;
+  background: transparent;
+}
+
+.workspace-mode-switch button.active {
+  color: #111418;
+  background: linear-gradient(145deg, #f1f3f5, #aab2ba);
+}
+
+.topbar {
+  grid-template-columns: minmax(210px, 280px) auto minmax(0, 1fr);
+}
+
+:root[data-workspace-mode="repo"] .tab-button[data-tab="local"],
+:root[data-workspace-mode="repo"] .tab-button[data-tab="media"],
+:root[data-workspace-mode="repo"] .tab-button[data-tab="backup"],
+:root[data-workspace-mode="repo"] #panel-local,
+:root[data-workspace-mode="repo"] #panel-media,
+:root[data-workspace-mode="repo"] #panel-media-album-library {
+  display: none;
+}
+
+:root[data-workspace-mode="local"] .repo-controls,
+:root[data-workspace-mode="local"] .tab-button[data-tab="overview"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="clone"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="branches"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="pull-requests"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="actions"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="releases"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="pages"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="media"],
+:root[data-workspace-mode="local"] .tab-button[data-tab="backup"],
+:root[data-workspace-mode="local"] #panel-media,
+:root[data-workspace-mode="local"] #panel-media-album-library {
+  display: none;
+}
+
+:root[data-workspace-mode="media"] .repo-controls,
+:root[data-workspace-mode="media"] .tab-button[data-tab="overview"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="clone"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="branches"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="pull-requests"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="actions"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="releases"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="pages"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="local"],
+:root[data-workspace-mode="media"] .tab-button[data-tab="backup"],
+:root[data-workspace-mode="media"] #panel-local {
+  display: none;
+}
+
+:root[data-workspace-mode="backup"] .repo-controls,
+:root[data-workspace-mode="backup"] .tab-button[data-tab="overview"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="clone"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="branches"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="pull-requests"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="actions"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="releases"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="pages"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="local"],
+:root[data-workspace-mode="backup"] .tab-button[data-tab="media"],
+:root[data-workspace-mode="backup"] #panel-local,
+:root[data-workspace-mode="backup"] #panel-media,
+:root[data-workspace-mode="backup"] #panel-media-album-library {
+  display: none;
+}

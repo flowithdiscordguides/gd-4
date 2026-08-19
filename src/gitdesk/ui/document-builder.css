@@ -1,0 +1,392 @@
+/*
+  Control, categorized-picker, and modal styling shared by Document Builder's two-pane workspace.
+*/
+
+/* The body-level picker keeps categorized document selection clear of card overflow boundaries. */
+.document-picker {
+  display: grid;
+  gap: 8px;
+}
+.document-picker > label {
+  margin: 0;
+}
+.document-picker-trigger {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding-inline: 12px;
+  text-align: left;
+}
+.document-picker-trigger-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.document-picker-caret {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 120ms ease;
+}
+.document-picker-trigger[aria-expanded="true"] .document-picker-caret {
+  transform: translateY(2px) rotate(225deg);
+}
+.document-picker-menu {
+  position: fixed;
+  z-index: 48;
+  display: grid;
+  max-height: calc(100vh - 24px);
+  max-height: min(510px, calc(100dvh - 24px));
+  grid-auto-rows: max-content;
+  align-content: start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 6px;
+  color: var(--text);
+  background: var(--gitdesk-modal-panel);
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.34);
+  scrollbar-gutter: stable;
+}
+.document-picker-menu[hidden] {
+  display: none;
+}
+.document-picker-category {
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+}
+.document-picker-category + .document-picker-category {
+  margin-top: 5px;
+  border-top: 1px solid var(--line);
+  padding-top: 5px;
+}
+.document-picker-category-label {
+  overflow: hidden;
+  padding: 7px 10px 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.document-picker-menu button {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  border-color: transparent;
+  padding-inline: 10px;
+  text-align: left;
+  background: transparent;
+  box-shadow: none;
+}
+.document-picker-menu button > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.document-picker-menu button:is(:hover, :focus-visible) {
+  border-color: var(--gitdesk-control-hover-border);
+  background: var(--gitdesk-control-hover-bg);
+}
+.document-picker-menu button.selected {
+  color: #111418;
+  border-color: rgba(255, 255, 255, 0.42);
+  background: linear-gradient(180deg, #f2f3f4, #aeb6bd);
+}
+.document-picker-missing {
+  color: var(--red);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.document-picker-menu button.selected .document-picker-missing {
+  color: #7d211d;
+}
+.document-create-form,
+.document-folder-form,
+.document-file-form,
+.document-selected-controls {
+  display: grid;
+  gap: 10px;
+}
+.document-file-row {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  border-color: transparent;
+  background: transparent;
+}
+.document-file-row strong {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.document-file-row {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-muted);
+}
+
+/* Recursive groups create a modern tree without terminal-style prefix characters or oversized card rows. */
+.document-folder-list {
+  gap: 4px;
+  padding-block: 2px 4px;
+}
+
+.document-folder-branch {
+  position: relative;
+  display: grid;
+  min-width: 240px;
+  grid-auto-rows: max-content;
+  gap: 4px;
+}
+
+.document-folder-children {
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 4px;
+  margin-left: 13px;
+  border-left: 1px solid var(--line);
+  padding-left: 13px;
+}
+
+.document-folder-children > .document-folder-branch::before {
+  position: absolute;
+  top: 18px;
+  left: -13px;
+  width: 12px;
+  border-top: 1px solid var(--line);
+  content: "";
+}
+
+.document-folder-row {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 6px 9px;
+  text-align: left;
+  background: var(--surface-muted);
+}
+
+.document-folder-row:hover {
+  border-color: var(--gitdesk-control-hover-border);
+  background: var(--gitdesk-control-hover-bg);
+  transform: none;
+}
+
+.document-folder-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.78;
+}
+
+.document-folder-row strong {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.document-folder-row small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+:root[data-theme="light"] .document-folder-row:not(.active) .document-folder-icon {
+  filter: brightness(0) saturate(100%);
+}
+
+.document-folder-row.active,
+.document-file-row.active {
+  color: #f8fbff;
+  border-color: rgba(245, 248, 252, 0.72);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(92, 153, 139, 0.2)),
+    rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.document-folder-row.active .document-folder-icon {
+  opacity: 1;
+}
+
+/* Selected metadata stays label-first and reveals the rename input only for an intentional edit. */
+.document-selected-controls {
+  min-width: 0;
+  min-height: 0;
+  align-content: start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.document-selected-heading {
+  display: grid;
+  gap: 5px;
+}
+
+.document-selected-heading > span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+.document-title-row {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+.document-title-row h3 {
+  overflow: hidden;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.document-title-row h3[hidden],
+.document-title-row input[hidden] {
+  display: none;
+}
+.document-title-row input {
+  min-width: 0;
+}
+.document-category-field {
+  display: grid;
+  max-width: 250px;
+  min-width: 0;
+  gap: 6px;
+  margin: 0;
+}
+.document-category-field > span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+.document-category-field input {
+  width: 100%;
+  min-width: 0;
+}
+.document-danger {
+  justify-self: start;
+  color: var(--red);
+  border-color: rgba(255, 117, 107, 0.38);
+  background: rgba(255, 117, 107, 0.08);
+}
+.document-rename-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+.new-document-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1600;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--gitdesk-modal-backdrop);
+}
+
+.new-document-modal[hidden] {
+  display: none;
+}
+
+.new-document-dialog {
+  width: min(620px, 100%);
+  max-height: min(720px, calc(100vh - 48px));
+  display: grid;
+  gap: 18px;
+  overflow: auto;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--gitdesk-modal-panel);
+  box-shadow: var(--shadow);
+}
+
+.new-document-dialog .panel-header {
+  align-items: start;
+}
+
+.new-document-dialog .panel-header p {
+  margin-bottom: 0;
+}
+
+.new-document-dialog .document-create-form {
+  display: grid;
+  gap: 10px;
+}
+
+.document-file-form,
+.document-file-saved {
+  min-width: 0;
+  min-height: 0;
+  grid-auto-rows: max-content;
+  align-content: start;
+}
+
+.document-file-form label {
+  margin-bottom: 0;
+}
+
+.document-file-form textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.document-file-saved {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.document-file-saved[hidden],
+.document-file-form[hidden],
+#document-file-empty[hidden] {
+  display: none;
+}
+
+.document-file-saved p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}

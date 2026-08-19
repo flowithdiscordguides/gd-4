@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    {/* Mask: big cloud silhouette expanded by a thick stroke, so the sun */}
+    {/* is trimmed cleanly with a gap where the cloud passes in front     */}
+    <mask id="big-cloud-cut">
+      <rect width="512" height="512" fill="white"/>
+      <path d="M 200 416 
+               H 356 
+               C 392 416, 420 390, 420 358 
+               C 420 328, 396 304, 366 302 
+               C 356 268, 324 244, 288 244 
+               C 250 244, 218 270, 210 306 
+               C 178 308, 152 334, 152 364 
+               C 152 394, 174 416, 200 416 Z" 
+            fill="black" 
+            stroke="black" 
+            stroke-width="76" 
+            stroke-linejoin="round"/>
+    </mask>
+  </defs>
+
+  {/* ========================================== */}
+  {/* LIGHT THEME — "SUN BEHIND CLOUDS"          */}
+  {/* Small 2-lump cloud top-right (back),       */}
+  {/* sun mid-left with curvy rays,              */}
+  {/* big 3-lump cloud bottom-center (front).    */}
+  {/* ========================================== */}
+
+  {/* ========================================== */}
+  {/* 1. SMALL CLOUD (top-right, flat bottom)    */}
+  {/* Flat base, small lump left, tall lump right*/}
+  {/* ========================================== */}
+  <g id="small-cloud">
+    <path d="M 352 164 
+             H 446 
+             C 458 164, 466 156, 466 146 
+             C 466 118, 446 98, 422 98 
+             C 404 98, 390 108, 384 122 
+             C 376 116, 364 116, 356 122 
+             C 346 130, 342 142, 346 152 
+             C 340 156, 342 164, 352 164 Z" 
+          stroke="#FFFFFF" 
+          stroke-width="20" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 2. SUN (mid-left, masked by big cloud)     */}
+  {/* ========================================== */}
+  <g id="sun" mask="url(#big-cloud-cut)">
+    {/* Sun disc (lower-right tucks behind the big cloud) */}
+    <circle cx="200" cy="225" r="70" 
+            stroke="#FFFFFF" 
+            stroke-width="32" 
+            fill="none"/>
+            
+    {/* Curvy rays: gentle S-wave strokes on the exposed side */}
+    {/* Top ray */}
+    <path d="M 200 117 C 208 105, 192 93, 200 81" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Upper-left diagonal ray */}
+    <path d="M 124 149 C 121 135, 101 137, 98 123" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Left ray */}
+    <path d="M 92 225 C 80 217, 68 233, 56 225" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Lower-left diagonal ray */}
+    <path d="M 120 297 C 118 311, 98 307, 96 321" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+          
+    {/* Upper-right diagonal ray */}
+    <path d="M 276 149 C 288 148, 284 130, 296 129" 
+          stroke="#FFFFFF" 
+          stroke-width="24" 
+          fill="none" 
+          stroke-linecap="round"/>
+  </g>
+
+  {/* ========================================== */}
+  {/* 3. BIG CLOUD (bottom-center, 3 soft puffs) */}
+  {/* ========================================== */}
+  <g id="big-cloud">
+    <path d="M 200 416 
+             H 356 
+             C 392 416, 420 390, 420 358 
+             C 420 328, 396 304, 366 302 
+             C 356 268, 324 244, 288 244 
+             C 250 244, 218 270, 210 306 
+             C 178 308, 152 334, 152 364 
+             C 152 394, 174 416, 200 416 Z" 
+          stroke="#FFFFFF" 
+          stroke-width="32" 
+          fill="none" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+  </g>
+</svg>

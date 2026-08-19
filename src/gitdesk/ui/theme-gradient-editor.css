@@ -1,0 +1,286 @@
+/* Visual, code-free gradient modal for semantic Theme roles. */
+
+body.theme-gradient-open {
+  overflow: hidden;
+}
+
+.theme-gradient-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 86;
+  display: grid;
+  overflow-y: auto;
+  padding: 24px;
+  place-items: center;
+  background: var(--gitdesk-modal-backdrop);
+}
+
+.theme-gradient-modal[hidden] {
+  display: none;
+}
+
+.theme-gradient-dialog {
+  display: grid;
+  width: min(920px, 100%);
+  max-height: min(760px, calc(100dvh - 48px));
+  gap: 18px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent-solid) 32%, var(--line));
+  border-radius: 22px;
+  padding: 22px;
+  background: var(--gitdesk-modal-panel);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.52);
+}
+
+.theme-gradient-header,
+.theme-gradient-footer,
+.theme-gradient-stop-heading,
+.theme-gradient-favorites header,
+.theme-gradient-stop-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.theme-gradient-header {
+  align-items: flex-start;
+}
+
+.theme-gradient-header > div,
+.theme-gradient-stop-heading > div,
+.theme-gradient-favorites header > div {
+  display: grid;
+  gap: 4px;
+}
+
+.theme-gradient-header span,
+.theme-gradient-stop-heading span,
+.theme-gradient-favorites header span {
+  color: var(--gitdesk-label);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.theme-gradient-header h2,
+.theme-gradient-header p {
+  margin: 0;
+}
+
+.theme-gradient-header h2 {
+  font-size: 22px;
+}
+
+.theme-gradient-header p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.theme-gradient-workspace {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(0, 1.35fr) minmax(250px, 0.65fr);
+  gap: 20px;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.theme-gradient-canvas-panel,
+.theme-gradient-inspector {
+  display: grid;
+  min-width: 0;
+  align-content: start;
+  gap: 16px;
+}
+
+.theme-gradient-preview {
+  position: relative;
+  min-height: 270px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--text) 24%, var(--line));
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.theme-gradient-stop-track {
+  position: absolute;
+  right: 18px;
+  bottom: 20px;
+  left: 18px;
+  height: 4px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 48%, transparent);
+}
+
+.theme-gradient-stop-track button {
+  position: absolute;
+  top: 50%;
+  left: var(--stop-position);
+  width: 22px;
+  min-width: 22px;
+  height: 22px;
+  min-height: 22px;
+  border: 3px solid var(--gitdesk-modal-panel);
+  border-radius: 50%;
+  padding: 0;
+  background: var(--stop-color);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--text) 72%, transparent);
+  transform: translate(-50%, -50%);
+}
+
+.theme-gradient-stop-track button.selected {
+  box-shadow: 0 0 0 3px var(--accent-solid), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.theme-gradient-type {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  background: var(--surface-muted);
+}
+
+.theme-gradient-type button {
+  min-height: 34px;
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.theme-gradient-type button.active {
+  color: var(--theme-selected-control-ink);
+  background: var(--theme-selected-control);
+}
+
+.theme-gradient-geometry,
+.theme-gradient-inspector {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: color-mix(in srgb, var(--surface) 76%, transparent);
+}
+
+.theme-gradient-geometry {
+  display: grid;
+  gap: 8px;
+}
+
+.theme-gradient-geometry[hidden] {
+  display: none;
+}
+
+.theme-gradient-geometry label,
+.theme-gradient-inspector > label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--gitdesk-label);
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.theme-gradient-stop-color {
+  display: grid;
+  width: 46px;
+  min-width: 46px;
+  height: 40px;
+  min-height: 40px;
+  padding: 4px;
+  place-items: stretch;
+}
+
+.theme-gradient-stop-color span {
+  border-radius: 7px;
+  background: var(--stop-color);
+}
+
+.theme-gradient-stop-actions button {
+  flex: 1 1 0;
+}
+
+.theme-gradient-favorites {
+  display: grid;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.theme-gradient-favorites header button {
+  min-height: 32px;
+  padding-inline: 9px;
+  font-size: 10px;
+}
+
+.theme-gradient-favorite-list {
+  display: grid;
+  max-height: 160px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.theme-gradient-favorite {
+  display: grid;
+  gap: 4px;
+}
+
+.theme-gradient-favorite button {
+  min-height: 28px;
+  padding: 3px;
+  font-size: 9px;
+}
+
+.theme-gradient-favorite button:first-child span {
+  display: block;
+  height: 34px;
+  border-radius: 7px;
+  background: var(--favorite-gradient);
+}
+
+.theme-gradient-favorite-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.theme-gradient-footer > div {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .theme-gradient-modal {
+    padding: 12px;
+  }
+
+  .theme-gradient-dialog {
+    max-height: calc(100dvh - 24px);
+    padding: 16px;
+  }
+
+  .theme-gradient-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-gradient-preview {
+    min-height: 210px;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-gradient-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .theme-gradient-footer > div,
+  .theme-gradient-footer button {
+    flex: 1 1 auto;
+  }
+}

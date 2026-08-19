@@ -1,0 +1,399 @@
+<!doctype html><!-- GitDesk's bundled WebUI shell wires static panels to dynamic Local and Media Mode workflows. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GitDesk</title>
+    <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./repositories.css">
+    <link rel="stylesheet" href="./debug.css"><link rel="stylesheet" href="./theme.css">
+    <link rel="stylesheet" href="./polish.css"><link rel="stylesheet" href="./overview.css">
+    <link rel="stylesheet" href="./guide.css"><link rel="stylesheet" href="./settings.css">
+    <link rel="stylesheet" href="./category-folders.css"><link rel="stylesheet" href="./changed-file-tree.css">
+    <link rel="stylesheet" href="./glass.css"><link rel="stylesheet" href="./project-hub.css">
+    <link rel="stylesheet" href="./activity-tracker.css"><link rel="stylesheet" href="./new-project-modal.css">
+    <link rel="stylesheet" href="./sync-chain.css"><link rel="stylesheet" href="./sync-chain-delete.css">
+    <link rel="stylesheet" href="./sync-chain-stage-three.css">
+    <link rel="stylesheet" href="./sync-ignore.css"><link rel="stylesheet" href="./pull-requests.css">
+    <link rel="stylesheet" href="./backup-mode.css"><link rel="stylesheet" href="./backup-selection-modal.css">
+    <link rel="stylesheet" href="./backup-transfer-modal.css"><link rel="stylesheet" href="./workspace-mode.css">
+    <link rel="stylesheet" href="./local.css"><link rel="stylesheet" href="./media.css">
+    <link rel="stylesheet" href="./media-album-navigation.css"><link rel="stylesheet" href="./media-preview.css">
+    <link rel="stylesheet" href="./media-intake.css"><link rel="stylesheet" href="./local-project-layout.css">
+    <link rel="stylesheet" href="./local-project-metadata.css">
+    <link rel="stylesheet" href="./local-project-picker.css"><link rel="stylesheet" href="./local-feature-picker.css">
+    <link rel="stylesheet" href="./local-project-library.css">
+    <link rel="stylesheet" href="./local-version-detail.css">
+    <link rel="stylesheet" href="./local-version-workspace.css">
+    <link rel="stylesheet" href="./local-markdown-notes.css"><link rel="stylesheet" href="./local-compare.css">
+    <link rel="stylesheet" href="./local-version-modal.css">
+    <link rel="stylesheet" href="./shared-resources.css">
+    <link rel="stylesheet" href="./document-builder.css">
+    <link rel="stylesheet" href="./document-builder-layout.css">
+    <link rel="stylesheet" href="./repetitive-workflows.css">
+    <link rel="stylesheet" href="./deployment-site-control.css">
+    <link rel="stylesheet" href="./pages-deployment.css"><link rel="stylesheet" href="./actions-deployment.css">
+    <link rel="stylesheet" href="./actions-step-logs.css">
+    <link rel="stylesheet" href="./header.css">
+    <link rel="stylesheet" href="./badges.css">
+    <link rel="stylesheet" href="./overview-workflow.css">
+    <link rel="stylesheet" href="./list-layout.css">
+    <link rel="stylesheet" href="./theme-dark.css">
+    <link rel="stylesheet" href="./theme-light.css"><link rel="stylesheet" href="./accent-theme.css">
+    <link rel="stylesheet" href="./accent-settings.css"><link rel="stylesheet" href="./theme-color-wheel.css">
+    <link rel="stylesheet" href="./theme-gradient-editor.css"><link rel="stylesheet" href="./theme-profile-manager.css">
+    <link rel="stylesheet" href="./editor-settings.css">
+    <link rel="stylesheet" href="./theme-gradient-application.css">
+    <script src="webui.js"></script>
+    <script src="./debug.js"></script><script src="./theme.js"></script>
+    <script src="./editing.js"></script>
+    <script src="./native.js"></script><script src="./render.js"></script>
+    <script src="./editor-settings.js"></script><script src="./toolbar-icons.js"></script>
+    <script src="./accounts.js"></script><script src="./repositories-catalog.js"></script>
+    <script src="./repositories-render.js"></script>
+    <script src="./repositories.js"></script><script src="./pull-requests-ui.js"></script>
+    <script src="./pull-requests.js"></script><script src="./changed-file-tree.js"></script>
+    <script src="./overview.js"></script>
+    <script src="./aiskills.js"></script>
+    <script src="./release-alerts.js"></script><script src="./action-jingles.js"></script>
+    <script src="./deployment-site-control.js"></script>
+    <script src="./pages-deployment.js"></script>
+    <script src="./pages.js"></script>
+    <script src="./actions-issues.js"></script>
+    <script src="./actions-step-logs.js"></script>
+    <script src="./actions-deployment.js"></script>
+    <script src="./actions-detail.js"></script>
+    <script src="./actions-refresh.js"></script>
+    <script src="./actions.js"></script>
+    <script src="./releases.js"></script>
+    <script src="./project-hub-ui.js"></script>
+    <script src="./project-hub-render.js"></script>
+    <script src="./activity-viewport.js"></script>
+    <script src="./activity-tracker.js"></script>
+    <script src="./project-hub.js"></script>
+    <script src="./sync-chain-ui.js"></script>
+    <script src="./sync-chain-render.js"></script>
+    <script src="./sync-chain-artifact-job.js"></script>
+    <script src="./sync-chain.js"></script><script src="./sync-chain-delete.js"></script>
+    <script src="./sync-chain-stage-three.js"></script>
+    <script src="./vendor-marked.js"></script>
+    <script src="./vendor-dompurify.js"></script>
+    <script src="./local-markdown-sanitizer.js"></script>
+    <script src="./local-parent-favorites.js"></script>
+    <script src="./local-version-workspace.js"></script>
+    <script src="./local-actions.js"></script>
+    <script src="./local-sync.js"></script>
+    <script src="./local-controls.js"></script>
+    <script src="./local-markdown-note-ui.js"></script>
+    <script src="./local-markdown-notes.js"></script>
+    <script src="./local-version-actions.js"></script>
+    <script src="./shared-resources.js"></script>
+    <script src="./local-version-detail.js"></script>
+    <script src="./local-version-delete.js"></script>
+    <script src="./local-render.js"></script>
+    <script src="./local-organizer.js"></script>
+    <script src="./local-project-picker.js"></script><script src="./local-feature-picker.js"></script>
+    <script src="./local-project-library.js"></script>
+    <script src="./local-project-identity.js"></script><script src="./local-project-selection.js"></script>
+    <script src="./local-compare.js"></script>
+    <script src="./local.js"></script><script src="./sync-ignore.js"></script>
+    <script src="./media-render.js"></script><script src="./media-album-navigation.js"></script>
+    <script src="./media-intake.js"></script><script src="./media-clipboard.js"></script>
+    <script src="./media-item-move.js"></script>
+    <script src="./media.js"></script><script src="./backup-destination-modal.js"></script>
+    <script src="./backup-skipped-items.js"></script><script src="./backup-transfer-modal.js"></script>
+    <script src="./backup-selection-model.js"></script><script src="./backup-selection-modal.js"></script>
+    <script src="./backup-mode.js"></script><script src="./workspace-mode.js"></script>
+    <script src="./local-category-scan.js"></script><script src="./local-permissions.js"></script>
+    <script src="./document-builder-ui.js"></script>
+    <script src="./document-builder-render.js"></script>
+    <script src="./document-builder-organizer.js"></script>
+    <script src="./document-builder.js"></script>
+    <script src="./settings-tabs.js"></script><script src="./metadata-settings.js"></script>
+    <script src="./category-folders.js"></script><script src="./theme-settings-model.js"></script>
+    <script src="./theme-gradient-model.js"></script><script src="./theme-color-wheel.js"></script>
+    <script src="./theme-gradient-editor.js"></script><script src="./theme-profile-manager.js"></script>
+    <script src="./accent-settings.js"></script>
+    <script src="./updater.js"></script><script src="./app.js"></script>
+  </head><body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">
+            <img class="brand-icon" src="./app-icon.svg" alt="" draggable="false">
+          </div>
+          <div class="brand-copy">
+            <div class="brand-title-row">
+              <h1>GitDesk</h1>
+              <div id="header-account-switcher" class="header-account-switcher">
+                <img id="account-avatar" class="account-avatar" alt="" draggable="false">
+                <span class="header-account-select-shell">
+                  <select id="header-account-select" aria-label="Switch GitHub PAT profile"
+                    title="Switch GitHub PAT profile"></select>
+                </span>
+              </div>
+            </div>
+            <p id="repo-summary" hidden></p>
+          </div>
+          <button id="toggle-theme" class="icon-button theme-toggle"
+            type="button" aria-label="Switch to dark theme" title="Switch to dark theme">
+            <img class="theme-icon theme-icon-dark" src="./darktheme-icon.svg" alt="" draggable="false">
+            <img class="theme-icon theme-icon-light" src="./lighttheme-icon.svg" alt="" draggable="false">
+          </button>
+        </div>
+        <div class="repo-controls">
+          <label for="managed-repo-select">Repository</label>
+          <select id="managed-repo-select"></select>
+          <button id="add-managed-repo" type="button">Add</button>
+          <button id="pull-button" type="button">Pull</button>
+          <button id="fetch-button" type="button">Fetch</button>
+          <button id="refresh-github-repos" type="button">Refresh</button>
+          <button id="refresh-status" type="button">Status</button>
+        </div>
+      </header>
+      <nav class="sidebar toolbar" aria-label="Primary">
+        <button class="tab-button active" type="button" data-tab="overview" aria-label="Overview" title="Overview">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"></path>
+          </svg>
+        </button>
+        <button class="tab-button" type="button" data-tab="clone" aria-label="Clone" title="Clone">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M8 8h10a3 3 0 0 1 0 6h-2M16 16H6a3 3 0 0 1 0-6h2M12 6v12"></path>
+          </svg>
+        </button>
+        <button class="tab-button" type="button" data-tab="branches" aria-label="Branches" title="Branches">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M6 7v10M8 5h4a6 6 0 0 1 6 6v1"></path>
+            <path d="M6 5h.1M18 6h.1M6 19h.1"></path>
+          </svg>
+        </button>
+        <button class="tab-button" type="button" data-tab="actions" aria-label="Actions" title="Actions">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+          </svg>
+        </button>
+        <button class="tab-button" type="button" data-tab="releases" aria-label="Releases" title="Releases">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7M12 3v12m-5-7 5-5 5 5"></path>
+          </svg>
+        </button>
+        <button class="tab-button" type="button" data-tab="settings" aria-label="Settings" title="Settings">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+            <path d="M4 12h3m10 0h3M12 4v3m0 10v3m-5.7-3.7 2.1-2.1"></path>
+            <path d="m15.6 8.4 2.1-2.1m0 11.4-2.1-2.1M8.4 8.4 6.3 6.3"></path>
+          </svg>
+        </button>
+        <button class="tab-button" type="button" data-tab="debug" aria-label="DevTools" title="DevTools">
+          <svg aria-hidden="true" viewBox="0 0 24 24">
+            <path d="m8 9-4 3 4 3m8-6 4 3-4 3m-2-11-4 16"></path>
+          </svg>
+        </button>
+        <button class="tab-button guide-button" type="button" data-tab="guide" aria-label="Guide" title="Guide">
+          <img class="guide-toolbar-icon" src="./guide-icon.svg" alt="" draggable="false">
+        </button>
+      </nav>
+      <main class="workspace">
+        <section id="panel-overview" class="panel active" aria-labelledby="overview-title">
+          <div class="overview-layout">
+            <section class="overview-pane overview-left">
+              <div class="overview-pane-header overview-workflow-header">
+                <div class="overview-title-row">
+                  <div id="overview-tabs" class="overview-tabs" role="tablist" aria-label="Repository views">
+                    <button id="overview-title" class="overview-tab active" type="button">Overview</button>
+                  </div>
+                  <p id="status-counts">0 changed files</p>
+                </div>
+                <div class="button-row overview-actions">
+                  <button id="toggle-git-ignore" type="button">git ignore</button>
+                  <button id="select-all-files" type="button">Select all</button>
+                  <button id="clear-file-selection" type="button">Clear</button>
+                </div>
+              </div>
+              <div id="changed-files" class="file-list" aria-live="polite"></div>
+              <div class="commit-bar">
+                <textarea id="commit-message" rows="3" placeholder="Commit message"></textarea>
+                <div class="button-row commit-actions">
+                  <button id="commit-button" type="button">Commit</button>
+                  <button id="commit-push-button" type="button">Commit and push</button>
+                  <button id="push-button" type="button" hidden>Push</button>
+                </div>
+              </div>
+            </section>
+            <section class="overview-pane overview-right" aria-label="Diff and repository actions">
+              <div class="overview-pane-header">
+                <div>
+                  <h2 id="diff-title">Repository</h2>
+                  <p id="diff-summary">Select a changed file to inspect its diff</p>
+                </div>
+              </div>
+              <div id="diff-viewer" class="diff-viewer" aria-live="polite"></div>
+            </section>
+          </div>
+        </section>
+        <section id="panel-clone" class="panel" aria-labelledby="tab-clone">
+          <div class="panel-header">
+            <div>
+              <h2>Clone</h2>
+              <p id="clone-summary">No clone in progress</p>
+            </div>
+          </div>
+          <div class="settings-grid">
+            <form id="clone-form" class="settings-block">
+              <label for="clone-url">GitHub clone URL</label>
+              <input id="clone-url" type="text" spellcheck="false" placeholder="https://github.com/owner/repo.git">
+              <label for="clone-parent-path">Destination folder</label>
+              <div class="input-action-row">
+                <input id="clone-parent-path" type="text" spellcheck="false" placeholder="/absolute/path/to/parent">
+                <button
+                  id="choose-clone-parent"
+                  class="icon-button"
+                  type="button"
+                  aria-label="Choose destination folder"
+                  title="Choose destination folder"
+                >
+                  <svg aria-hidden="true" viewBox="0 0 24 24">
+                    <path d="M3 6a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v1H3z"></path>
+                    <path d="M3 9h18l-2 9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"></path>
+                  </svg>
+                </button>
+              </div>
+              <label for="clone-folder-name">Local folder</label>
+              <input id="clone-folder-name" type="text" spellcheck="false" placeholder="repo">
+              <label class="check-row">
+                <input id="clone-use-token" type="checkbox">
+                <span>Use active account</span>
+              </label>
+              <button id="clone-repository" type="submit">Clone repository</button>
+            </form>
+            <div class="settings-block">
+              <label>Clone target</label>
+              <code id="clone-target-preview">Not selected</code>
+            </div>
+          </div>
+        </section>
+        <section id="panel-branches" class="panel" aria-labelledby="tab-branches">
+          <div class="panel-header">
+            <div>
+              <h2>Branches</h2>
+              <p id="current-branch">No branch loaded</p>
+            </div>
+            <button id="refresh-branches" type="button">Refresh</button>
+          </div>
+          <div class="branch-create">
+            <label for="new-branch-name">New branch</label>
+            <input id="new-branch-name" type="text" spellcheck="false" placeholder="feature/example">
+            <button id="create-branch" type="button">Create</button>
+          </div>
+          <div id="branches-list" class="stack-list" aria-live="polite"></div>
+        </section>
+        <section id="panel-actions" class="panel" aria-labelledby="tab-actions">
+          <div class="panel-header">
+            <div>
+              <h2>Actions</h2>
+              <p id="actions-summary">No workflow runs loaded</p>
+            </div>
+            <button id="refresh-actions" type="button">Refresh</button>
+          </div>
+          <div id="workflow-runs" class="table-list" aria-live="polite"></div>
+        </section>
+        <section id="panel-releases" class="panel" aria-labelledby="tab-releases">
+          <div class="panel-header">
+            <div>
+              <h2>Releases</h2>
+              <p id="releases-summary">No releases loaded</p>
+            </div>
+            <div class="release-toolbar">
+              <button id="refresh-releases" type="button">Refresh</button>
+              <button id="release-new" type="button">New</button>
+            </div>
+          </div>
+          <div class="release-layout">
+            <form id="release-form" class="release-form">
+              <p id="release-form-summary">New release</p>
+              <label for="release-tag">Tag</label>
+              <input id="release-tag" type="text" spellcheck="false" placeholder="v1.0.0">
+              <label for="release-title">Title</label>
+              <input id="release-title" type="text" spellcheck="true" placeholder="Release title (optional)">
+              <label for="release-target">Target</label>
+              <input id="release-target" type="text" spellcheck="false" placeholder="main (optional)">
+              <label for="release-body">Body</label>
+              <textarea id="release-body" rows="8" spellcheck="true" placeholder="Release notes"></textarea>
+              <div class="release-label-group">
+                <label>Release label</label>
+                <label class="radio-row">
+                  <input id="release-label-latest" name="release-label" type="radio" value="latest" checked>
+                  <span>Latest</span>
+                </label>
+                <label class="radio-row">
+                  <input id="release-label-prerelease" name="release-label" type="radio" value="prerelease">
+                  <span>Prerelease</span>
+                </label>
+                <label class="radio-row">
+                  <input id="release-label-none" name="release-label" type="radio" value="none">
+                  <span>None</span>
+                </label>
+              </div>
+              <label class="check-row">
+                <input id="release-notes" type="checkbox">
+                <span>Generate notes</span>
+              </label>
+              <label>Assets</label>
+              <div id="release-assets" class="release-assets"></div>
+              <button id="publish-release" type="submit">Publish release</button>
+            </form>
+            <div id="releases-list" class="stack-list" aria-live="polite"></div>
+          </div>
+        </section>
+        <section id="panel-settings" class="panel" aria-labelledby="tab-settings">
+          <div class="panel-header">
+            <div>
+              <h2>Settings</h2>
+              <p id="token-state">Token not saved</p>
+            </div>
+          </div>
+          <div id="settings-content-root"></div>
+        </section>
+        <section id="panel-debug" class="panel" aria-labelledby="tab-debug">
+          <div class="panel-header">
+            <div>
+              <h2>DevTools</h2>
+              <p id="debug-summary">0 system events - 0 console events</p>
+            </div>
+            <div class="debug-actions">
+              <button
+                id="copy-activity-output"
+                class="icon-button"
+                type="button"
+                aria-label="Copy all DevTools output"
+                title="Copy all DevTools output"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <rect x="8" y="8" width="11" height="11" rx="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+              <button id="clear-debug-log" type="button">Clear console</button>
+              <span id="busy-indicator" class="debug-busy-state">Idle</span>
+            </div>
+          </div>
+          <div id="message-area" class="message-area debug-status" role="status" aria-live="polite"></div>
+          <div class="debug-layout">
+            <section class="debug-section" aria-labelledby="debug-activity-title">
+              <div class="debug-section-header">
+                <h3 id="debug-activity-title">System activity</h3>
+                <span>Actions performed by GitDesk</span>
+              </div>
+              <div id="activity-log" class="activity-log" aria-live="polite"></div>
+            </section>
+            <section class="debug-section" aria-labelledby="debug-console-title">
+              <div class="debug-section-header">
+                <h3 id="debug-console-title">Console output</h3>
+                <span>Captured browser diagnostics</span>
+              </div>
+              <div id="debug-log" class="debug-log" aria-live="polite"></div>
+            </section>
+          </div>
+        </section>
+        <section id="panel-guide" class="panel guide-panel" aria-label="GitDesk Guide">
+          <iframe id="guide-frame" class="guide-frame" src="./gitdesk-readme.html" title="GitDesk UI Guide"></iframe>
+        </section></main></div></body></html>

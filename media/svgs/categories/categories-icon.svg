@@ -1,0 +1,18 @@
+<svg width="512" height="512" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  {/* Category icon: four distinct shapes representing categories */}
+  <g stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    
+    {/* Top-left: Rounded square */}
+    <path d="M4.2 3.5 H9.3 A1.4 1.4 0 0 1 10.7 4.9 V10 A1.4 1.4 0 0 1 9.3 11.4 H4.2 A1.4 1.4 0 0 1 2.8 10 V4.9 A1.4 1.4 0 0 1 4.2 3.5 Z"/>
+    
+    {/* Top-right: Circle */}
+    <circle cx="17.25" cy="7.45" r="3.95"/>
+    
+    {/* Bottom-left: Triangle */}
+    <path d="M6.75 13.4 L10.95 20.5 H2.55 Z"/>
+    
+    {/* Bottom-right: Rounded square (rotated / diamond-ish accent) */}
+    <path d="M14.7 13.4 H19.8 A1.4 1.4 0 0 1 21.2 14.8 V19.9 A1.4 1.4 0 0 1 19.8 21.3 H14.7 A1.4 1.4 0 0 1 13.3 19.9 V14.8 A1.4 1.4 0 0 1 14.7 13.4 Z"/>
+    
+  </g>
+</svg>

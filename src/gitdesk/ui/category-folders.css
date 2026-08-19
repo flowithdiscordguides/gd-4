@@ -1,0 +1,296 @@
+/*
+  User settings preference and modal for explicit category-folder migration.
+*/
+
+#panel-settings .category-folders-card {
+  gap: 0;
+  overflow: hidden;
+}
+
+.category-folders-preference {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-folders-preference-copy {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.category-folders-preference-copy p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.category-folders-switch {
+  position: relative;
+  flex: 0 0 48px;
+  width: 48px;
+  min-width: 48px;
+  height: 28px;
+  min-height: 28px;
+  border-radius: 999px;
+  padding: 3px;
+  background: var(--surface-muted);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.category-folders-switch:hover:not(:disabled) {
+  border-color: var(--green);
+}
+
+.category-folders-switch[aria-checked="true"] {
+  border-color: var(--green);
+  background: var(--green);
+  box-shadow: none;
+}
+
+.category-folders-switch-thumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
+  transform: translateX(0);
+  transition: transform 150ms ease;
+}
+
+.category-folders-switch[aria-checked="true"] .category-folders-switch-thumb {
+  transform: translateX(20px);
+}
+
+.category-folder-migration-action {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.category-folder-migration-action[hidden] {
+  display: none;
+}
+
+.category-folder-migration-action > div {
+  display: grid;
+  gap: 4px;
+}
+
+.category-folder-migration-action .row-meta {
+  margin: 0;
+}
+
+.category-folder-migration-action button {
+  flex: 0 0 auto;
+}
+
+.category-folder-status {
+  min-height: 18px;
+  margin: 10px 0 0;
+}
+
+.category-folder-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 52;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--gitdesk-modal-backdrop, rgba(7, 10, 18, 0.72));
+}
+
+.category-folder-modal[hidden] {
+  display: none;
+}
+
+.category-folder-dialog {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 14px;
+  width: min(560px, 100%);
+  max-height: min(680px, calc(100dvh - 48px));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 20px;
+  background: var(--gitdesk-modal-panel, var(--panel));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+}
+
+.category-folder-dialog-header {
+  display: flex;
+  gap: 18px;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.category-folder-dialog-header > div {
+  display: grid;
+  gap: 5px;
+}
+
+.category-folder-dialog-header p,
+.category-folder-modal-summary,
+.category-folder-dialog-footer p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.category-folder-dialog-header button {
+  flex: 0 0 auto;
+}
+
+.category-folder-modal-summary {
+  border-left: 3px solid var(--green);
+  padding: 3px 0 3px 10px;
+}
+
+.category-folder-projects {
+  display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
+  min-height: 120px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  scrollbar-gutter: stable;
+}
+
+.category-folder-project {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 58px;
+  margin: 0;
+  padding: 10px 12px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: none;
+}
+
+.category-folder-project + .category-folder-project {
+  border-top: 1px solid var(--line);
+}
+
+.category-folder-project:hover:not(.is-blocked) {
+  background: color-mix(in srgb, var(--green) 7%, transparent);
+}
+
+.category-folder-project.is-blocked {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.category-folder-project-check {
+  -webkit-appearance: none;
+  appearance: none;
+  display: grid;
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  min-height: 18px;
+  margin: 0;
+  border: 1.5px solid var(--muted);
+  border-radius: 4px;
+  padding: 0;
+  background: var(--surface);
+  box-shadow: none;
+  cursor: pointer;
+  place-content: center;
+}
+
+.category-folder-project-check::after {
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  content: "";
+  opacity: 0;
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+.category-folder-project-check:checked {
+  border-color: var(--green);
+  background: var(--green);
+}
+
+.category-folder-project-check:checked::after {
+  opacity: 1;
+}
+
+.category-folder-project-check:disabled {
+  cursor: not-allowed;
+}
+
+.category-folder-project-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.category-folder-project-copy strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-folder-project-copy .row-meta {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-folder-projects .empty-state {
+  padding: 24px;
+}
+
+.category-folder-dialog-footer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.category-folder-dialog-footer p {
+  flex: 1 1 auto;
+}
+
+.category-folder-dialog-footer button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 620px) {
+  .category-folder-modal {
+    padding: 12px;
+  }
+
+  .category-folder-dialog {
+    max-height: calc(100dvh - 24px);
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .category-folder-migration-action,
+  .category-folder-dialog-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .category-folder-migration-action button,
+  .category-folder-dialog-footer button {
+    width: 100%;
+  }
+}

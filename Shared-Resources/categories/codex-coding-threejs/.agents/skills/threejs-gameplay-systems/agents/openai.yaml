@@ -1,0 +1,9 @@
+# Defines the launcher-facing identity and repository-governed default behavior for this skill.
+interface:
+  display_name: "Three.js Gameplay Systems"
+  short_description: "Design and implement Three.js gameplay systems"
+  default_prompt: >-
+    Read ../SKILL.md and its applicable repository-local references. For broad work, define the design brief,
+    core-loop contract, and level or encounter plan before implementation. Never execute, install, build, test, launch,
+    browse, call providers, or access a network. Trace source completely and treat playability as user-supplied runtime
+    evidence.

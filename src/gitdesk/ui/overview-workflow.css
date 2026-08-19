@@ -1,0 +1,76 @@
+/*
+  Repo Overview workflow menu and commit controls.
+*/
+
+.overview-left .overview-workflow-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.overview-title-row {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.overview-tabs,
+.overview-actions,
+.commit-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.overview-tabs {
+  gap: 10px;
+}
+
+.overview-tab,
+.history-button {
+  min-height: 34px;
+  padding-inline: 14px;
+}
+
+.overview-tab.active,
+.history-button:not([hidden]) {
+  border-color: rgba(225, 230, 235, 0.36);
+}
+
+.overview-actions button,
+.commit-actions button {
+  min-height: 38px;
+}
+
+.commit-actions #commit-button,
+.commit-actions #commit-push-button {
+  min-width: 124px;
+}
+
+#commit-button[data-mode="fetch"] {
+  color: var(--text);
+  background: var(--surface-muted);
+}
+
+#commit-button[data-mode="push"] {
+  color: var(--gitdesk-success-fg);
+  background: var(--gitdesk-success-bg);
+}
+
+#push-button[hidden] {
+  display: none;
+}
+
+.overview-left .file-row.ignore-mode {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.overview-left .file-row.ignore-mode.has-ignore {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
+.ignore-checkbox {
+  accent-color: var(--gitdesk-success-bg);
+}

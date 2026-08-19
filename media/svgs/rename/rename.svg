@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Pencil icon — white stroke, transparent background, matched to toolbar line-icon style -->
+
+  <!-- Pencil body (diagonal, tip at bottom-left) -->
+  <g id="pencil-body">
+    <path d="M17.2 3.4 a2.1 2.1 0 0 1 3 0 l0.4 0.4 a2.1 2.1 0 0 1 0 3 L8.4 19 L3.6 20.4 L5 15.6 Z"
+          stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Ferrule / eraser seam near the top end -->
+  <g id="ferrule">
+    <path d="M15.4 5.2 L18.8 8.6" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+</svg>

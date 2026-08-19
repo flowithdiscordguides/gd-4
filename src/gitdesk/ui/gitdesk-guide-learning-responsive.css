@@ -1,0 +1,80 @@
+/* Mobile chapter disclosure, compact checkpoints, and reduced-motion behavior for the Guide learning layer. */
+@media (max-width: 940px) {
+  .rail {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: auto;
+    max-height: 100vh;
+  }
+
+  .brand {
+    padding-bottom: 12px;
+  }
+
+  .brand > p {
+    display: none;
+  }
+
+  .guide-nav-toggle {
+    display: block;
+  }
+
+  .guide-nav-toggle + .rail-action {
+    grid-column: auto;
+  }
+
+  .guide-ready .guide-tabs {
+    display: none;
+    max-height: 54vh;
+    overflow: auto;
+  }
+
+  .guide-ready .rail.mobile-open .guide-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-orientation {
+    grid-template-columns: 1fr;
+  }
+
+  .guidepost-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guidepost + .guidepost {
+    border-top: 1px solid var(--line);
+    border-left-color: var(--accent);
+  }
+}
+
+@media (max-width: 680px) {
+  .rail-actions,
+  .lesson-checkpoint,
+  .lesson-footer {
+    grid-template-columns: 1fr;
+  }
+
+  .adjacent-nav {
+    justify-content: stretch;
+  }
+
+  .adjacent-nav button {
+    flex: 1 1 100%;
+  }
+
+  .image-viewer-toolbar {
+    bottom: 12px;
+    max-width: calc(100vw - 24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
