@@ -12,7 +12,7 @@ from gitdesk.errors import AppError
 from gitdesk.giterrors import git_error_details, git_failure_message
 
 
-GIT_PUSH_TIMEOUT_SECONDS = 105
+GIT_PUSH_TIMEOUT_SECONDS = 505
 
 
 def push_git_command(repo: Repo, remote: str, refspec: str, environment: dict[str, str]) -> str:
