@@ -5,6 +5,7 @@
 // Keeps classic-script variables private while exposing only the native bridge API.
 (() => {
 const REQUEST_TIMEOUT_MS = 120000;
+const GIT_PUSH_REQUEST_TIMEOUT_MS = 520000;
 const SYNC_REQUEST_TIMEOUT_MS = 1800000;
 const BRIDGE_WAIT_MS = 10000;
 const BRIDGE_POLL_MS = 50;
@@ -37,15 +38,25 @@ function parseResponse(rawResponse) {
   }
 }
 
-// Applies a timeout to native calls so a hung Git operation does not leave the UI waiting forever.
-function withTimeout(promise, action) {
+// Gives push-capable requests time to reach their backend boundary without delaying unrelated native actions.
+function requestTimeout(action, payload) {
+  if (action === "push" || (action === "commit" && payload && payload.push)) {
+    return GIT_PUSH_REQUEST_TIMEOUT_MS;
+  }
+  if (action.indexOf("syncChain") === 0 || action.indexOf("Backup") >= 0
+      || action === "syncLocalVersionToPrivateBeta") {
+    return SYNC_REQUEST_TIMEOUT_MS;
+  }
+  return REQUEST_TIMEOUT_MS;
+}
+
+// Applies the action-specific timeout so a stalled native operation cannot leave the UI waiting forever.
+function withTimeout(promise, action, payload) {
   let timeoutId;
   const timeout = new Promise((resolve, reject) => {
     timeoutId = window.setTimeout(() => {
       reject(new Error(`Native action timed out: ${action}`));
-    }, action.indexOf("syncChain") === 0 || action.indexOf("Backup") >= 0
-      || action === "syncLocalVersionToPrivateBeta"
-      ? SYNC_REQUEST_TIMEOUT_MS : REQUEST_TIMEOUT_MS);
+    }, requestTimeout(action, payload));
   });
 
   return Promise.race([promise, timeout]).then((result) => {
@@ -120,7 +131,7 @@ function invokeNativeFunction(nativeInvoke, action, payload) {
     return Promise.reject(error);
   }
 
-  return withTimeout(nativePromise, action).then((response) => {
+  return withTimeout(nativePromise, action, payload).then((response) => {
     const responsePayload = response || {};
     if (responsePayload.ok) {
       return responsePayload.data;

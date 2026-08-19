@@ -32,8 +32,8 @@ def push_git_command(repo: Repo, remote: str, refspec: str, environment: dict[st
         )
     except subprocess.TimeoutExpired as error:
         raise AppError(
-            "Git push stopped after 105 seconds without completing. The local commit is safe. Refresh before retrying "
-            "because the remote may have received the update before the connection stopped.",
+            f"Git push stopped after {GIT_PUSH_TIMEOUT_SECONDS} seconds without completing. The local commit is safe. "
+            "Refresh before retrying because the remote may have received the update before the connection stopped.",
             "GIT_PUSH_TIMEOUT",
             {"timeout_seconds": GIT_PUSH_TIMEOUT_SECONDS, "remote_state": "unknown"},
         ) from error

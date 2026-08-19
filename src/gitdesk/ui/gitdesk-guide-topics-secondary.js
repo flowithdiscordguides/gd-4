@@ -90,7 +90,7 @@ window.GitDeskGuideTopics.push(
       "Select only the files that belong together.",
       "Write a commit message when more than one file is selected.",
       "Click Commit for a local commit or Commit and push when the branch should go to GitHub.",
-      "If push reaches its 105-second safety boundary, refresh before retrying. The local commit remains intact."
+      "If push reaches its configured safety boundary, refresh before retrying. The local commit remains intact."
     ]
   },
   {

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+import re
+import subprocess
 import unittest
 from pathlib import Path
-import subprocess
 from unittest import mock
 
 from git import GitCommandError
@@ -66,7 +67,7 @@ class GitTransportTests(unittest.TestCase):
         push_command.assert_called_once()
         self.assertEqual(result["head_sha"], "a" * 40)
 
-    # Confirms the backend child process settles before JavaScript's two-minute native deadline.
+    # Confirms the backend child process settles before JavaScript's push-specific native deadline.
     def test_push_timeout_reports_ambiguous_remote_state(self) -> None:
         """Stop an unresponsive Git child while preserving explicit retry guidance."""
 
@@ -79,7 +80,16 @@ class GitTransportTests(unittest.TestCase):
 
         self.assertEqual(raised.exception.code, "GIT_PUSH_TIMEOUT")
         self.assertEqual(raised.exception.details["remote_state"], "unknown")
-        self.assertLess(GIT_PUSH_TIMEOUT_SECONDS * 1000, 120000)
+        self.assertIn(f"after {GIT_PUSH_TIMEOUT_SECONDS} seconds", raised.exception.message)
+        native_source = (
+            Path(__file__).resolve().parents[1] / "src" / "gitdesk" / "ui" / "native.js"
+        ).read_text(encoding="utf-8")
+        timeout_match = re.search(r"const GIT_PUSH_REQUEST_TIMEOUT_MS = (\d+);", native_source)
+        self.assertIsNotNone(timeout_match)
+        native_timeout_ms = int(timeout_match.group(1)) if timeout_match else 0
+        self.assertLess(GIT_PUSH_TIMEOUT_SECONDS * 1000, native_timeout_ms)
+        self.assertIn('action === "push"', native_source)
+        self.assertIn('action === "commit" && payload && payload.push', native_source)
 
     # Confirms Overview disables Pull from syncStatus while preserving Fetch for remote discovery.
     def test_overview_requires_upstream_before_enabling_pull(self) -> None:
